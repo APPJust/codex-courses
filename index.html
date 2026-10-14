@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OpenAI Codex 課程目錄</title>
+<meta name="author" content="李振偉老師">
+<meta name="description" content="OpenAI Codex 與 AI 基礎概念互動教學課程目錄，李振偉老師。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5f3ee;--surface:#fffdf9;--ink:#15171c;--text:#2a2d34;--muted:#6d707a;--faint:#a3a5ad;
+  --line:#e3dfd5;--line-strong:#cfcabd;
+  --accent:#3049c4;--accent-ink:#fff;--accent-soft:rgba(48,73,196,.08);
+  --hero-bg:#14161c;--hero-ink:#f4f1ea;--hero-muted:#a3a6b0;--hero-line:rgba(255,255,255,.09);
+  --sans:"Inter","Noto Sans TC","Microsoft JhengHei","PingFang TC",system-ui,sans-serif;
+  --serif:"Noto Serif TC","Songti TC","PMingLiU",serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f1115;--surface:#161920;--ink:#f1eee7;--text:#d9d7d1;--muted:#9a9da7;--faint:#62656f;
+  --line:#252932;--line-strong:#343944;
+  --accent:#8ea0ff;--accent-ink:#0d1020;--accent-soft:rgba(142,160,255,.1);
+  --hero-bg:#0a0b0e;--hero-line:rgba(255,255,255,.07);
+}}
+:root[data-theme="dark"]{
+  --bg:#0f1115;--surface:#161920;--ink:#f1eee7;--text:#d9d7d1;--muted:#9a9da7;--faint:#62656f;
+  --line:#252932;--line-strong:#343944;
+  --accent:#8ea0ff;--accent-ink:#0d1020;--accent-soft:rgba(142,160,255,.1);
+  --hero-bg:#0a0b0e;--hero-line:rgba(255,255,255,.07);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.7 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.container{max-width:1140px;margin:0 auto;padding:0 32px}
+
+/* Hero */
+.hero{background:var(--hero-bg);color:var(--hero-ink);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(var(--hero-line) 1px,transparent 1px),linear-gradient(90deg,var(--hero-line) 1px,transparent 1px);
+  background-size:56px 56px;mask-image:linear-gradient(180deg,rgba(0,0,0,.9),transparent 92%);-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.9),transparent 92%)}
+.hero::after{content:"";position:absolute;width:560px;height:560px;right:-160px;top:-220px;border-radius:50%;
+  background:radial-gradient(circle,rgba(92,118,255,.35),transparent 65%);pointer-events:none}
+.hero .container{position:relative;padding-top:72px;padding-bottom:56px}
+.eyebrow{font:600 12px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--hero-muted);display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+.hero h1{font:700 clamp(34px,5.4vw,58px)/1.15 var(--serif);letter-spacing:.01em;margin:22px 0 16px}
+.hero h1 em{font-style:normal;color:#9fb0ff}
+.nw{white-space:nowrap}
+.hero .lead{max-width:600px;color:var(--hero-muted);font-size:17px;margin:0}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);margin:52px 0 0;padding:0;list-style:none;border-top:1px solid rgba(255,255,255,.14)}
+.stats li{padding:20px 20px 0 0}
+.stats li + li{padding-left:20px;border-left:1px solid rgba(255,255,255,.14)}
+.stats b{display:block;font:600 34px/1.1 var(--sans);letter-spacing:-.02em;color:var(--hero-ink);font-variant-numeric:tabular-nums}
+.stats span{font-size:13px;color:var(--hero-muted)}
+
+/* Layout */
+.layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:64px;padding-top:56px;padding-bottom:96px}
+.layout > *{min-width:0}
+.sidebar{position:sticky;top:32px;align-self:start;max-height:calc(100vh - 64px);overflow:auto}
+.sidebar h2{font:600 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin:0 0 18px}
+.toc-part{margin-bottom:22px}
+.toc-part p{font-size:12px;font-weight:600;color:var(--muted);margin:0 0 6px;letter-spacing:.04em}
+.toc-part a{display:flex;gap:10px;text-decoration:none;font-size:14px;line-height:1.45;color:var(--muted);padding:5px 0 5px 12px;border-left:2px solid var(--line);transition:color .15s,border-color .15s}
+.toc-part a span{font:500 12px/1.6 var(--sans);color:var(--faint);font-variant-numeric:tabular-nums}
+.toc-part a:hover{color:var(--ink)}
+.toc-part a.active{color:var(--ink);border-left-color:var(--accent);font-weight:500}
+.toc-part a.active span{color:var(--accent)}
+
+/* Parts */
+.part + .part{margin-top:80px}
+.part-head{display:flex;align-items:baseline;gap:18px;padding-bottom:18px;border-bottom:1px solid var(--line-strong)}
+.part-no{font:600 12px/1 var(--sans);letter-spacing:.2em;color:var(--accent);white-space:nowrap}
+.part-head h2{font:700 26px/1.3 var(--serif);color:var(--ink);margin:0}
+.part-head p{margin:0 0 0 auto;font-size:13px;color:var(--faint);white-space:nowrap}
+
+/* Course */
+.course{display:grid;grid-template-columns:76px 1fr;gap:8px;padding:36px 0;border-bottom:1px solid var(--line);scroll-margin-top:24px}
+.idx{font:300 44px/1 var(--sans);letter-spacing:-.04em;color:var(--faint);font-variant-numeric:tabular-nums;padding-top:4px;transition:color .2s}
+.course:hover .idx{color:var(--accent)}
+.kicker{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;font-size:13px;color:var(--muted)}
+.kicker .dot{width:3px;height:3px;border-radius:50%;background:var(--faint)}
+.kicker .repo{margin-left:auto;display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:var(--faint);transition:color .15s}
+.kicker .repo:hover{color:var(--ink)}
+.kicker .repo svg{width:15px;height:15px}
+.course h3{font:700 25px/1.35 var(--serif);color:var(--ink);margin:8px 0 2px}
+.subtitle{margin:0;color:var(--muted);font-size:15px}
+.goal{margin:16px 0 0;max-width:680px;font-size:15px;color:var(--text);padding-left:14px;border-left:2px solid var(--line-strong)}
+.goal small{display:block;font-size:11px;font-weight:600;letter-spacing:.16em;color:var(--faint);margin-bottom:2px}
+
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:22px}
+.btn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font:500 14px/1 var(--sans);padding:11px 16px;border-radius:999px;border:1px solid var(--line-strong);color:var(--ink);background:var(--surface);transition:border-color .15s,background .15s,color .15s,transform .15s}
+.btn:hover{border-color:var(--ink);transform:translateY(-1px)}
+.btn svg{width:12px;height:12px;flex:none}
+.btn.primary{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.btn.primary:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn .arrow{transition:transform .15s}
+.btn:hover .arrow{transform:translateX(2px)}
+.langs{font-size:13px;color:var(--faint);margin-left:4px}
+
+details.chapters{margin-top:20px;max-width:680px}
+details.chapters summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--muted);user-select:none}
+details.chapters summary::-webkit-details-marker{display:none}
+details.chapters summary svg{width:12px;height:12px;transition:transform .2s}
+details.chapters[open] summary svg{transform:rotate(90deg)}
+details.chapters summary:hover{color:var(--ink)}
+.timeline{list-style:none;margin:14px 0 0;padding:4px 0 4px 18px;border-left:1px solid var(--line-strong);columns:2;column-gap:32px}
+.timeline li{break-inside:avoid;display:grid;grid-template-columns:44px 1fr;font-size:14px;padding:4px 0;color:var(--text)}
+.timeline time{font:500 12px/1.9 var(--sans);color:var(--faint);font-variant-numeric:tabular-nums}
+
+/* Series episodes */
+.episodes{margin-top:22px;border:1px solid var(--line);border-radius:14px;background:var(--surface);overflow:hidden}
+.ep{padding:22px 24px}
+.ep + .ep{border-top:1px solid var(--line)}
+.ep-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.ep-tag{font:600 11px/1 var(--sans);letter-spacing:.14em;color:var(--accent);background:var(--accent-soft);padding:5px 8px;border-radius:6px}
+.ep h4{font:700 17px/1.45 var(--serif);color:var(--ink);margin:0;flex:1;min-width:200px}
+.ep-dur{font-size:13px;color:var(--faint);font-variant-numeric:tabular-nums}
+.ep .goal{margin-top:12px;font-size:14px}
+.ep .actions{margin-top:16px}
+.ep .btn{padding:9px 14px;font-size:13px}
+.ep details.chapters{margin-top:14px}
+
+footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--faint);font-size:13px}
+footer .container{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px}
+
+@media (max-width:960px){
+  .layout{grid-template-columns:minmax(0,1fr);gap:0;padding-top:28px}
+  .sidebar{position:static;max-height:none;overflow:visible;margin-bottom:24px}
+  .sidebar h2,.toc-part p{display:none}
+  .toc-wrap{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none}
+  .toc-part{display:contents}
+  .toc-part a{flex:none;border:1px solid var(--line-strong);border-radius:999px;padding:6px 12px;background:var(--surface)}
+  .toc-part a.active{border-color:var(--accent)}
+}
+@media (max-width:640px){
+  .container{padding:0 16px}
+  .hero .container{padding-top:48px;padding-bottom:36px}
+  .stats{grid-template-columns:repeat(2,1fr);margin-top:36px}
+  .stats li,.stats li + li{padding:16px 0 4px;border-left:0}
+  .stats li:nth-child(even){padding-left:16px;border-left:1px solid rgba(255,255,255,.14)}
+  .stats b{font-size:28px}
+  .part + .part{margin-top:56px}
+  .part-head{flex-wrap:wrap;gap:6px 14px}
+  .part-head h2{font-size:22px}
+  .part-head p{display:none}
+  .course{grid-template-columns:1fr;gap:4px;padding:28px 0}
+  .idx{font-size:30px}
+  .course h3{font-size:21px}
+  .kicker .repo{margin-left:0}
+  .timeline{columns:1}
+  .ep{padding:18px 16px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="container">
+    <div class="eyebrow">Course Catalog · 李振偉老師</div>
+    <h1><span class="nw">OpenAI <em>Codex</em></span> <span class="nw">課程目錄</span></h1>
+    <p class="lead">從 AI 基礎概念到 Codex 實作案例，四個部分循序學習。每一堂都是互動教學網頁，可切換配音與雙語字幕，手機、平板、電腦皆可直接觀看。</p>
+    <ul class="stats" id="stats"></ul>
+  </div>
+</header>
+
+<div class="container layout">
+  <aside class="sidebar" aria-label="課程目錄">
+    <h2>Contents</h2>
+    <nav class="toc-wrap" id="toc"></nav>
+  </aside>
+  <main id="list"></main>
+</div>
+
+<footer>
+  <div class="container">
+    <span>© 李振偉老師｜OpenAI Codex 課程</span>
+    <span>互動網頁部署於 GitHub Pages · appjust.github.io</span>
+  </div>
+</footer>
+
+<script>
+const BASE = 'https://appjust.github.io/';
+
+// variants：播放器支援以 ?variant= 直接開啟指定語言；langs：只能在播放器內切換的語言說明
+const PARTS = [
+  { title: 'AI 基礎概念', en: 'Foundations', courses: [
+    {
+      id: 'ai-levels', repo: 'ai-levels', title: 'AI 能力等級', subtitle: 'OpenAI Levels：AI 能力五級', duration: 240,
+      goal: '能說出 OpenAI 五級（聊天機器人、推理者、代理人、創新者、組織）的關鍵差異，判斷一個 AI 工具大約屬於哪一級，並知道這是一家公司的內部框架、不是科學標準。',
+      langs: '中文配音・English・中英／中越字幕',
+      chapters: [[0,'AI 的五個等級，從哪裡來？'],[34,'第 1 級　聊天機器人'],[56,'第 2 級　推理者'],[77,'第 3 級　代理人'],[95,'第 4 級　創新者'],[109,'第 5 級　組織'],[123,'每一級都建立在前一級之上'],[138,'三把不同的尺'],[169,'用三個問題，替 AI 工具定位'],[204,'現在走到哪一級了？']]
+    },
+    {
+      id: 'ai-agents-compare', repo: 'ai-agents-compare', title: '各 AI 代理人比較', subtitle: 'Claude Code、Codex、Antigravity、OpenClaw、Muse', duration: 300,
+      goal: '能用「在哪裡執行、能碰什麼、誰來按確認」三個問題說出五個代理人的差異，並為具體任務選出合適的代理人與說明風險。',
+      langs: '中文配音',
+      chapters: [[0,'它們從哪裡來？'],[72,'五個代理人，同一個迴圈'],[130,'同一組問題，五種答案'],[209,'示範：李老師的兩件事'],[254,'接下來會怎樣？']]
+    },
+    {
+      id: 'llm-core-concepts', repo: 'llm-core-concepts', title: 'AI 核心概念介紹', subtitle: '大型語言模型 17 個核心概念', duration: 19 * 60, durationNote: '19 集・每集 60 秒',
+      goal: 'LLM、Token、Prompt、Context、Context Window、Memory、Function Calling、MCP、RAG、Workflow、Agent、Skill、Subagent，以及 Prompt／Context／Harness／Loop Engineering。',
+      goalLabel: '涵蓋內容',
+      langs: '中文配音・可連續播放'
+    }
+  ]},
+  { title: 'OpenAI Codex 入門與操作', en: 'Getting Started', courses: [
+    {
+      id: 'codex-intro', repo: 'openai-codex-intro', title: 'OpenAI Codex 介紹', subtitle: '從一句需求到可審核的程式變更', duration: 300,
+      goal: '看完後能說出 Codex 代理迴圈的四個步驟，並能依任務難度與成本，選擇合適的使用入口與模型。',
+      player: 'openai-codex-intro/player/index.html',
+      variants: [['zh-en', '中文配音＋中英字幕'], ['zh-vi', '中文配音＋中越字幕']],
+      chapters: [[0,'從補全程式碼到軟體工程代理'],[43,'Codex 怎麼工作：代理迴圈'],[90,'三種入口，本機與雲端'],[113,'同一個需求，三種工具'],[153,'模型版圖：能力與成本'],[191,'示範：幫 App 登入頁補上驗證'],[228,'成本：規模化才是關鍵'],[259,'下一步：從寫程式到全公司代理']]
+    },
+    {
+      id: 'codex-ops', repo: 'codex-ops-series', title: 'OpenAI Codex 操作全攻略', subtitle: '三集系列：模式與權限、模型與用量、設定頁',
+      eps: [
+        {
+          name: '三種模式、工作位置與權限', duration: 300,
+          goal: '看完後能依任務選擇 Chat／Work／Codex，並說出三種工作位置與四種權限設定的差異。',
+          player: 'codex-ops-series/player/index.html?project=../ep1/project.json',
+          variants: [['zh-TW', '中文配音'], ['en-US', 'English']],
+          chapters: [[0,'起源：從雲端代理到桌面 App'],[26,'三種模式：Chat、Work、Codex'],[76,'工作位置：Codex 在哪裡動手'],[128,'權限：碰到邊界時誰來核准'],[180,'比較：依情境選擇'],[208,'示範：把講義整理成網站'],[259,'展望：遠端與責任']]
+        },
+        {
+          name: '模型、思考等級、快速模式、側邊欄與剩餘用量', duration: 300,
+          goal: '看完後能依任務選模型與思考等級，知道快速模式的代價，認得側邊欄每個功能，並看懂剩餘用量與重置。',
+          player: 'codex-ops-series/player/index.html?project=../ep2/project.json',
+          variants: [['zh-TW', '中文配音'], ['en-US', 'English']],
+          chapters: [[0,'起源：模型換代很快'],[33,'模型：能力與用量的取捨'],[76,'思考等級：想得越久，越慢也越耗'],[108,'快速模式：閃電符號'],[141,'側邊欄：每個圖示做什麼'],[202,'比較：每 5 小時大約能用幾則'],[229,'應用：看懂剩餘用量'],[277,'展望：選對模型比用最強的重要']]
+        },
+        {
+          name: '設定逐頁說明', duration: 300,
+          goal: '看完後，遇到需求時知道要去哪一個設定頁調整，並分得出「組態」預設值與單一對話權限的差別。',
+          player: 'codex-ops-series/player/index.html?project=../ep3/project.json',
+          variants: [['zh-TW', '中文配音'], ['en-US', 'English']],
+          chapters: [[0,'起源：一個設定視窗，兩種產品'],[24,'個人（一）：一般到封存'],[77,'個人（二）：安全、組態與用量'],[148,'整合：外掛、瀏覽器與電腦'],[192,'程式設計：從掛勾到 Worktrees'],[244,'比較：預設值 vs. 單一對話'],[260,'應用：三個常見狀況'],[281,'展望：設定會持續變動']]
+        }
+      ]
+    }
+  ]},
+  { title: 'Codex 新增功能', en: 'New Features', courses: [
+    {
+      id: 'codex-plan-goal', repo: 'codex-plan-goal', title: 'Codex 新增功能介紹（規劃模式＆目標）', subtitle: 'Codex 的＋選單', duration: 300,
+      goal: '看完後能說出「＋」選單每一項的用途；需求不清楚時先開規劃模式，要長時間做到完成時設定目標並寫出可驗證的完成條件，也會「先規劃、再設目標」的組合。',
+      player: 'codex-plan-goal/player/index.html?project=../ep/project.json',
+      variants: [['zh-TW', '中文配音＋中英字幕'], ['zh-TW-vi', '中文配音＋中越字幕'], ['en-US', 'English']],
+      chapters: [[0,'起源：從「猜」與「停」說起'],[47,'原理：＋ 選單一覽'],[88,'原理：規劃模式'],[128,'原理：目標'],[171,'比較：三種工作方式'],[215,'應用：先規劃，再設目標'],[265,'展望與回顧']]
+    },
+    {
+      id: 'codex-computer-use', repo: 'codex-computer-use', title: 'Codex Computer use 介紹與操作', subtitle: '讓 Codex 看得見螢幕', duration: 420,
+      goal: '看完後能說出 Computer use 怎麼運作（截圖→判斷→動作→再確認），會開啟並安全地使用它，也知道什麼時候該改用指令、外掛、內建瀏覽器。',
+      player: 'codex-computer-use/player/index.html?project=../ep/project.json',
+      variants: [['zh-TW', '中文配音＋中英字幕'], ['zh-TW-vi', '中文配音＋中越字幕'], ['en-US', 'English']],
+      chapters: [[0,'起源：讓 Codex 看得見螢幕'],[60,'原理：看→想→做的循環'],[109,'原理：安全邊界'],[163,'比較：什麼時候用 Computer use？'],[222,'操作：開啟與呼叫'],[294,'應用（示範）：逐頁檢查簡報'],[356,'展望：下一步與未解問題']]
+    },
+    {
+      id: 'codex-skills', repo: 'codex-skills', title: 'Codex Skills', subtitle: '認識 Skill、在 Codex 建立、呼叫', duration: 420,
+      goal: '看完後能說出 Skill 由哪些檔案組成、Codex 怎麼按需載入它，並能用 $skill-creator 或手動建立 Skill，再用 $ 明確呼叫或靠描述自動觸發。',
+      player: 'codex-skills/player/index.html?project=../ep/project.json',
+      variants: [['zh-TW', '中文配音＋中英字幕'], ['zh-TW-vi', '中文配音＋中越字幕'], ['en-US', 'English']],
+      chapters: [[0,'起源：把重講的流程寫成卡片'],[50,'原理：Skill 的組成'],[104,'原理：漸進式揭露'],[145,'比較：Skill、AGENTS.md、MCP、Plugin'],[196,'應用：在 Codex 建立 Skill'],[269,'應用：呼叫 Skill'],[341,'展望：已公布、趨勢與未解問題'],[385,'回顧']]
+    }
+  ]},
+  { title: 'Codex 實作案例', en: 'Case Studies', courses: [
+    {
+      id: 'codex-blender', repo: 'codex-blender', title: 'Codex × Blender', subtitle: '用一句話操控 3D 軟體', duration: 420,
+      goal: '看完後能說出 Codex 操控 Blender 的兩條路（背景腳本、MCP 即時連線）與 MCP 迴路，並能用 codex mcp add 接上 Blender、用一句話建出場景後先檢查再修改。',
+      player: 'codex-blender/player/index.html?project=../ep/project.json',
+      variants: [['zh-TW', '中文配音＋中英字幕'], ['zh-TW-vi', '中文配音＋中越字幕'], ['en-US', 'English']],
+      chapters: [[0,'起源：Codex 需要一座橋'],[52,'原理一：兩條路'],[98,'原理二：MCP 迴路'],[142,'步驟：四步接上 Blender'],[206,'比較：三種做法'],[264,'應用一：一句話建場景（示範）'],[315,'應用二：批次整理＋安全'],[366,'展望與回顧']]
+    },
+    {
+      id: 'blender-three-cases', repo: 'blender-three-cases-record', title: 'Blender 三案例實作紀錄', subtitle: '馬克杯、西洋棋主教、漢堡', duration: 423,
+      goal: '看完能說出三個案例各自用哪一種檢查（看圖、讀尺寸、包圍盒）發現問題、如何修正，並正確解讀回合耗時的定義。',
+      langs: '中文配音・English・中英／中越字幕',
+      chapters: [[0,'開場'],[22,'方法與時間定義'],[53,'馬克杯：截面旋轉'],[80,'馬克杯：把手與刻字'],[105,'馬克杯：反光與法線'],[138,'馬克杯：重開驗證'],[159,'主教：環境受阻'],[193,'主教：名牌逐字切割'],[223,'主教：最終腳本'],[248,'主教：時間分解'],[265,'漢堡：三片肉'],[291,'漢堡：凸字問題'],[318,'漢堡：字型與網格修正'],[347,'漢堡：交付成果'],[371,'共同的一課'],[398,'資料包與畫面標記']]
+    },
+    {
+      id: 'codex-essay-review', repo: 'codex-essay-review-replay', title: 'Codex 依 Rubric 批改十篇英文作文', subtitle: '依操作日誌重建的實作紀錄', duration: 520,
+      goal: '看完能說出這次批改作業的主要步驟、各項失敗如何被修正，並能分辨文法錯誤與風格改善、正確解讀用時與用量數字。',
+      langs: '中文配音・中英字幕',
+      chapters: [[0,'任務與輸入'],[50,'讀取技能與啟動限制'],[80,'轉換資料與取得授權'],[113,'逐篇評閱'],[158,'文法錯誤與風格改善'],[202,'Word 初次輸出'],[232,'簡報規格與前五頁'],[278,'語法失敗與 Word 分頁'],[310,'十四頁完成，Word 變二十四頁'],[345,'修復版面與檔案鎖定'],[379,'原生匯出與最終檢視'],[408,'結果與用量'],[473,'還原界線與交接']]
+    }
+  ]}
+];
+
+const ICON_PLAY = '<svg viewBox="0 0 12 12" aria-hidden="true"><path fill="currentColor" d="M3 1.5v9l7.5-4.5z"/></svg>';
+const ICON_ARROW = '<svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M2 6h8M6.5 2.5 10 6l-3.5 3.5"/></svg>';
+const ICON_CHEV = '<svg viewBox="0 0 12 12" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M4.5 2.5 8 6l-3.5 3.5"/></svg>';
+const ICON_GH = '<svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.72 1.22 1.88.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>';
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const mmss = s => Math.floor(s / 60) + ':' + String(Math.round(s % 60)).padStart(2, '0');
+const pad = n => String(n).padStart(2, '0');
+const withVariant = (path, v) => BASE + path + (path.includes('?') ? '&' : '?') + 'variant=' + encodeURIComponent(v);
+const btn = (href, label, primary, icon) =>
+  `<a class="btn${primary ? ' primary' : ''}" href="${esc(href)}" target="_blank" rel="noopener">${icon || ICON_PLAY}${esc(label)}</a>`;
+const repoLink = repo =>
+  `<a class="repo" href="https://github.com/APPJust/${esc(repo)}" target="_blank" rel="noopener" aria-label="GitHub repo：${esc(repo)}">${ICON_GH}GitHub</a>`;
+
+function actions(item, repo) {
+  if (item.variants) return `<div class="actions">${item.variants.map(([v, label], i) => btn(withVariant(item.player, v), label, i === 0)).join('')}</div>`;
+  return `<div class="actions">${btn(BASE + repo + '/', '開始觀看', true)}<span class="langs">${esc(item.langs)}，進入後切換</span></div>`;
+}
+function goal(item) {
+  return item.goal ? `<p class="goal"><small>${esc(item.goalLabel || '學習目標')}</small>${esc(item.goal)}</p>` : '';
+}
+function chapters(item) {
+  if (!item.chapters) return '';
+  return `<details class="chapters"><summary>${ICON_CHEV}章節 ${item.chapters.length}</summary><ol class="timeline">${
+    item.chapters.map(([t, n]) => `<li><time>${mmss(t)}</time><span>${esc(n)}</span></li>`).join('')}</ol></details>`;
+}
+
+function render() {
+  const list = document.getElementById('list'), toc = document.getElementById('toc');
+  let n = 0, units = 0, secs = 0;
+  PARTS.forEach((part, pi) => {
+    const sec = document.createElement('section');
+    sec.className = 'part';
+    sec.innerHTML = `<div class="part-head"><span class="part-no">PART ${pad(pi + 1)}</span><h2>${esc(part.title)}</h2><p>${esc(part.en)}</p></div>`;
+    let tocHtml = `<div class="toc-part"><p>${pad(pi + 1)}　${esc(part.title)}</p>`;
+    for (const c of part.courses) {
+      n++;
+      const total = c.eps ? c.eps.reduce((a, e) => a + e.duration, 0) : c.duration;
+      units += c.eps ? c.eps.length : 1; secs += total;
+      const dur = c.durationNote || (c.eps ? `${c.eps.length} 集・` : '') + `約 ${Math.round(total / 60)} 分鐘`;
+      const el = document.createElement('article');
+      el.className = 'course'; el.id = c.id;
+      el.innerHTML = `
+        <div class="idx">${pad(n)}</div>
+        <div>
+          <div class="kicker"><span>${esc(dur)}</span>${repoLink(c.repo)}</div>
+          <h3>${esc(c.title)}</h3>
+          <p class="subtitle">${esc(c.subtitle)}</p>
+          ${c.eps ? `
+            <div class="actions">${btn(BASE + c.repo + '/', '系列首頁', false, ICON_ARROW)}</div>
+            <div class="episodes">${c.eps.map((e, i) => `
+              <div class="ep">
+                <div class="ep-head"><span class="ep-tag">EP${i + 1}</span><h4>${esc(e.name)}</h4><span class="ep-dur">${mmss(e.duration)}</span></div>
+                ${goal(e)}${actions(e, c.repo)}${chapters(e)}
+              </div>`).join('')}
+            </div>` : `${goal(c)}${actions(c, c.repo)}${chapters(c)}`}
+        </div>`;
+      sec.append(el);
+      tocHtml += `<a href="#${c.id}"><span>${pad(n)}</span>${esc(c.title)}</a>`;
+    }
+    list.append(sec);
+    toc.insertAdjacentHTML('beforeend', tocHtml + '</div>');
+  });
+  document.getElementById('stats').innerHTML =
+    `<li><b>${n}</b><span>門課程</span></li><li><b>${units}</b><span>個互動單元</span></li><li><b>${Math.round(secs / 60)}</b><span>分鐘內容</span></li><li><b>3</b><span>種字幕語言</span></li>`;
+
+  // 目錄隨捲動標示目前課程
+  const links = new Map([...toc.querySelectorAll('a')].map(a => [a.getAttribute('href').slice(1), a]));
+  const io = new IntersectionObserver(entries => {
+    for (const e of entries) if (e.isIntersecting) {
+      links.forEach(a => a.classList.remove('active'));
+      links.get(e.target.id)?.classList.add('active');
+    }
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  document.querySelectorAll('.course').forEach(el => io.observe(el));
+}
+render();
+</script>
+</body>
+</html>
