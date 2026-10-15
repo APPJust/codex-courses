@@ -123,6 +123,13 @@ details.chapters summary:hover{color:var(--ink)}
 .ep .btn{padding:9px 14px;font-size:13px}
 .ep details.chapters{margin-top:14px}
 
+/* Works showcase */
+.subhead{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 14px;margin-top:48px;padding-bottom:14px;border-bottom:1px dashed var(--line-strong)}
+.subhead h3{font:700 19px/1.4 var(--serif);color:var(--ink);margin:0}
+.subhead span{font-size:13px;color:var(--muted)}
+.kicker .model{font:600 11px/1 var(--sans);letter-spacing:.08em;color:var(--accent);border:1px solid currentColor;border-radius:999px;padding:4px 9px}
+.toc-sub{margin-top:10px!important;font-weight:500!important;color:var(--faint)!important}
+
 footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--faint);font-size:13px}
 footer .container{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px}
 
@@ -177,7 +184,7 @@ footer .container{display:flex;flex-wrap:wrap;justify-content:space-between;gap:
 <footer>
   <div class="container">
     <span>© 李振偉老師｜OpenAI Codex 課程</span>
-    <span>互動網頁部署於 GitHub Pages · appjust.github.io</span>
+    <span>教學互動網頁部署於 GitHub Pages · 實作作品部署於 ChatGPT Sites</span>
   </div>
 </footer>
 
@@ -284,7 +291,28 @@ const PARTS = [
       langs: '中文配音・中英字幕',
       chapters: [[0,'任務與輸入'],[50,'讀取技能與啟動限制'],[80,'轉換資料與取得授權'],[113,'逐篇評閱'],[158,'文法錯誤與風格改善'],[202,'Word 初次輸出'],[232,'簡報規格與前五頁'],[278,'語法失敗與 Word 分頁'],[310,'十四頁完成，Word 變二十四頁'],[345,'修復版面與檔案鎖定'],[379,'原生匯出與最終檢視'],[408,'結果與用量'],[473,'還原界線與交接']]
     }
-  ]}
+  ], works: {
+    title: '作品展示', note: '以 Codex（GPT-6 Astra）實作完成的網站', model: 'GPT-6 Astra',
+    items: [
+      {
+        id: 'jit-credit-survivor', title: '景文科大學分生存戰', subtitle: '資訊與通訊系主題網頁遊戲', type: '網頁遊戲',
+        url: 'https://jit-credit-survivor.aijust.chatgpt.site/',
+        desc: '三分鐘一局的生存射擊遊戲：撐過四學年、集滿 128 學分，通過英檢與證照，打倒延畢魔王。結合資通系修課路線，免下載，鍵盤或手機即可遊玩。'
+      },
+      {
+        id: 'voice-rollcall', title: '點名所', subtitle: '線上語音點名系統', type: '網頁應用',
+        url: 'https://voice-rollcall.aijust.chatgpt.site/',
+        desc: '給教師使用的語音點名工作空間。以 Google 帳號登入，每個帳號的名單與點名紀錄各自獨立。',
+        note: '需以 Google 帳號登入'
+      },
+      {
+        id: 'just-campus-3d', title: '景文科大 3D 立體校園探索', subtitle: '從平面配置圖到 Blender 立體校園', type: '3D 互動網站',
+        url: 'https://just-campus-3d-journal.aijust.chatgpt.site/',
+        desc: '依校區配置圖以 Blender 重建九棟校園建築，可自由旋轉、點選建築的互動 3D 模型，並附 66 秒校園巡禮動畫與六階段製作紀錄。',
+        links: [['建模操作＆成果影片', 'https://youtu.be/pSWyexUzdy4']]
+      }
+    ]
+  }}
 ];
 
 const ICON_PLAY = '<svg viewBox="0 0 12 12" aria-hidden="true"><path fill="currentColor" d="M3 1.5v9l7.5-4.5z"/></svg>';
@@ -316,7 +344,7 @@ function chapters(item) {
 
 function render() {
   const list = document.getElementById('list'), toc = document.getElementById('toc');
-  let n = 0, units = 0, secs = 0;
+  let n = 0, units = 0, secs = 0, works = 0;
   PARTS.forEach((part, pi) => {
     const sec = document.createElement('section');
     sec.className = 'part';
@@ -347,11 +375,32 @@ function render() {
       sec.append(el);
       tocHtml += `<a href="#${c.id}"><span>${pad(n)}</span>${esc(c.title)}</a>`;
     }
+    if (part.works) {
+      const w = part.works;
+      sec.insertAdjacentHTML('beforeend', `<div class="subhead"><h3>${esc(w.title)}</h3><span>${esc(w.note)}</span></div>`);
+      tocHtml += `<p class="toc-sub">${esc(w.title)}</p>`;
+      for (const it of w.items) {
+        n++; works++;
+        const el = document.createElement('article');
+        el.className = 'course work'; el.id = it.id;
+        el.innerHTML = `
+          <div class="idx">${pad(n)}</div>
+          <div>
+            <div class="kicker"><span class="model">${esc(w.model)}</span><span>${esc(it.type)}</span>${it.note ? `<span class="dot"></span><span>${esc(it.note)}</span>` : ''}</div>
+            <h3>${esc(it.title)}</h3>
+            <p class="subtitle">${esc(it.subtitle)}</p>
+            <p class="goal"><small>作品內容</small>${esc(it.desc)}</p>
+            <div class="actions">${btn(it.url, '開啟網站', true, ICON_ARROW)}${(it.links || []).map(([l, u]) => btn(u, l, false)).join('')}</div>
+          </div>`;
+        sec.append(el);
+        tocHtml += `<a href="#${it.id}"><span>${pad(n)}</span>${esc(it.title)}</a>`;
+      }
+    }
     list.append(sec);
     toc.insertAdjacentHTML('beforeend', tocHtml + '</div>');
   });
   document.getElementById('stats').innerHTML =
-    `<li><b>${n}</b><span>門課程</span></li><li><b>${units}</b><span>個互動單元</span></li><li><b>${Math.round(secs / 60)}</b><span>分鐘內容</span></li><li><b>3</b><span>種字幕語言</span></li>`;
+    `<li><b>${n - works}</b><span>門課程</span></li><li><b>${works}</b><span>個實作作品</span></li><li><b>${units}</b><span>個互動教學單元</span></li><li><b>${Math.round(secs / 60)}</b><span>分鐘教學內容</span></li>`;
 
   // 目錄隨捲動標示目前課程
   const links = new Map([...toc.querySelectorAll('a')].map(a => [a.getAttribute('href').slice(1), a]));
