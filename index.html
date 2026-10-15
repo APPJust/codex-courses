@@ -168,7 +168,7 @@ footer .container{display:flex;flex-wrap:wrap;justify-content:space-between;gap:
   <div class="container">
     <div class="eyebrow">Course Catalog · 李振偉老師</div>
     <h1><span class="nw">OpenAI <em>Codex</em></span> <span class="nw">課程目錄</span></h1>
-    <p class="lead">從 AI 基礎概念到 Codex 實作案例，四個部分循序學習。每一堂都是互動教學網頁，可切換配音與雙語字幕，手機、平板、電腦皆可直接觀看。</p>
+    <p class="lead">從 AI 基礎概念、Codex 入門到實作案例，循序學習；最後收錄以 Codex 與 Claude Code 完成的作品。課程皆為互動教學網頁，可切換配音與雙語字幕，手機、平板、電腦皆可直接觀看。</p>
     <ul class="stats" id="stats"></ul>
   </div>
 </header>
@@ -184,7 +184,7 @@ footer .container{display:flex;flex-wrap:wrap;justify-content:space-between;gap:
 <footer>
   <div class="container">
     <span>© 李振偉老師｜OpenAI Codex 課程</span>
-    <span>教學互動網頁部署於 GitHub Pages · 實作作品部署於 ChatGPT Sites</span>
+    <span>部署於 GitHub Pages · ChatGPT Sites · Claude Artifacts</span>
   </div>
 </footer>
 
@@ -312,6 +312,43 @@ const PARTS = [
         links: [['建模操作＆成果影片', 'https://youtu.be/pSWyexUzdy4']]
       }
     ]
+  }},
+  { title: 'Claude Code 作品', en: 'Built with Claude Code', courses: [], works: {
+    model: 'Opus 5.5',
+    items: [
+      {
+        id: 'jinwen-ice-intro', repo: 'jinwen-ice-intro-video', title: '景文資通系介紹', subtitle: '景文科技大學資訊與通訊系介紹影片', type: '互動介紹影片',
+        url: 'https://appjust.github.io/jinwen-ice-intro-video/output/interactive/', btnLabel: '開始觀看',
+        desc: 'Vox 紙張拼貼風格的系所介紹：從「讀大學只是為了文憑？」的痛點出發，以科技業人才供需數據說明市場需求，再帶出資通系的學習方向。中英雙語。'
+      },
+      {
+        id: 'cycu-lc', repo: 'cycu-lc-video', title: '中原語言中心介紹', subtitle: '中原大學語言中心介紹影片', type: '互動介紹影片',
+        url: 'https://appjust.github.io/cycu-lc-video/', btnLabel: '開始觀看',
+        desc: 'Vox 風格的語言中心介紹影片，約 2 分鐘，附中英雙語字幕，可全螢幕播放。'
+      },
+      {
+        id: 'mqtt-intro', repo: 'mqtt-intro', title: 'MQTT 入門', subtitle: '訊息如何找到對的人？', type: '教學動畫・約 5 分鐘',
+        url: 'https://appjust.github.io/mqtt-intro/', btnLabel: '開始觀看',
+        desc: '看完能說明「發布者 → Broker → 訂閱者」的流程，並能為教室監測情境設計 Topic、選擇 QoS。內容涵蓋發布／訂閱、Topic 與萬用字元、QoS 0/1/2、保留訊息與遺囑、MQTT vs HTTP。中文配音，中英／中越字幕。'
+      },
+      {
+        id: 'claude-artifacts', title: 'Claude Artifact 互動作品', subtitle: '教學複習網站、Godot 遊戲與課程範例動畫', type: 'Claude Artifact',
+        group: [
+          {
+            tag: '複習', name: '天氣變化單元複習', url: 'https://claude.ai/artifact/5JComwMsSThWJ9hNT6zWrq',
+            desc: '六年級自然「探索天氣的變化」考前總複習：18 堂配音字幕動畫課、觀念小遊戲、測驗與錯題本，以及考前重點卡。'
+          },
+          {
+            tag: '遊戲', name: '天氣亂鬥', url: 'https://claude.ai/artifact/JQLa7LKBG8jXy2bMKW3Ph8',
+            desc: '以 Godot 製作、在瀏覽器執行的颱風主題遊戲（STORM BRAWL）。第一次載入約 35 MB。'
+          },
+          {
+            tag: '課程', name: 'AI Agent × Godot 課程範例', url: 'https://claude.ai/artifact/B8g5bCayK2suddfQxED6ex',
+            desc: '以實際案例說明如何和 AI agent 來回溝通、做出 Godot 遊戲的教學動畫。中文／English 配音，中英、中越字幕。'
+          }
+        ]
+      }
+    ]
   }}
 ];
 
@@ -377,20 +414,29 @@ function render() {
     }
     if (part.works) {
       const w = part.works;
-      sec.insertAdjacentHTML('beforeend', `<div class="subhead"><h3>${esc(w.title)}</h3><span>${esc(w.note)}</span></div>`);
-      tocHtml += `<p class="toc-sub">${esc(w.title)}</p>`;
+      if (w.title) {
+        sec.insertAdjacentHTML('beforeend', `<div class="subhead"><h3>${esc(w.title)}</h3><span>${esc(w.note)}</span></div>`);
+        tocHtml += `<p class="toc-sub">${esc(w.title)}</p>`;
+      }
       for (const it of w.items) {
-        n++; works++;
+        n++; works += it.group ? it.group.length : 1;
         const el = document.createElement('article');
         el.className = 'course work'; el.id = it.id;
         el.innerHTML = `
           <div class="idx">${pad(n)}</div>
           <div>
-            <div class="kicker"><span class="model">${esc(w.model)}</span><span>${esc(it.type)}</span>${it.note ? `<span class="dot"></span><span>${esc(it.note)}</span>` : ''}</div>
+            <div class="kicker"><span class="model">${esc(w.model)}</span><span>${esc(it.type)}</span>${it.note ? `<span class="dot"></span><span>${esc(it.note)}</span>` : ''}${it.repo ? repoLink(it.repo) : ''}</div>
             <h3>${esc(it.title)}</h3>
             <p class="subtitle">${esc(it.subtitle)}</p>
+            ${it.group ? `<div class="episodes">${it.group.map(g => `
+              <div class="ep">
+                <div class="ep-head"><span class="ep-tag">${esc(g.tag)}</span><h4>${esc(g.name)}</h4></div>
+                <p class="goal">${esc(g.desc)}</p>
+                <div class="actions">${btn(g.url, '開啟作品', true, ICON_ARROW)}</div>
+              </div>`).join('')}
+            </div>` : `
             <p class="goal"><small>作品內容</small>${esc(it.desc)}</p>
-            <div class="actions">${btn(it.url, '開啟網站', true, ICON_ARROW)}${(it.links || []).map(([l, u]) => btn(u, l, false)).join('')}</div>
+            <div class="actions">${btn(it.url, it.btnLabel || '開啟網站', true, it.btnLabel ? ICON_PLAY : ICON_ARROW)}${(it.links || []).map(([l, u]) => btn(u, l, false)).join('')}</div>`}
           </div>`;
         sec.append(el);
         tocHtml += `<a href="#${it.id}"><span>${pad(n)}</span>${esc(it.title)}</a>`;
@@ -400,7 +446,7 @@ function render() {
     toc.insertAdjacentHTML('beforeend', tocHtml + '</div>');
   });
   document.getElementById('stats').innerHTML =
-    `<li><b>${n - works}</b><span>門課程</span></li><li><b>${works}</b><span>個實作作品</span></li><li><b>${units}</b><span>個互動教學單元</span></li><li><b>${Math.round(secs / 60)}</b><span>分鐘教學內容</span></li>`;
+    `<li><b>${PARTS.reduce((a, p) => a + p.courses.length, 0)}</b><span>門課程</span></li><li><b>${works}</b><span>個實作作品</span></li><li><b>${units}</b><span>個互動教學單元</span></li><li><b>${Math.round(secs / 60)}</b><span>分鐘教學內容</span></li>`;
 
   // 目錄隨捲動標示目前課程
   const links = new Map([...toc.querySelectorAll('a')].map(a => [a.getAttribute('href').slice(1), a]));

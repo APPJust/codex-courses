@@ -4,7 +4,7 @@
 
 線上目錄：https://appjust.github.io/codex-courses/
 
-從 AI 基礎概念到 Codex 實作案例，共 11 門互動教學課程與 3 個實作作品，點選即可開啟。
+從 AI 基礎概念到 Codex 實作案例，共 11 門互動教學課程與 9 個實作作品，點選即可開啟。
 
 | 部分 | 課程 |
 |---|---|
@@ -20,5 +20,16 @@
 | [景文科大學分生存戰](https://jit-credit-survivor.aijust.chatgpt.site/) | 資訊與通訊系主題網頁遊戲 |
 | [點名所](https://voice-rollcall.aijust.chatgpt.site/) | 線上語音點名系統（需以 Google 帳號登入） |
 | [景文科大 3D 立體校園探索](https://just-campus-3d-journal.aijust.chatgpt.site/) | 從平面配置圖到 Blender 立體校園（[建模操作＆成果影片](https://youtu.be/pSWyexUzdy4)） |
+
+## Claude Code 作品（Opus 5.5）
+
+| 作品 | 說明 |
+|---|---|
+| [景文資通系介紹](https://appjust.github.io/jinwen-ice-intro-video/output/interactive/) | 景文科技大學資訊與通訊系介紹影片 |
+| [中原語言中心介紹](https://appjust.github.io/cycu-lc-video/) | 中原大學語言中心介紹影片 |
+| [MQTT 入門](https://appjust.github.io/mqtt-intro/) | 教學動畫，中文配音，中英／中越字幕 |
+| [天氣變化單元複習](https://claude.ai/artifact/5JComwMsSThWJ9hNT6zWrq) | 六年級自然考前總複習（Claude Artifact） |
+| [天氣亂鬥](https://claude.ai/artifact/JQLa7LKBG8jXy2bMKW3Ph8) | Godot 颱風主題遊戲（Claude Artifact） |
+| [AI Agent × Godot 課程範例](https://claude.ai/artifact/B8g5bCayK2suddfQxED6ex) | 教學動畫（Claude Artifact） |
 
 字型：Inter、Noto Sans TC、Noto Serif TC（SIL Open Font License 1.1，經 Google Fonts 載入）。
