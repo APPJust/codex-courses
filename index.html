@@ -12,6 +12,7 @@
 <meta property="og:url" content="https://appjust.github.io/codex-courses/">
 <meta name="theme-color" content="#07080f">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%236d5dfc'/%3E%3Cstop offset='1' stop-color='%2322d3ee'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='9' fill='url(%23g)'/%3E%3Cpath d='M10 22.5 16 10l6 12.5M12.6 18h6.8' fill='none' stroke='white' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<script>document.documentElement.classList.add('pending')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -58,6 +59,12 @@ svg{display:block}
 .nw{white-space:nowrap}
 .lock{overflow:hidden}
 [hidden]{display:none!important}
+.pending body{visibility:hidden}
+/* 未帶有效連結時：只顯示提示，不列出任何單元 */
+.locked .skip,.locked .nav-links,.locked .nav .btn,.locked .hero-cta,.locked .checks,.locked #mock,.locked .stats-wrap,.locked .tools,.locked #learn,.locked #path,.locked #curriculum,.locked #faq,.locked .cta,.locked .footer-grid{display:none!important}
+.locked .hero{display:flex;align-items:center;min-height:calc(100vh - 90px)}
+.locked .hero > .container{width:100%}
+.locked .footer-bottom{margin-top:0;padding-top:0;border-top:0}
 .skip{position:absolute;left:16px;top:-60px;z-index:100;padding:10px 14px;border-radius:10px;background:#fff;color:#000;font-weight:600}
 .skip:focus{top:12px}
 :focus-visible{outline:2px solid #6d5dfc;outline-offset:3px}
@@ -531,7 +538,7 @@ svg{display:block}
           <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17.5 12 7l5 10.5M9.2 13.8h5.6"/></svg></span>
           <span>李振偉老師<small>OpenAI Codex 課程目錄</small></span>
         </a>
-        <p class="footer-about">以互動教學網頁學習 AI 代理人：從 AI 基礎概念、OpenAI Codex 操作到實作案例，以及以 Codex 與 Claude Code 完成的作品。</p>
+        <p class="footer-about" id="footAbout">以互動教學網頁學習 AI 代理人：從 AI 基礎概念、OpenAI Codex 操作到實作案例，以及以 Codex 與 Claude Code 完成的作品。</p>
       </div>
       <div>
         <h4>課程</h4>
@@ -543,8 +550,8 @@ svg{display:block}
           <li><a href="#learn">學習成果</a></li>
           <li><a href="#path">課程地圖</a></li>
           <li><a href="#faq">常見問題</a></li>
-          <li><a href="https://github.com/APPJust/codex-courses" target="_blank" rel="noopener">GitHub 原始碼</a></li>
-          <li><a id="editLink" href="?edit">自訂課程目錄（老師用）</a></li>
+          <li data-teacher><a href="https://github.com/APPJust/codex-courses" target="_blank" rel="noopener">GitHub 原始碼</a></li>
+          <li data-teacher><a id="editLink" href="?edit">自訂課程目錄（老師用）</a></li>
         </ul>
       </div>
     </div>
@@ -559,7 +566,7 @@ svg{display:block}
 <dialog class="dlg" id="dlg" aria-labelledby="dlgTitle"><div class="dlg-inner" id="dlgBody"></div></dialog>
 <noscript><p style="padding:24px;text-align:center">此頁需要啟用 JavaScript 才能顯示課程列表。</p></noscript>
 
-<script>
+<script type="module">
 const BASE = 'https://appjust.github.io/';
 
 // 課程資料。variants：播放器支援 ?variant= 直接開啟指定語言；langs：只能在播放器內切換的語言說明
@@ -808,20 +815,50 @@ const langShort = c => hasEn(c) ? '中文／English' : '中文';
 const dur = c => c.eps ? c.eps.reduce((a, e) => a + e.duration, 0) : c.duration;
 const worksIn = p => p.works ? p.works.items.reduce((a, it) => a + (it.group ? it.group.length : 1), 0) : 0;
 
-// 自訂目錄：同一個網址加上參數，就能給不同班級／單位不同的單元組合
-//   ?show=ai-levels,codex-intro   只顯示這些單元（用 ?edit 面板勾選即可產生）
-//   &title=…  自訂頁面標題　&sub=…  自訂副標題
-//   ?set=名稱  使用 PRESETS 預先存好的組合，網址比較短
-//   ?edit     開啟老師用的選取面板
-const PRESETS = {
-  // 範例：'demo': { title: '某班｜AI 工具課', sub: '', show: ['ai-levels', 'codex-intro'] }
-};
+// 存取模式
+//   老師：在本機開啟（file://、localhost），或網址帶 ?t=老師金鑰 → 完整目錄＋自訂面板（&edit）
+//   學生：網址帶 ?c=課程代碼（由自訂面板產生）→ 只看到該班的單元，代碼無法被修改
+//   其他：只顯示「請使用老師提供的課程連結」
+// 頁面只存金鑰的 SHA-256 雜湊；金鑰本身在本機的「老師專用連結.txt」。
+const SITE = 'https://appjust.github.io/codex-courses/';
+const TEACHER_HASH = '68f20ef3a7e6ee13349f2c38d8954f42ae8dc1f5d46cf749a09119f76eeb9281';
 const Q = new URLSearchParams(location.search);
-const PRE = PRESETS[Q.get('set')] || {};
-const SHOW_IDS = (Q.get('show') || (PRE.show || []).join(',')).split(',').map(s => s.trim()).filter(Boolean);
-const CUSTOM = { title: (Q.get('title') || PRE.title || '').trim(), sub: (Q.get('sub') || PRE.sub || '').trim() };
+const LOCAL = location.protocol === 'file:' || ['localhost', '127.0.0.1'].includes(location.hostname);
 const allIds = PARTS.flatMap(p => [...p.items, ...(p.works ? p.works.items : [])].map(x => x.id));
-const SHOW = SHOW_IDS.some(id => allIds.includes(id)) ? new Set(SHOW_IDS) : null;
+
+// 課程代碼：把「單元、標題、副標題」打散成一串代碼，附檢查碼，改動任何字元就失效
+const TK = [...'jw-codex-catalog'].map(ch => ch.charCodeAt(0));
+const mix = bytes => bytes.map((b, i) => b ^ TK[i % TK.length] ^ ((i * 73 + 41) & 255));
+const b64u = bytes => btoa(String.fromCharCode(...bytes)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+const unb64u = s => Uint8Array.from(atob(s.replace(/-/g, '+').replace(/_/g, '/')), ch => ch.charCodeAt(0));
+const fnv = bytes => { let h = 0x811c9dc5; for (const b of bytes) { h ^= b; h = Math.imul(h, 16777619) >>> 0; } return h; };
+function encodeToken({ ids, title = '', sub = '' }) {
+  const body = new TextEncoder().encode([ids.join(','), title, sub].join('\n'));
+  const h = fnv(body);
+  return b64u(mix(Uint8Array.from([h >>> 24, (h >>> 16) & 255, ...body])));
+}
+function decodeToken(token) {
+  try {
+    const raw = mix(unb64u(token));
+    const body = raw.slice(2), h = fnv(body);
+    if (raw[0] !== h >>> 24 || raw[1] !== ((h >>> 16) & 255)) return null;
+    const [ids, title = '', sub = ''] = new TextDecoder().decode(body).split('\n');
+    const list = ids.split(',').filter(id => allIds.includes(id));
+    return list.length ? { ids: list, title, sub } : null;
+  } catch { return null; }
+}
+async function sha256(s) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
+  return [...new Uint8Array(buf)].map(x => x.toString(16).padStart(2, '0')).join('');
+}
+const TKEY = Q.get('t') || '';
+const TEACHER = (LOCAL && Q.get('as') !== 'student') || (!!TKEY && !!(window.crypto && crypto.subtle) && await sha256(TKEY) === TEACHER_HASH);
+const TOKEN = Q.get('c') ? decodeToken(Q.get('c')) : null;
+const MODE = TEACHER ? 'teacher' : TOKEN ? 'student' : 'locked';
+// 老師可以用 show/title/sub 預覽；學生只認課程代碼
+const SEL = TOKEN || (TEACHER ? { ids: (Q.get('show') || '').split(',').map(s => s.trim()).filter(Boolean), title: Q.get('title') || '', sub: Q.get('sub') || '' } : { ids: [], title: '', sub: '' });
+const CUSTOM = { title: (SEL.title || '').trim(), sub: (SEL.sub || '').trim() };
+const SHOW = SEL.ids.some(id => allIds.includes(id)) ? new Set(SEL.ids) : null;
 const CURATED = !!SHOW;
 const keep = id => !SHOW || SHOW.has(id);
 const VIEW = PARTS.map(p => {
@@ -875,7 +912,8 @@ function cover(part, n, ic, o = {}) {
 
 const registry = new Map();
 const meta = arr => `<div class="card-meta">${arr.filter(Boolean).map(m => `<span>${esc(m)}</span>`).join('<span class="dot"></span>')}</div>`;
-const repoBtn = repo => ext(`https://github.com/APPJust/${repo}`, 'btn btn-ghost btn-sm btn-icon', GH, `GitHub repo：${repo}`);
+// 學生頁不放 GitHub 連結，避免從帳號找到其他單元
+const repoBtn = repo => MODE === 'student' ? '' : ext(`https://github.com/APPJust/${repo}`, 'btn btn-ghost btn-sm btn-icon', GH, `GitHub repo：${repo}`);
 
 function courseCard(part, c, n) {
   registry.set(c.id, { part, item: c, n });
@@ -1057,7 +1095,7 @@ function openDetail(key) {
       ${c.variants ? '' : `<p class="dlg-note">${icon('info')}可用語言：${esc(c.langs)}，進入播放器後切換。</p>`}
       ${c.chapters ? `<h4>章節</h4><ol class="timeline">${c.chapters.map(([t, name]) => `<li><time>${mmss(t)}</time><span>${esc(name)}</span></li>`).join('')}</ol>` : ''}
       <div class="dlg-foot">
-        ${repo ? ext(`https://github.com/APPJust/${repo}`, '', `${GH}GitHub 原始碼`) : '<span></span>'}
+        ${repo && MODE !== 'student' ? ext(`https://github.com/APPJust/${repo}`, '', `${GH}GitHub 原始碼`) : '<span></span>'}
         <span>${c.url && c.url.includes('claude.ai') ? 'Claude Artifact' : 'GitHub Pages'}</span>
       </div>
     </div>`;
@@ -1076,6 +1114,19 @@ dlg.addEventListener('cancel', unlock);
 // 組裝頁面
 const hide = (sel, on = true) => document.querySelectorAll(sel).forEach(el => { el.hidden = on; });
 const ZH = ['', '一', '兩', '三', '四', '五', '六', '七', '八', '九'];
+
+function showLocked() {
+  document.documentElement.classList.add('locked');
+  document.title = '課程平台｜李振偉老師';
+  document.querySelectorAll('.logo small').forEach(s => { s.textContent = '課程平台'; });
+  $('heroTitle').innerHTML = '<span class="grad-text">請使用老師提供的</span><span>課程連結</span>';
+  $('heroLead').textContent = '這個頁面需要從老師提供的連結開啟。如果連結無法使用，請向老師確認。';
+  document.querySelector('.hero-inner').classList.add('solo');
+}
+
+if (MODE === 'locked') showLocked();
+else {
+if (MODE === 'student') hide('[data-teacher]');
 
 // 主視覺
 if (CUSTOM.title) {
@@ -1152,13 +1203,18 @@ $('faqList').innerHTML = FAQ.map(([q, a], i) => `<details${i === 0 ? ' open' : '
 $('ctaText').textContent = CURATED
   ? `${SUMMARY}${TOTAL.minutes ? `，約 ${TOTAL.minutes} 分鐘` : ''}，現在就開始。`
   : `${TOTAL.courses} 門課程、約 ${TOTAL.minutes} 分鐘，循序帶你從 AI 概念走到實作作品。`;
+if (CURATED) $('footAbout').textContent = CUSTOM.sub || `本頁收錄 ${SUMMARY}，皆為互動教學網頁。`;
 $('footParts').innerHTML = VIEW.map(p => `<li><a href="#${p.key}">${esc(p.title)}</a></li>`).join('');
 
-// 老師用：自訂課程目錄面板（網址加 ?edit 開啟）
-const searchWithout = key => location.search.replace(new RegExp(`[?&]${key}(=[^&]*)?`), '').replace(/^&/, '?');
-$('editLink').href = location.pathname + (Q.has('edit') ? location.search : (location.search ? location.search + '&edit' : '?edit'));
-if (Q.has('edit')) renderEditor();
+// 老師用：自訂課程目錄面板（老師模式下網址加 &edit 開啟）
+if (MODE === 'teacher') {
+  $('editLink').href = location.pathname + (Q.has('edit') ? location.search : (location.search ? location.search + '&edit' : '?edit'));
+  if (Q.has('edit')) renderEditor();
+}
 
+function searchWithout(key) {
+  return location.search.replace(new RegExp(`[?&]${key}(=[^&]*)?`), '').replace(/^&/, '?');
+}
 function renderEditor() {
   const ed = $('editor');
   const groups = PARTS.map(p => {
@@ -1169,7 +1225,7 @@ function renderEditor() {
     </div>`;
   }).join('');
   ed.innerHTML = `
-    <div class="ed-head"><div><b>自訂課程目錄</b><small>勾選要給這個班級的單元，複製連結分享</small></div>
+    <div class="ed-head"><div><b>自訂課程目錄</b><small>勾選單元後複製學生連結；學生只看得到勾選的單元</small></div>
       <a class="ed-x" href="${esc(location.pathname + searchWithout('edit'))}" aria-label="關閉面板">${icon('close')}</a></div>
     <div class="ed-body">
       <label class="ed-field">頁面標題（選填）<input id="edTitle" type="text" placeholder="例如：資通一甲｜AI 工具課" value="${esc(CUSTOM.title)}"></label>
@@ -1180,22 +1236,19 @@ function renderEditor() {
     <div class="ed-foot">
       <input id="edUrl" readonly aria-label="分享連結">
       <div class="ed-actions">
-        <button class="btn btn-primary btn-sm" id="edCopy" type="button">複製連結</button>
+        <button class="btn btn-primary btn-sm" id="edCopy" type="button">複製學生連結</button>
         <button class="btn btn-ghost btn-sm" id="edApply" type="button">套用預覽</button>
-        <a class="btn btn-ghost btn-sm" id="edOpen" target="_blank" rel="noopener">開啟學生頁${icon('ext')}</a>
+        <a class="btn btn-ghost btn-sm" id="edOpen" target="_blank" rel="noopener">以學生身分開啟${icon('ext')}</a>
       </div>
     </div>`;
   ed.hidden = false;
   const boxes = [...ed.querySelectorAll('.ed-item input')];
+  let token = '';
   const build = () => {
     const ids = boxes.filter(b => b.checked).map(b => b.value);
-    const qs = [];
-    if (ids.length && ids.length < boxes.length) qs.push('show=' + ids.join(','));
-    const t = $('edTitle').value.trim(), s = $('edSub').value.trim();
-    if (t) qs.push('title=' + encodeURIComponent(t));
-    if (s) qs.push('sub=' + encodeURIComponent(s));
-    const url = location.origin + location.pathname + (qs.length ? '?' + qs.join('&') : '');
-    $('edUrl').value = url;
+    token = encodeToken({ ids, title: $('edTitle').value.trim(), sub: $('edSub').value.trim() });
+    const url = `${SITE}?c=${token}`;
+    $('edUrl').value = ids.length ? url : '';
     $('edOpen').href = url;
     $('edCount').textContent = `已選 ${ids.length} / ${boxes.length}`;
     ed.querySelectorAll('[data-part]').forEach(pb => {
@@ -1220,11 +1273,11 @@ function renderEditor() {
       try { await navigator.clipboard.writeText(url); }
       catch { $('edUrl').select(); document.execCommand('copy'); }
       $('edCopy').textContent = '已複製 ✓';
-      setTimeout(() => { $('edCopy').textContent = '複製連結'; }, 1600);
+      setTimeout(() => { $('edCopy').textContent = '複製學生連結'; }, 1600);
     }
     if (e.target.closest('#edApply')) {
-      const url = build();
-      location.href = url + (url.includes('?') ? '&' : '?') + 'edit';
+      build();
+      location.href = `${location.pathname}?${TKEY ? `t=${encodeURIComponent(TKEY)}&` : ''}c=${token}&edit`;
     }
   });
   build();
@@ -1242,6 +1295,8 @@ const spy = new IntersectionObserver(entries => {
   }
 }, { rootMargin: '-45% 0px -50% 0px' });
 document.querySelectorAll('.part').forEach(s => spy.observe(s));
+}
+document.documentElement.classList.remove('pending');
 </script>
 </body>
 </html>
