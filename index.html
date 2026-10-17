@@ -85,6 +85,7 @@ a{color:inherit}
 .kicker .repo{margin-left:auto;display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:var(--faint);transition:color .15s}
 .kicker .repo:hover{color:var(--ink)}
 .kicker .repo svg{width:15px;height:15px}
+.kicker .host{margin-left:auto;color:var(--faint)}
 .course h3{font:700 25px/1.35 var(--serif);color:var(--ink);margin:8px 0 2px}
 .subtitle{margin:0;color:var(--muted);font-size:15px}
 .goal{margin:16px 0 0;max-width:680px;font-size:15px;color:var(--text);padding-left:14px;border-left:2px solid var(--line-strong)}
@@ -199,6 +200,12 @@ const PARTS = [
       goal: '能說出 OpenAI 五級（聊天機器人、推理者、代理人、創新者、組織）的關鍵差異，判斷一個 AI 工具大約屬於哪一級，並知道這是一家公司的內部框架、不是科學標準。',
       langs: '中文配音・English・中英／中越字幕',
       chapters: [[0,'AI 的五個等級，從哪裡來？'],[34,'第 1 級　聊天機器人'],[56,'第 2 級　推理者'],[77,'第 3 級　代理人'],[95,'第 4 級　創新者'],[109,'第 5 級　組織'],[123,'每一級都建立在前一級之上'],[138,'三把不同的尺'],[169,'用三個問題，替 AI 工具定位'],[204,'現在走到哪一級了？']]
+    },
+    {
+      id: 'ai-funnel', url: 'https://claude.ai/artifact/7HKruD8RPRrA7oBku4svRX', title: 'AI 認知四級漏斗', subtitle: '80 億人裡，誰真的看過 AI 的實力？', duration: 99.5,
+      goal: '能說出 Karpathy（2026-10-11）粗估的 AI 認知四層與各層人數（約 60 億／10–20 億／2,000 萬／5,000），以及造成落差的三個原因（問題規模、能力不均、使用權限），並知道這些數字是粗估而非正式統計。',
+      langs: '中文／英文配音・中英、中越、中日字幕',
+      chapters: [[0,'開場：80 億 vs 5,000'],[15,'第 1、2 層'],[32,'第 3 層'],[52,'第 4 層'],[64,'三個原因'],[84,'結語：你在第幾層？']]
     },
     {
       id: 'ai-agents-compare', repo: 'ai-agents-compare', title: '各 AI 代理人比較', subtitle: 'Claude Code、Codex、Antigravity、OpenClaw、Muse', duration: 300,
@@ -368,7 +375,7 @@ const repoLink = repo =>
 
 function actions(item, repo) {
   if (item.variants) return `<div class="actions">${item.variants.map(([v, label], i) => btn(withVariant(item.player, v), label, i === 0)).join('')}</div>`;
-  return `<div class="actions">${btn(BASE + repo + '/', '開始觀看', true)}<span class="langs">${esc(item.langs)}，進入後切換</span></div>`;
+  return `<div class="actions">${btn(item.url || BASE + repo + '/', '開始觀看', true)}<span class="langs">${esc(item.langs)}，進入後切換</span></div>`;
 }
 function goal(item) {
   return item.goal ? `<p class="goal"><small>${esc(item.goalLabel || '學習目標')}</small>${esc(item.goal)}</p>` : '';
@@ -397,7 +404,7 @@ function render() {
       el.innerHTML = `
         <div class="idx">${pad(n)}</div>
         <div>
-          <div class="kicker"><span>${esc(dur)}</span>${repoLink(c.repo)}</div>
+          <div class="kicker"><span>${esc(dur)}</span>${c.repo ? repoLink(c.repo) : '<span class="host">Claude Artifact</span>'}</div>
           <h3>${esc(c.title)}</h3>
           <p class="subtitle">${esc(c.subtitle)}</p>
           ${c.eps ? `
