@@ -2,470 +2,1042 @@
 <html lang="zh-Hant-TW">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>OpenAI Codex 課程目錄</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>OpenAI Codex 課程目錄｜李振偉老師</title>
 <meta name="author" content="李振偉老師">
-<meta name="description" content="OpenAI Codex 與 AI 基礎概念互動教學課程目錄，李振偉老師。">
+<meta name="description" content="從 AI 基礎概念、OpenAI Codex 操作到實作案例的互動教學課程，以及以 Codex 與 Claude Code 完成的作品。李振偉老師。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="OpenAI Codex 課程目錄｜李振偉老師">
+<meta property="og:description" content="從 AI 基礎概念、OpenAI Codex 操作到實作案例的互動教學課程，以及以 Codex 與 Claude Code 完成的作品。">
+<meta property="og:url" content="https://appjust.github.io/codex-courses/">
+<meta name="theme-color" content="#07080f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%236d5dfc'/%3E%3Cstop offset='1' stop-color='%2322d3ee'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='9' fill='url(%23g)'/%3E%3Cpath d='M10 22.5 16 10l6 12.5M12.6 18h6.8' fill='none' stroke='white' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f5f3ee;--surface:#fffdf9;--ink:#15171c;--text:#2a2d34;--muted:#6d707a;--faint:#a3a5ad;
-  --line:#e3dfd5;--line-strong:#cfcabd;
-  --accent:#3049c4;--accent-ink:#fff;--accent-soft:rgba(48,73,196,.08);
-  --hero-bg:#14161c;--hero-ink:#f4f1ea;--hero-muted:#a3a6b0;--hero-line:rgba(255,255,255,.09);
-  --sans:"Inter","Noto Sans TC","Microsoft JhengHei","PingFang TC",system-ui,sans-serif;
-  --serif:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  color-scheme:light;
+  --bg:#f6f7fb;--tint:#eef0f7;--surface:#fff;--surface-2:#f6f7fb;
+  --ink:#0c0e18;--text:#2d3142;--muted:#636a7e;--faint:#858b9f;
+  --line:#e5e7ef;--line-strong:#d3d7e3;--label-l:50%;
+  --grad:linear-gradient(120deg,#6d5dfc 0%,#3b82f6 48%,#22d3ee 100%);
+  --shadow-sm:0 1px 2px rgba(15,20,40,.05);
+  --shadow:0 1px 2px rgba(15,20,40,.04),0 14px 34px -14px rgba(15,20,40,.16);
+  --shadow-lg:0 2px 6px rgba(15,20,40,.04),0 28px 56px -20px rgba(15,20,40,.26);
+  --r:18px;--nav-h:64px;
+  --sans:"Inter","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0f1115;--surface:#161920;--ink:#f1eee7;--text:#d9d7d1;--muted:#9a9da7;--faint:#62656f;
-  --line:#252932;--line-strong:#343944;
-  --accent:#8ea0ff;--accent-ink:#0d1020;--accent-soft:rgba(142,160,255,.1);
-  --hero-bg:#0a0b0e;--hero-line:rgba(255,255,255,.07);
+  color-scheme:dark;
+  --bg:#0a0b11;--tint:#0e1018;--surface:#12141d;--surface-2:#181b26;
+  --ink:#f2f3f8;--text:#d3d6e1;--muted:#959bae;--faint:#7a8095;
+  --line:#22252f;--line-strong:#30343f;--label-l:68%;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.4);
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 14px 34px -14px rgba(0,0,0,.7);
+  --shadow-lg:0 2px 6px rgba(0,0,0,.4),0 28px 56px -20px rgba(0,0,0,.8);
 }}
-:root[data-theme="dark"]{
-  --bg:#0f1115;--surface:#161920;--ink:#f1eee7;--text:#d9d7d1;--muted:#9a9da7;--faint:#62656f;
-  --line:#252932;--line-strong:#343944;
-  --accent:#8ea0ff;--accent-ink:#0d1020;--accent-soft:rgba(142,160,255,.1);
-  --hero-bg:#0a0b0e;--hero-line:rgba(255,255,255,.07);
+:root[data-theme="dark"],.band-dark{
+  color-scheme:dark;
+  --bg:#0a0b11;--tint:#0e1018;--surface:#12141d;--surface-2:#181b26;
+  --ink:#f2f3f8;--text:#d3d6e1;--muted:#959bae;--faint:#7a8095;
+  --line:#22252f;--line-strong:#30343f;--label-l:68%;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.4);
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 14px 34px -14px rgba(0,0,0,.7);
+  --shadow-lg:0 2px 6px rgba(0,0,0,.4),0 28px 56px -20px rgba(0,0,0,.8);
 }
+.band-dark{--bg:#06070c;--surface:#10121a;--line:rgba(255,255,255,.08);--line-strong:rgba(255,255,255,.15);--label-l:70%}
+
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font:16px/1.7 var(--sans);-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 64px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.7 var(--sans);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 a{color:inherit}
-.container{max-width:1140px;margin:0 auto;padding:0 32px}
+svg{display:block}
+.ic{width:1em;height:1em;flex:none}
+.container{max-width:1200px;margin:0 auto;padding:0 32px}
+.nw{white-space:nowrap}
+.lock{overflow:hidden}
+.skip{position:absolute;left:16px;top:-60px;z-index:100;padding:10px 14px;border-radius:10px;background:#fff;color:#000;font-weight:600}
+.skip:focus{top:12px}
+:focus-visible{outline:2px solid #6d5dfc;outline-offset:3px}
+
+/* Buttons */
+.btn{--bh:44px;display:inline-flex;align-items:center;justify-content:center;gap:8px;height:var(--bh);padding:0 20px;border-radius:999px;border:1px solid transparent;font:600 15px/1 var(--sans);text-decoration:none;white-space:nowrap;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease,background-color .18s,color .18s,border-color .18s}
+.btn .ic{width:16px;height:16px}
+.btn-lg{--bh:54px;padding:0 28px;font-size:16px}
+.btn-sm{--bh:36px;padding:0 14px;font-size:13.5px;gap:6px}
+.btn-sm .ic{width:14px;height:14px}
+.btn-primary{background:var(--ink);color:var(--bg)}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 10px 22px -10px rgba(10,12,30,.55)}
+.btn-ghost{background:var(--surface);color:var(--ink);border-color:var(--line-strong)}
+.btn-ghost:hover{border-color:var(--ink)}
+.btn-text{background:none;color:var(--muted);padding:0 8px}
+.btn-text:hover{color:var(--ink)}
+.btn-light{background:#fff;color:#0b0c16}
+.btn-light:hover{transform:translateY(-1px);box-shadow:0 12px 30px -10px rgba(255,255,255,.35)}
+.btn-glass{background:rgba(255,255,255,.07);color:#fff;border-color:rgba(255,255,255,.16)}
+.btn-glass:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.3)}
+.btn-icon{width:var(--bh);padding:0}
+
+/* Nav */
+.nav{position:fixed;inset:0 0 auto;z-index:50;height:var(--nav-h);color:#fff;background:rgba(7,8,15,.74);-webkit-backdrop-filter:saturate(180%) blur(18px);backdrop-filter:saturate(180%) blur(18px);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav .container{display:flex;align-items:center;gap:24px;height:100%}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none;font-size:15px;font-weight:700;line-height:1.2;color:#fff}
+.logo small{display:block;margin-top:2px;font-size:11.5px;font-weight:500;color:rgba(255,255,255,.55)}
+.logo-mark{display:grid;place-items:center;width:32px;height:32px;border-radius:10px;background:var(--grad);box-shadow:inset 0 0 0 1px rgba(255,255,255,.25),0 8px 20px -6px rgba(109,93,252,.7)}
+.logo-mark svg{width:18px;height:18px}
+.nav-links{display:flex;gap:2px;margin-left:auto}
+.nav-links a{padding:8px 14px;border-radius:999px;font-size:14px;font-weight:500;color:rgba(255,255,255,.7);text-decoration:none;transition:color .15s,background .15s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.07)}
+.nav .btn{--bh:38px;padding:0 18px;font-size:14px}
 
 /* Hero */
-.hero{background:var(--hero-bg);color:var(--hero-ink);position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:0;pointer-events:none;
-  background-image:linear-gradient(var(--hero-line) 1px,transparent 1px),linear-gradient(90deg,var(--hero-line) 1px,transparent 1px);
-  background-size:56px 56px;mask-image:linear-gradient(180deg,rgba(0,0,0,.9),transparent 92%);-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.9),transparent 92%)}
-.hero::after{content:"";position:absolute;width:560px;height:560px;right:-160px;top:-220px;border-radius:50%;
-  background:radial-gradient(circle,rgba(92,118,255,.35),transparent 65%);pointer-events:none}
-.hero .container{position:relative;padding-top:72px;padding-bottom:56px}
-.eyebrow{font:600 12px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--hero-muted);display:flex;align-items:center;gap:12px}
-.eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
-.hero h1{font:700 clamp(34px,5.4vw,58px)/1.15 var(--serif);letter-spacing:.01em;margin:22px 0 16px}
-.hero h1 em{font-style:normal;color:#9fb0ff}
-.nw{white-space:nowrap}
-.hero .lead{max-width:600px;color:var(--hero-muted);font-size:17px;margin:0}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);margin:52px 0 0;padding:0;list-style:none;border-top:1px solid rgba(255,255,255,.14)}
-.stats li{padding:20px 20px 0 0}
-.stats li + li{padding-left:20px;border-left:1px solid rgba(255,255,255,.14)}
-.stats b{display:block;font:600 34px/1.1 var(--sans);letter-spacing:-.02em;color:var(--hero-ink);font-variant-numeric:tabular-nums}
-.stats span{font-size:13px;color:var(--hero-muted)}
+.hero{position:relative;overflow:hidden;isolation:isolate;padding:calc(var(--nav-h) + 80px) 0 150px;background:#07080f;color:#fff}
+.hero-bg{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.aurora{position:absolute;border-radius:50%;filter:blur(90px)}
+.a1{width:640px;height:640px;left:-180px;top:-260px;background:#5b46ff;opacity:.55}
+.a2{width:560px;height:560px;right:-160px;top:-140px;background:#0891b2;opacity:.45}
+.a3{width:520px;height:520px;left:38%;bottom:-360px;background:#c026d3;opacity:.32}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse 75% 65% at 50% 28%,#000 25%,transparent 75%);mask-image:radial-gradient(ellipse 75% 65% at 50% 28%,#000 25%,transparent 75%)}
+.noise{position:absolute;inset:0;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hero-inner{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);align-items:center;gap:72px}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:5px 14px 5px 5px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);font-size:13.5px;font-weight:500;color:rgba(255,255,255,.82)}
+.pill-av{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--grad);font-size:12.5px;font-weight:700;color:#fff}
+.hero h1{margin:24px 0 22px;font:900 clamp(36px,5.6vw,68px)/1.06 var(--sans);letter-spacing:-.03em}
+.hero h1 span{display:block}
+.grad-text{background:linear-gradient(95deg,#c7d2fe 0%,#93c5fd 35%,#67e8f9 65%,#f0abfc 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lead{max-width:560px;margin:0;font-size:clamp(16px,1.5vw,18.5px);line-height:1.8;color:rgba(255,255,255,.7)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.checks{display:flex;flex-wrap:wrap;gap:12px 24px;margin:34px 0 0;padding:0;list-style:none;font-size:14px;color:rgba(255,255,255,.72)}
+.checks li{display:flex;align-items:center;gap:8px}
+.checks .ic{width:20px;height:20px;padding:3px;border-radius:50%;background:rgba(103,232,249,.14);color:#67e8f9}
 
-/* Layout */
-.layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:64px;padding-top:56px;padding-bottom:96px}
-.layout > *{min-width:0}
-.sidebar{position:sticky;top:32px;align-self:start;max-height:calc(100vh - 64px);overflow:auto}
-.sidebar h2{font:600 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin:0 0 18px}
-.toc-part{margin-bottom:22px}
-.toc-part p{font-size:12px;font-weight:600;color:var(--muted);margin:0 0 6px;letter-spacing:.04em}
-.toc-part a{display:flex;gap:10px;text-decoration:none;font-size:14px;line-height:1.45;color:var(--muted);padding:5px 0 5px 12px;border-left:2px solid var(--line);transition:color .15s,border-color .15s}
-.toc-part a span{font:500 12px/1.6 var(--sans);color:var(--faint);font-variant-numeric:tabular-nums}
-.toc-part a:hover{color:var(--ink)}
-.toc-part a.active{color:var(--ink);border-left-color:var(--accent);font-weight:500}
-.toc-part a.active span{color:var(--accent)}
+/* Hero player preview */
+.mock-wrap{position:relative;width:100%;margin:0 auto}
+.mock{position:relative;display:block;padding:12px;border-radius:24px;color:#fff;text-decoration:none;background:linear-gradient(180deg,rgba(255,255,255,.11),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.14);box-shadow:0 50px 100px -30px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.1);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);transform:perspective(1800px) rotateY(-7deg) rotateX(4deg);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.mock:hover{transform:perspective(1800px) rotateY(0) rotateX(0)}
+.mock-bar{display:flex;align-items:center;gap:7px;padding:4px 6px 12px}
+.mock-bar i{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.18)}
+.mock-bar span{margin-left:8px;font-size:13px;font-weight:600;color:rgba(255,255,255,.82)}
+.mock-bar b{margin-left:auto;font:700 10.5px/1 var(--sans);letter-spacing:.16em;color:#93c5fd}
+.mock-screen{position:relative;overflow:hidden;aspect-ratio:16/9;border-radius:14px;background:radial-gradient(90% 90% at 80% 0%,hsl(var(--h) 92% 62% / .9),transparent 60%),radial-gradient(80% 80% at 10% 100%,hsl(calc(var(--h) + 40) 90% 58% / .55),transparent 60%),linear-gradient(140deg,hsl(var(--h) 50% 16%),hsl(calc(var(--h) + 24) 55% 7%))}
+.mock-loop{position:absolute;left:50%;top:44%;width:56%;transform:translate(-50%,-50%)}
+.orbit{transform-box:view-box;transform-origin:50% 50%;animation:spin 26s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.mock-play{position:absolute;left:50%;top:44%;display:grid;place-items:center;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:rgba(255,255,255,.96);color:#0b0c16;box-shadow:0 14px 34px -8px rgba(0,0,0,.55)}
+.mock-play .ic{width:24px;height:24px;margin-left:3px}
+.mock-play::before{content:"";position:absolute;inset:-9px;border-radius:50%;border:2px solid rgba(255,255,255,.55);animation:ring 2.6s ease-out infinite}
+@keyframes ring{from{transform:scale(.85);opacity:1}to{transform:scale(1.45);opacity:0}}
+.mock-cap{position:absolute;left:0;right:0;bottom:0;padding:26px 16px 12px;text-align:center;font-size:14.5px;font-weight:700;background:linear-gradient(transparent,rgba(0,0,0,.65))}
+.mock-cap small{display:block;margin-bottom:3px;font-size:11.5px;font-weight:500;color:rgba(255,255,255,.7)}
+.mock-prog{height:4px;margin:14px 4px 9px;border-radius:4px;background:rgba(255,255,255,.14);overflow:hidden}
+.mock-prog i{display:block;width:22%;height:100%;border-radius:4px;background:var(--grad)}
+.mock-meta{display:flex;justify-content:space-between;padding:0 4px 10px;font-size:12px;font-weight:500;color:rgba(255,255,255,.6);font-variant-numeric:tabular-nums}
+.mock-ch{margin:0;padding:6px;list-style:none;border-radius:14px;background:rgba(0,0,0,.24)}
+.mock-ch li{display:grid;grid-template-columns:46px minmax(0,1fr);gap:6px;padding:9px 10px;border-radius:9px;font-size:13.5px;color:rgba(255,255,255,.68)}
+.mock-ch li span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mock-ch li.on{background:rgba(255,255,255,.09);color:#fff}
+.mock-ch time{color:rgba(255,255,255,.42);font-variant-numeric:tabular-nums}
+.mock-ch li.on time{color:#93c5fd}
+.float{position:absolute;display:flex;align-items:center;gap:12px;padding:12px 16px 12px 12px;border-radius:16px;background:rgba(16,18,30,.84);border:1px solid rgba(255,255,255,.12);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 24px 48px -16px rgba(0,0,0,.7);animation:bob 7s ease-in-out infinite}
+.float b{display:block;font-size:14px;font-weight:700;color:#fff}
+.float small{display:block;margin-top:2px;font-size:12px;color:rgba(255,255,255,.58)}
+.fic{display:grid;place-items:center;width:36px;height:36px;border-radius:11px;background:var(--grad);color:#fff}
+.fic .ic{width:18px;height:18px}
+.f1{left:-44px;top:30%}
+.f2{right:-28px;bottom:14%;animation-delay:-3.5s}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 
-/* Parts */
-.part + .part{margin-top:80px}
-.part-head{display:flex;align-items:baseline;gap:18px;padding-bottom:18px;border-bottom:1px solid var(--line-strong)}
-.part-no{font:600 12px/1 var(--sans);letter-spacing:.2em;color:var(--accent);white-space:nowrap}
-.part-head h2{font:700 26px/1.3 var(--serif);color:var(--ink);margin:0}
-.part-head p{margin:0 0 0 auto;font-size:13px;color:var(--faint);white-space:nowrap}
+/* Stats */
+.stats-wrap{position:relative;z-index:3;margin-top:-76px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;overflow:hidden;border:1px solid var(--line);border-radius:22px;background:var(--line);box-shadow:var(--shadow-lg)}
+.stat{padding:26px 30px;background:var(--surface)}
+.stat b{display:block;font:800 clamp(30px,3.4vw,42px)/1 var(--sans);letter-spacing:-.035em;color:var(--ink);font-variant-numeric:tabular-nums}
+.stat span{display:block;margin-top:10px;font-size:14px;color:var(--muted)}
 
-/* Course */
-.course{display:grid;grid-template-columns:76px 1fr;gap:8px;padding:36px 0;border-bottom:1px solid var(--line);scroll-margin-top:24px}
-.idx{font:300 44px/1 var(--sans);letter-spacing:-.04em;color:var(--faint);font-variant-numeric:tabular-nums;padding-top:4px;transition:color .2s}
-.course:hover .idx{color:var(--accent)}
-.kicker{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;font-size:13px;color:var(--muted)}
-.kicker .dot{width:3px;height:3px;border-radius:50%;background:var(--faint)}
-.kicker .repo{margin-left:auto;display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:var(--faint);transition:color .15s}
-.kicker .repo:hover{color:var(--ink)}
-.kicker .repo svg{width:15px;height:15px}
-.kicker .host{margin-left:auto;color:var(--faint)}
-.course h3{font:700 25px/1.35 var(--serif);color:var(--ink);margin:8px 0 2px}
-.subtitle{margin:0;color:var(--muted);font-size:15px}
-.goal{margin:16px 0 0;max-width:680px;font-size:15px;color:var(--text);padding-left:14px;border-left:2px solid var(--line-strong)}
-.goal small{display:block;font-size:11px;font-weight:600;letter-spacing:.16em;color:var(--faint);margin-bottom:2px}
+/* Tools marquee */
+.tools{padding:72px 0 0}
+.tools-title{margin:0 0 20px;text-align:center;font-size:13px;font-weight:600;letter-spacing:.14em;color:var(--faint)}
+.marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.track{display:flex;width:max-content;animation:marquee 50s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+.track > span{display:flex}
+.chip{display:inline-flex;align-items:center;gap:9px;margin-right:12px;padding:10px 18px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-size:14.5px;font-weight:600;color:var(--text);white-space:nowrap;box-shadow:var(--shadow-sm)}
+.chip i{width:7px;height:7px;border-radius:50%;background:hsl(var(--h) 85% 58%);box-shadow:0 0 0 3px hsl(var(--h) 85% 58% / .18)}
+@keyframes marquee{to{transform:translateX(-50%)}}
 
-.actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:22px}
-.btn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font:500 14px/1 var(--sans);padding:11px 16px;border-radius:999px;border:1px solid var(--line-strong);color:var(--ink);background:var(--surface);transition:border-color .15s,background .15s,color .15s,transform .15s}
-.btn:hover{border-color:var(--ink);transform:translateY(-1px)}
-.btn svg{width:12px;height:12px;flex:none}
-.btn.primary{background:var(--ink);border-color:var(--ink);color:var(--bg)}
-.btn.primary:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
-.btn .arrow{transition:transform .15s}
-.btn:hover .arrow{transform:translateX(2px)}
-.langs{font-size:13px;color:var(--faint);margin-left:4px}
+/* Sections */
+.section{padding:112px 0}
+.sec-head{max-width:760px;margin:0 auto 56px;text-align:center}
+.eyebrow{display:inline-block;font:700 12.5px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sec-head h2{margin:16px 0 14px;font:800 clamp(30px,4vw,46px)/1.2 var(--sans);letter-spacing:-.02em;color:var(--ink)}
+.sec-head p{margin:0;font-size:17px;line-height:1.75;color:var(--muted)}
 
-details.chapters{margin-top:20px;max-width:680px}
-details.chapters summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--muted);user-select:none}
-details.chapters summary::-webkit-details-marker{display:none}
-details.chapters summary svg{width:12px;height:12px;transition:transform .2s}
-details.chapters[open] summary svg{transform:rotate(90deg)}
-details.chapters summary:hover{color:var(--ink)}
-.timeline{list-style:none;margin:14px 0 0;padding:4px 0 4px 18px;border-left:1px solid var(--line-strong);columns:2;column-gap:32px}
-.timeline li{break-inside:avoid;display:grid;grid-template-columns:44px 1fr;font-size:14px;padding:4px 0;color:var(--text)}
-.timeline time{font:500 12px/1.9 var(--sans);color:var(--faint);font-variant-numeric:tabular-nums}
+/* Learn */
+.learn{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.learn-card{position:relative;padding:30px 28px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-sm);transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s}
+.learn-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.learn-ic{display:grid;place-items:center;width:50px;height:50px;border-radius:14px;color:hsl(var(--h) 75% var(--label-l));background:hsl(var(--h) 90% 60% / .12);box-shadow:inset 0 0 0 1px hsl(var(--h) 90% 60% / .18)}
+.learn-ic .ic{width:24px;height:24px}
+.learn-card .tag{position:absolute;top:32px;right:28px;font:700 11px/1 var(--sans);letter-spacing:.14em;color:var(--faint)}
+.learn-card h3{margin:22px 0 8px;font:700 19px/1.4 var(--sans);color:var(--ink)}
+.learn-card p{margin:0;font-size:15px;line-height:1.75;color:var(--muted)}
 
-/* Series episodes */
-.episodes{margin-top:22px;border:1px solid var(--line);border-radius:14px;background:var(--surface);overflow:hidden}
-.ep{padding:22px 24px}
-.ep + .ep{border-top:1px solid var(--line)}
-.ep-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
-.ep-tag{font:600 11px/1 var(--sans);letter-spacing:.14em;color:var(--accent);background:var(--accent-soft);padding:5px 8px;border-radius:6px}
-.ep h4{font:700 17px/1.45 var(--serif);color:var(--ink);margin:0;flex:1;min-width:200px}
-.ep-dur{font-size:13px;color:var(--faint);font-variant-numeric:tabular-nums}
-.ep .goal{margin-top:12px;font-size:14px}
-.ep .actions{margin-top:16px}
-.ep .btn{padding:9px 14px;font-size:13px}
-.ep details.chapters{margin-top:14px}
+/* Learning path */
+.path-sec{background:var(--tint)}
+.path{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;margin:0;padding:0;list-style:none}
+.path::before{content:"";position:absolute;top:29px;left:10%;right:10%;height:2px;border-radius:2px;background:linear-gradient(90deg,hsl(258 85% 66%),hsl(220 85% 60%),hsl(190 85% 48%),hsl(32 92% 55%),hsl(12 88% 62%));opacity:.45}
+.step{position:relative;display:block;height:100%;padding:0 10px 4px;text-align:center;text-decoration:none;color:inherit}
+.step-no{position:relative;display:grid;place-items:center;width:58px;height:58px;margin:0 auto 20px;border-radius:50%;font:800 17px/1 var(--sans);color:#fff;background:linear-gradient(135deg,hsl(var(--h) 88% 64%),hsl(calc(var(--h) + 32) 82% 50%));box-shadow:0 0 0 7px var(--tint),0 12px 26px -8px hsl(var(--h) 85% 50% / .7);transition:transform .25s}
+.step:hover .step-no{transform:scale(1.08)}
+.step h3{margin:0 0 6px;font:700 17px/1.45 var(--sans);color:var(--ink);text-wrap:balance}
+.step .en{display:block;font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.step .meta{display:inline-block;margin-top:14px;white-space:nowrap;padding:6px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-size:13px;font-weight:600;color:var(--text)}
 
-/* Works showcase */
-.subhead{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 14px;margin-top:48px;padding-bottom:14px;border-bottom:1px dashed var(--line-strong)}
-.subhead h3{font:700 19px/1.4 var(--serif);color:var(--ink);margin:0}
-.subhead span{font-size:13px;color:var(--muted)}
-.kicker .model{font:600 11px/1 var(--sans);letter-spacing:.08em;color:var(--accent);border:1px solid currentColor;border-radius:999px;padding:4px 9px}
-.toc-sub{margin-top:10px!important;font-weight:500!important;color:var(--faint)!important}
+/* Curriculum */
+#curriculum > .sec-head{padding-top:112px;margin-bottom:40px}
+.tabs{position:sticky;top:var(--nav-h);z-index:30;background:var(--bg);background:color-mix(in srgb,var(--bg) 84%,transparent);-webkit-backdrop-filter:saturate(180%) blur(16px);backdrop-filter:saturate(180%) blur(16px);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.tabs .container{position:relative;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-top:10px;padding-bottom:10px}
+.tabs .container::-webkit-scrollbar{display:none}
+.tab{flex:none;display:inline-flex;align-items:center;gap:8px;padding:8px 15px;border-radius:999px;border:1px solid transparent;font-size:14px;font-weight:600;color:var(--muted);text-decoration:none;transition:color .15s,background .15s,border-color .15s}
+.tab i{font:700 11px/1 var(--sans);font-style:normal;color:hsl(var(--h) 75% var(--label-l))}
+.tab:hover{color:var(--ink)}
+.tab.active{color:var(--ink);background:var(--surface);border-color:var(--line);box-shadow:var(--shadow-sm)}
+.part{padding:80px 0 96px}
+.part.tint{background:var(--tint)}
+.part.band-dark{background:radial-gradient(60% 420px at 50% 0%,rgba(249,115,98,.13),transparent 70%),var(--bg);color:var(--text)}
+.part-head{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px 32px;margin-bottom:36px}
+.part-label{display:inline-flex;align-items:center;gap:10px;font:700 12px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:hsl(var(--h) 75% var(--label-l))}
+.part-label::before{content:"";width:22px;height:2px;border-radius:2px;background:currentColor}
+.part-head h2{margin:14px 0 10px;font:800 clamp(26px,3.2vw,38px)/1.25 var(--sans);letter-spacing:-.02em;color:var(--ink)}
+.part-head p{max-width:640px;margin:0;font-size:16px;line-height:1.75;color:var(--muted)}
+.part-meta{display:flex;flex-wrap:wrap;gap:8px}
+.part-meta span{padding:8px 14px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-size:13.5px;font-weight:600;color:var(--text)}
+.sub-head{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 14px;margin:72px 0 28px}
+.sub-head h3{margin:0;font:800 22px/1.3 var(--sans);color:var(--ink)}
+.sub-head span{font-size:14.5px;color:var(--muted)}
+.sub-head::after{content:"";flex:1 1 120px;align-self:center;height:1px;background:var(--line)}
 
-footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--faint);font-size:13px}
-footer .container{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px}
+/* Cards */
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.card{position:relative;display:flex;flex-direction:column;padding:8px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-sm);transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s,border-color .3s}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--line-strong)}
+.card-body{display:flex;flex-direction:column;flex:1;padding:16px 12px 10px}
+.card-meta{display:flex;flex-wrap:wrap;align-items:center;gap:4px 9px;font-size:12.5px;font-weight:600;color:var(--muted)}
+.card-meta .dot{width:3px;height:3px;border-radius:50%;background:var(--faint)}
+.card h3{margin:10px 0 4px;font:700 19px/1.4 var(--sans);letter-spacing:-.01em;color:var(--ink)}
+.card .sub{margin:0;font-size:14.5px;line-height:1.6;color:var(--muted)}
+.card .desc{margin:12px 0 0;font-size:14.5px;line-height:1.75;color:var(--text)}
+.card-actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:auto;padding-top:20px}
+.card-actions .btn-icon{margin-left:auto}
 
+/* Cover art */
+.cover{position:relative;display:block;overflow:hidden;isolation:isolate;aspect-ratio:16/9;border-radius:12px;color:#fff;text-decoration:none;background:radial-gradient(115% 100% at var(--gx) var(--gy),hsl(var(--h) 95% 66%),transparent 60%),radial-gradient(85% 85% at calc(100% - var(--gx)) calc(100% - var(--gy)),hsl(calc(var(--h) + 38) 92% 60% / .6),transparent 62%),linear-gradient(140deg,hsl(var(--h) 52% 20%),hsl(calc(var(--h) + 24) 58% 9%))}
+.cover::before{content:"";position:absolute;inset:0;z-index:-1;background-image:radial-gradient(rgba(255,255,255,.2) 1px,transparent 1.4px);background-size:18px 18px;-webkit-mask-image:linear-gradient(115deg,transparent 30%,#000 95%);mask-image:linear-gradient(115deg,transparent 30%,#000 95%)}
+.cover--work::before{background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.1) 0 1px,transparent 1px 11px);background-size:auto}
+.cover::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(255,255,255,.1),transparent 38%,rgba(0,0,0,.18))}
+.cover-ring{position:absolute;z-index:-1;left:var(--gx);top:var(--gy);width:62%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(255,255,255,.22);box-shadow:0 0 0 26px rgba(255,255,255,.035),0 0 0 54px rgba(255,255,255,.025);transform:translate(-50%,-50%)}
+.cover-part{position:absolute;left:16px;top:14px;font:700 10.5px/1 var(--sans);letter-spacing:.18em;color:rgba(255,255,255,.8)}
+.cover-badge{position:absolute;right:12px;top:10px;display:inline-flex;align-items:center;gap:5px;padding:5px 9px;border-radius:999px;font:600 11.5px/1 var(--sans);font-variant-numeric:tabular-nums;color:#fff;background:rgba(10,12,24,.34);border:1px solid rgba(255,255,255,.18);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.cover-badge .ic{width:12px;height:12px}
+.cover-ic{position:absolute;left:16px;bottom:16px;display:grid;place-items:center;width:46px;height:46px;border-radius:13px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 8px 20px -8px rgba(0,0,0,.4)}
+.cover-ic .ic{width:24px;height:24px}
+.cover-no{position:absolute;right:14px;bottom:-12px;font:800 92px/1 var(--sans);letter-spacing:-.06em;color:transparent;-webkit-text-stroke:1.4px rgba(255,255,255,.42);font-variant-numeric:tabular-nums;pointer-events:none}
+.cover-play{position:absolute;left:50%;top:50%;display:grid;place-items:center;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;background:rgba(255,255,255,.96);color:#0b0c16;box-shadow:0 12px 30px -8px rgba(0,0,0,.5);opacity:0;transform:scale(.85);transition:opacity .25s,transform .25s}
+.cover-play .ic{width:20px;height:20px}
+.cover-play.is-play .ic{margin-left:2px}
+.card:hover .cover-play{opacity:1;transform:scale(1)}
+
+/* Wide cards: series and grouped works */
+.card.wide{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:6px}
+.card.wide .cover{aspect-ratio:auto;height:100%;min-height:300px}
+.card.wide .cover-no{font-size:150px;bottom:-22px}
+.card.wide .card-body{padding:22px 22px 16px 26px}
+.rows{margin-top:16px;border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:8px 16px;padding:15px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.row-tag{align-self:start;margin-top:2px;padding:7px 9px;border-radius:8px;font:700 11px/1 var(--sans);letter-spacing:.06em;white-space:nowrap;color:hsl(var(--h) 72% var(--label-l));background:hsl(var(--h) 90% 60% / .12)}
+.row h4{margin:0;font:700 15.5px/1.45 var(--sans);color:var(--ink)}
+.row p{margin:3px 0 0;font-size:13.5px;line-height:1.6;color:var(--muted)}
+.row-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px}
+.card.wide .card-actions{padding-top:16px}
+.feature .desc{max-width:600px}
+.topics-label{margin:18px 0 0;font-size:12.5px;font-weight:700;letter-spacing:.08em;color:var(--faint)}
+.topics{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.topics span{padding:6px 11px;border-radius:999px;font-size:13px;font-weight:600;color:var(--text);background:var(--surface-2);border:1px solid var(--line)}
+.mini-ch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px 24px;margin:16px 0 0;padding:14px 0 0;list-style:none;border-top:1px solid var(--line)}
+.mini-ch li{display:grid;grid-template-columns:42px minmax(0,1fr);gap:6px;padding:4px 0;font-size:13.5px;line-height:1.55;color:var(--text)}
+.mini-ch time{font-weight:600;color:var(--faint);font-variant-numeric:tabular-nums}
+
+/* FAQ */
+.faq{max-width:840px;margin:0 auto;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 4px;cursor:pointer;list-style:none;font:700 17.5px/1.5 var(--sans);color:var(--ink)}
+.faq summary::-webkit-details-marker{display:none}
+.pm{flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1px solid var(--line-strong);color:var(--muted);transition:transform .3s,background .2s,color .2s,border-color .2s}
+.pm .ic{width:16px;height:16px}
+.faq details[open] .pm{transform:rotate(45deg);background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.faq p{margin:-6px 0 0;padding:0 56px 26px 4px;font-size:15.5px;line-height:1.85;color:var(--muted)}
+
+/* Closing CTA */
+.cta{padding:0 0 112px}
+.cta-box{position:relative;overflow:hidden;isolation:isolate;padding:80px 48px;border-radius:30px;text-align:center;color:#fff;background:#090a14}
+.cta-box::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(60% 90% at 15% 0%,rgba(109,93,252,.55),transparent 60%),radial-gradient(55% 80% at 90% 100%,rgba(34,211,238,.4),transparent 60%),radial-gradient(40% 60% at 60% 30%,rgba(240,171,252,.18),transparent 60%)}
+.cta-box::after{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:48px 48px;-webkit-mask-image:radial-gradient(ellipse at center,#000 20%,transparent 70%);mask-image:radial-gradient(ellipse at center,#000 20%,transparent 70%)}
+.cta-box h2{margin:0 0 16px;font:900 clamp(30px,4.6vw,52px)/1.18 var(--sans);letter-spacing:-.025em}
+.cta-box p{max-width:560px;margin:0 auto 34px;font-size:17px;line-height:1.75;color:rgba(255,255,255,.72)}
+.cta-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+
+/* Footer */
+.footer{padding:72px 0 36px;background:#07080d;color:rgba(255,255,255,.62);font-size:14px}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px}
+.footer-about{max-width:380px;margin:18px 0 0;line-height:1.8}
+.footer h4{margin:4px 0 16px;font-size:12.5px;font-weight:700;letter-spacing:.16em;color:#fff}
+.footer ul{display:grid;gap:11px;margin:0;padding:0;list-style:none}
+.footer a{color:rgba(255,255,255,.62);text-decoration:none;transition:color .15s}
+.footer a:hover{color:#fff}
+.footer .logo{color:#fff}
+.footer-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;margin-top:56px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);font-size:13px;color:rgba(255,255,255,.42)}
+
+/* Detail dialog */
+.dlg{width:min(720px,calc(100% - 32px));max-width:none;max-height:calc(100vh - 48px);max-height:calc(100dvh - 48px);padding:0;border:0;border-radius:22px;overflow:auto;background:var(--surface);color:var(--text);box-shadow:0 40px 100px -20px rgba(0,0,0,.55)}
+.dlg::backdrop{background:rgba(6,7,14,.62);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.dlg[open]{animation:dlgIn .28s cubic-bezier(.2,.8,.2,1)}
+@keyframes dlgIn{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}
+.dlg-inner{position:relative}
+.dlg .cover{aspect-ratio:auto;height:200px;border-radius:0}
+.dlg .cover-no{font-size:140px;bottom:-20px}
+.dlg .cover-badge{right:66px;top:22px}
+.dlg-close{position:absolute;top:14px;right:14px;z-index:2;display:grid;place-items:center;width:40px;height:40px;border:1px solid rgba(255,255,255,.22);border-radius:50%;background:rgba(10,12,24,.4);color:#fff;cursor:pointer;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.dlg-close .ic{width:18px;height:18px}
+.dlg-body{padding:28px 34px 32px}
+.dlg-body h3{margin:12px 0 4px;font:800 27px/1.3 var(--sans);letter-spacing:-.015em;color:var(--ink)}
+.dlg-sub{margin:0;font-size:16px;color:var(--muted)}
+.dlg-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.dlg-chips span{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);font-size:13px;font-weight:600;color:var(--text)}
+.dlg-chips .ic{width:14px;height:14px;color:var(--muted)}
+.dlg h4{margin:30px 0 12px;font:700 13px/1 var(--sans);letter-spacing:.14em;color:var(--faint)}
+.dlg-goal{margin:0;font-size:16px;line-height:1.85;color:var(--text)}
+.versions{display:flex;flex-wrap:wrap;gap:8px}
+.dlg-note{display:flex;align-items:center;gap:8px;margin:12px 0 0;font-size:14px;color:var(--muted)}
+.dlg-note .ic{width:16px;height:16px}
+.timeline{margin:0;padding:0;list-style:none;overflow:hidden;border:1px solid var(--line);border-radius:14px}
+.timeline li{display:grid;grid-template-columns:58px minmax(0,1fr);gap:8px;padding:11px 16px;font-size:14.5px;line-height:1.6;color:var(--text)}
+.timeline li + li{border-top:1px solid var(--line)}
+.timeline time{font-weight:600;color:var(--faint);font-variant-numeric:tabular-nums}
+.dlg-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;margin-top:26px;padding-top:18px;border-top:1px solid var(--line);font-size:13.5px;color:var(--muted)}
+.dlg-foot a{display:inline-flex;align-items:center;gap:7px;font-weight:600;color:var(--text);text-decoration:none}
+.dlg-foot a:hover{color:var(--ink)}
+.dlg-foot .ic{width:16px;height:16px}
+
+/* Responsive */
+@media (max-width:1080px){
+  .grid,.learn{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero-inner{gap:40px}
+}
 @media (max-width:960px){
-  .layout{grid-template-columns:minmax(0,1fr);gap:0;padding-top:28px}
-  .sidebar{position:static;max-height:none;overflow:visible;margin-bottom:24px}
-  .sidebar h2,.toc-part p{display:none}
-  .toc-wrap{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none}
-  .toc-part{display:contents}
-  .toc-part a{flex:none;border:1px solid var(--line-strong);border-radius:999px;padding:6px 12px;background:var(--surface)}
-  .toc-part a.active{border-color:var(--accent)}
+  .hero-inner{grid-template-columns:minmax(0,1fr)}
+  .mock-wrap{max-width:560px}
+  .mock{transform:none}
+  .float{display:none}
+  .path{grid-template-columns:minmax(0,1fr);gap:0;max-width:560px;margin:0 auto}
+  .path::before{top:29px;bottom:29px;left:28px;right:auto;width:2px;height:auto;background:linear-gradient(180deg,hsl(258 85% 66%),hsl(220 85% 60%),hsl(190 85% 48%),hsl(32 92% 55%),hsl(12 88% 62%))}
+  .step{display:grid;grid-template-columns:58px minmax(0,1fr);column-gap:18px;padding:12px 0;text-align:left}
+  .step-no{grid-row:1 / span 3;margin:0}
+  .step .meta{justify-self:start;margin-top:10px}
+  .card.wide{grid-template-columns:minmax(0,1fr)}
+  .card.wide .cover{aspect-ratio:16/9;height:auto;min-height:0}
+  .card.wide .cover-no{font-size:110px;bottom:-16px}
+  .card.wide .card-body{padding:16px 12px 10px}
+}
+@media (max-width:860px){
+  .nav-links{display:none}
+  .nav .btn{margin-left:auto}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .footer-brand{grid-column:1/-1}
 }
 @media (max-width:640px){
   .container{padding:0 16px}
-  .hero .container{padding-top:48px;padding-bottom:36px}
-  .stats{grid-template-columns:repeat(2,1fr);margin-top:36px}
-  .stats li,.stats li + li{padding:16px 0 4px;border-left:0}
-  .stats li:nth-child(even){padding-left:16px;border-left:1px solid rgba(255,255,255,.14)}
-  .stats b{font-size:28px}
-  .part + .part{margin-top:56px}
-  .part-head{flex-wrap:wrap;gap:6px 14px}
-  .part-head h2{font-size:22px}
-  .part-head p{display:none}
-  .course{grid-template-columns:1fr;gap:4px;padding:28px 0}
-  .idx{font-size:30px}
-  .course h3{font-size:21px}
-  .kicker .repo{margin-left:0}
-  .timeline{columns:1}
-  .ep{padding:18px 16px}
+  .logo small{display:none}
+  .hero{padding:calc(var(--nav-h) + 44px) 0 108px}
+  .hero h1{margin:18px 0;font-size:clamp(34px,11vw,48px)}
+  .hero-cta .btn{flex:1 1 100%}
+  .checks{display:grid;grid-template-columns:1fr 1fr;gap:10px 12px;font-size:13.5px}
+  .stats-wrap{margin-top:-64px}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stat{padding:20px}
+  .section{padding:80px 0}
+  .sec-head{margin-bottom:40px}
+  #curriculum > .sec-head{padding-top:80px}
+  .grid,.learn{grid-template-columns:minmax(0,1fr)}
+  .part{padding:56px 0 72px}
+  .mini-ch{grid-template-columns:minmax(0,1fr)}
+  .row{grid-template-columns:auto minmax(0,1fr)}
+  .row-actions{grid-column:2 / -1;justify-content:flex-start}
+  .cta-box{padding:56px 22px;border-radius:24px}
+  .cta-actions .btn{flex:1 1 100%}
+  .footer-grid{grid-template-columns:1fr}
+  .faq summary{font-size:16.5px}
+  .faq p{padding-right:4px}
+  .dlg{width:100%;max-height:92vh;max-height:92dvh;margin:auto 0 0;border-radius:22px 22px 0 0}
+  .dlg .cover{height:160px}
+  .dlg-body{padding:24px 20px 28px}
+  .dlg-body h3{font-size:23px}
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .mock{transform:none}
+  .track{flex-wrap:wrap;justify-content:center;width:auto}
+  .track > span[aria-hidden]{display:none}
+  .track > span{flex-wrap:wrap;justify-content:center;row-gap:10px}
+}
 </style>
 </head>
 <body>
-<header class="hero">
+<a class="skip" href="#curriculum">跳到課程內容</a>
+
+<header class="nav">
   <div class="container">
-    <div class="eyebrow">Course Catalog · 李振偉老師</div>
-    <h1><span class="nw">OpenAI <em>Codex</em></span> <span class="nw">課程目錄</span></h1>
-    <p class="lead">從 AI 基礎概念、Codex 入門到實作案例，循序學習；最後收錄以 Codex 與 Claude Code 完成的作品。課程皆為互動教學網頁，可切換配音與雙語字幕，手機、平板、電腦皆可直接觀看。</p>
-    <ul class="stats" id="stats"></ul>
+    <a class="logo" href="#top" aria-label="回到頂端">
+      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17.5 12 7l5 10.5M9.2 13.8h5.6"/></svg></span>
+      <span>李振偉老師<small>OpenAI Codex 課程目錄</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主選單">
+      <a href="#learn">學習成果</a><a href="#path">課程地圖</a><a href="#curriculum">課程內容</a><a href="#faq">常見問題</a>
+    </nav>
+    <a class="btn btn-light" href="#curriculum">開始學習</a>
   </div>
 </header>
 
-<div class="container layout">
-  <aside class="sidebar" aria-label="課程目錄">
-    <h2>Contents</h2>
-    <nav class="toc-wrap" id="toc"></nav>
-  </aside>
-  <main id="list"></main>
-</div>
+<section class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true"><span class="aurora a1"></span><span class="aurora a2"></span><span class="aurora a3"></span><span class="hero-grid"></span><span class="noise"></span></div>
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <span class="pill"><span class="pill-av">李</span>李振偉老師・2026.10 更新</span>
+      <h1><span class="grad-text nw">OpenAI Codex</span><span class="nw">課程目錄</span></h1>
+      <p class="lead">從 AI 基礎概念、Codex 操作到真實案例，循序學會用 AI 代理人完成工作；再看以 Codex 與 Claude Code 做出的完整作品。</p>
+      <div class="hero-cta">
+        <a class="btn btn-light btn-lg" id="heroStart" href="#curriculum" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></svg>從第一堂課開始</a>
+        <a class="btn btn-glass btn-lg" href="#curriculum">瀏覽課程內容</a>
+      </div>
+      <ul class="checks" id="checks"></ul>
+    </div>
+    <div class="mock-wrap" id="mock"></div>
+  </div>
+</section>
 
-<footer>
+<div class="container stats-wrap"><div class="stats" id="stats"></div></div>
+
+<section class="tools" aria-label="課程涵蓋的工具與主題">
+  <p class="tools-title">課程涵蓋的工具與主題</p>
+  <div class="marquee"><div class="track" id="track"></div></div>
+</section>
+
+<section class="section" id="learn">
   <div class="container">
-    <span>© 李振偉老師｜OpenAI Codex 課程</span>
-    <span>部署於 GitHub Pages · ChatGPT Sites · Claude Artifacts</span>
+    <div class="sec-head">
+      <span class="eyebrow">What you'll learn</span>
+      <h2>從看懂 AI，到用 AI 做出作品</h2>
+      <p>六個核心能力，對應五個學習階段。</p>
+    </div>
+    <div class="learn" id="learnGrid"></div>
+  </div>
+</section>
+
+<section class="section path-sec" id="path">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">Learning path</span>
+      <h2>五個階段，循序漸進</h2>
+      <p>建議依序學習，也可以直接跳到你需要的主題。</p>
+    </div>
+    <ol class="path" id="pathList"></ol>
+  </div>
+</section>
+
+<main id="curriculum">
+  <div class="container sec-head">
+    <span class="eyebrow">Curriculum</span>
+    <h2>完整課程內容</h2>
+    <p id="curLead"></p>
+  </div>
+  <nav class="tabs" aria-label="課程階段"><div class="container" id="tabs"></div></nav>
+  <div id="parts"></div>
+</main>
+
+<section class="section" id="faq">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">FAQ</span>
+      <h2>常見問題</h2>
+    </div>
+    <div class="faq" id="faqList"></div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <div class="cta-box">
+      <h2>準備好了嗎？<br>從第一堂課開始。</h2>
+      <p id="ctaText"></p>
+      <div class="cta-actions">
+        <a class="btn btn-light btn-lg" id="ctaStart" href="#curriculum" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></svg>開始第一堂課</a>
+        <a class="btn btn-glass btn-lg" href="#path">查看課程地圖</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="#top">
+          <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17.5 12 7l5 10.5M9.2 13.8h5.6"/></svg></span>
+          <span>李振偉老師<small>OpenAI Codex 課程目錄</small></span>
+        </a>
+        <p class="footer-about">以互動教學網頁學習 AI 代理人：從 AI 基礎概念、OpenAI Codex 操作到實作案例，以及以 Codex 與 Claude Code 完成的作品。</p>
+      </div>
+      <div>
+        <h4>課程</h4>
+        <ul id="footParts"></ul>
+      </div>
+      <div>
+        <h4>探索</h4>
+        <ul>
+          <li><a href="#learn">學習成果</a></li>
+          <li><a href="#path">課程地圖</a></li>
+          <li><a href="#faq">常見問題</a></li>
+          <li><a href="https://github.com/APPJust/codex-courses" target="_blank" rel="noopener">GitHub 原始碼</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 李振偉老師</span>
+      <span>部署於 GitHub Pages・ChatGPT Sites・Claude Artifacts</span>
+    </div>
   </div>
 </footer>
+
+<dialog class="dlg" id="dlg" aria-labelledby="dlgTitle"><div class="dlg-inner" id="dlgBody"></div></dialog>
+<noscript><p style="padding:24px;text-align:center">此頁需要啟用 JavaScript 才能顯示課程列表。</p></noscript>
 
 <script>
 const BASE = 'https://appjust.github.io/';
 
-// variants：播放器支援以 ?variant= 直接開啟指定語言；langs：只能在播放器內切換的語言說明
+// 課程資料。variants：播放器支援 ?variant= 直接開啟指定語言；langs：只能在播放器內切換的語言說明
 const PARTS = [
-  { title: 'AI 基礎概念', en: 'Foundations', courses: [
-    {
-      id: 'ai-levels', repo: 'ai-levels', title: 'AI 能力等級', subtitle: 'OpenAI Levels：AI 能力五級', duration: 240,
-      goal: '能說出 OpenAI 五級（聊天機器人、推理者、代理人、創新者、組織）的關鍵差異，判斷一個 AI 工具大約屬於哪一級，並知道這是一家公司的內部框架、不是科學標準。',
-      langs: '中文配音・English・中英／中越字幕',
-      chapters: [[0,'AI 的五個等級，從哪裡來？'],[34,'第 1 級　聊天機器人'],[56,'第 2 級　推理者'],[77,'第 3 級　代理人'],[95,'第 4 級　創新者'],[109,'第 5 級　組織'],[123,'每一級都建立在前一級之上'],[138,'三把不同的尺'],[169,'用三個問題，替 AI 工具定位'],[204,'現在走到哪一級了？']]
-    },
-    {
-      id: 'ai-funnel', url: 'https://claude.ai/artifact/7HKruD8RPRrA7oBku4svRX', title: 'AI 認知四級漏斗', subtitle: '80 億人裡，誰真的看過 AI 的實力？', duration: 99.5,
-      goal: '能說出 Karpathy（2026-10-11）粗估的 AI 認知四層與各層人數（約 60 億／10–20 億／2,000 萬／5,000），以及造成落差的三個原因（問題規模、能力不均、使用權限），並知道這些數字是粗估而非正式統計。',
-      langs: '中文／英文配音・中英、中越、中日字幕',
-      chapters: [[0,'開場：80 億 vs 5,000'],[15,'第 1、2 層'],[32,'第 3 層'],[52,'第 4 層'],[64,'三個原因'],[84,'結語：你在第幾層？']]
-    },
-    {
-      id: 'ai-agents-compare', repo: 'ai-agents-compare', title: '各 AI 代理人比較', subtitle: 'Claude Code、Codex、Antigravity、OpenClaw、Muse', duration: 300,
-      goal: '能用「在哪裡執行、能碰什麼、誰來按確認」三個問題說出五個代理人的差異，並為具體任務選出合適的代理人與說明風險。',
-      langs: '中文配音',
-      chapters: [[0,'它們從哪裡來？'],[72,'五個代理人，同一個迴圈'],[130,'同一組問題，五種答案'],[209,'示範：李老師的兩件事'],[254,'接下來會怎樣？']]
-    },
-    {
-      id: 'llm-core-concepts', repo: 'llm-core-concepts', title: 'AI 核心概念介紹', subtitle: '大型語言模型 17 個核心概念', duration: 19 * 60, durationNote: '19 集・每集 60 秒',
-      goal: 'LLM、Token、Prompt、Context、Context Window、Memory、Function Calling、MCP、RAG、Workflow、Agent、Skill、Subagent，以及 Prompt／Context／Harness／Loop Engineering。',
-      goalLabel: '涵蓋內容',
-      langs: '中文配音・可連續播放'
-    }
-  ]},
-  { title: 'OpenAI Codex 入門與操作', en: 'Getting Started', courses: [
-    {
-      id: 'codex-intro', repo: 'openai-codex-intro', title: 'OpenAI Codex 介紹', subtitle: '從一句需求到可審核的程式變更', duration: 300,
-      goal: '看完後能說出 Codex 代理迴圈的四個步驟，並能依任務難度與成本，選擇合適的使用入口與模型。',
-      player: 'openai-codex-intro/player/index.html',
-      variants: [['zh-en', '中文配音＋中英字幕'], ['zh-vi', '中文配音＋中越字幕']],
-      chapters: [[0,'從補全程式碼到軟體工程代理'],[43,'Codex 怎麼工作：代理迴圈'],[90,'三種入口，本機與雲端'],[113,'同一個需求，三種工具'],[153,'模型版圖：能力與成本'],[191,'示範：幫 App 登入頁補上驗證'],[228,'成本：規模化才是關鍵'],[259,'下一步：從寫程式到全公司代理']]
-    },
-    {
-      id: 'codex-ops', repo: 'codex-ops-series', title: 'OpenAI Codex 操作全攻略', subtitle: '三集系列：模式與權限、模型與用量、設定頁',
-      eps: [
-        {
-          name: '三種模式、工作位置與權限', duration: 300,
-          goal: '看完後能依任務選擇 Chat／Work／Codex，並說出三種工作位置與四種權限設定的差異。',
-          player: 'codex-ops-series/player/index.html?project=../ep1/project.json',
-          variants: [['zh-TW', '中文配音'], ['en-US', 'English']],
-          chapters: [[0,'起源：從雲端代理到桌面 App'],[26,'三種模式：Chat、Work、Codex'],[76,'工作位置：Codex 在哪裡動手'],[128,'權限：碰到邊界時誰來核准'],[180,'比較：依情境選擇'],[208,'示範：把講義整理成網站'],[259,'展望：遠端與責任']]
-        },
-        {
-          name: '模型、思考等級、快速模式、側邊欄與剩餘用量', duration: 300,
-          goal: '看完後能依任務選模型與思考等級，知道快速模式的代價，認得側邊欄每個功能，並看懂剩餘用量與重置。',
-          player: 'codex-ops-series/player/index.html?project=../ep2/project.json',
-          variants: [['zh-TW', '中文配音'], ['en-US', 'English']],
-          chapters: [[0,'起源：模型換代很快'],[33,'模型：能力與用量的取捨'],[76,'思考等級：想得越久，越慢也越耗'],[108,'快速模式：閃電符號'],[141,'側邊欄：每個圖示做什麼'],[202,'比較：每 5 小時大約能用幾則'],[229,'應用：看懂剩餘用量'],[277,'展望：選對模型比用最強的重要']]
-        },
-        {
-          name: '設定逐頁說明', duration: 300,
-          goal: '看完後，遇到需求時知道要去哪一個設定頁調整，並分得出「組態」預設值與單一對話權限的差別。',
-          player: 'codex-ops-series/player/index.html?project=../ep3/project.json',
-          variants: [['zh-TW', '中文配音'], ['en-US', 'English']],
-          chapters: [[0,'起源：一個設定視窗，兩種產品'],[24,'個人（一）：一般到封存'],[77,'個人（二）：安全、組態與用量'],[148,'整合：外掛、瀏覽器與電腦'],[192,'程式設計：從掛勾到 Worktrees'],[244,'比較：預設值 vs. 單一對話'],[260,'應用：三個常見狀況'],[281,'展望：設定會持續變動']]
-        }
-      ]
-    }
-  ]},
-  { title: 'Codex 新增功能', en: 'New Features', courses: [
-    {
-      id: 'codex-plan-goal', repo: 'codex-plan-goal', title: 'Codex 新增功能介紹（規劃模式＆目標）', subtitle: 'Codex 的＋選單', duration: 300,
-      goal: '看完後能說出「＋」選單每一項的用途；需求不清楚時先開規劃模式，要長時間做到完成時設定目標並寫出可驗證的完成條件，也會「先規劃、再設目標」的組合。',
-      player: 'codex-plan-goal/player/index.html?project=../ep/project.json',
-      variants: [['zh-TW', '中文配音＋中英字幕'], ['zh-TW-vi', '中文配音＋中越字幕'], ['en-US', 'English']],
-      chapters: [[0,'起源：從「猜」與「停」說起'],[47,'原理：＋ 選單一覽'],[88,'原理：規劃模式'],[128,'原理：目標'],[171,'比較：三種工作方式'],[215,'應用：先規劃，再設目標'],[265,'展望與回顧']]
-    },
-    {
-      id: 'codex-computer-use', repo: 'codex-computer-use', title: 'Codex Computer use 介紹與操作', subtitle: '讓 Codex 看得見螢幕', duration: 420,
-      goal: '看完後能說出 Computer use 怎麼運作（截圖→判斷→動作→再確認），會開啟並安全地使用它，也知道什麼時候該改用指令、外掛、內建瀏覽器。',
-      player: 'codex-computer-use/player/index.html?project=../ep/project.json',
-      variants: [['zh-TW', '中文配音＋中英字幕'], ['zh-TW-vi', '中文配音＋中越字幕'], ['en-US', 'English']],
-      chapters: [[0,'起源：讓 Codex 看得見螢幕'],[60,'原理：看→想→做的循環'],[109,'原理：安全邊界'],[163,'比較：什麼時候用 Computer use？'],[222,'操作：開啟與呼叫'],[294,'應用（示範）：逐頁檢查簡報'],[356,'展望：下一步與未解問題']]
-    },
-    {
-      id: 'codex-skills', repo: 'codex-skills', title: 'Codex Skills', subtitle: '認識 Skill、在 Codex 建立、呼叫', duration: 420,
-      goal: '看完後能說出 Skill 由哪些檔案組成、Codex 怎麼按需載入它，並能用 $skill-creator 或手動建立 Skill，再用 $ 明確呼叫或靠描述自動觸發。',
-      player: 'codex-skills/player/index.html?project=../ep/project.json',
-      variants: [['zh-TW', '中文配音＋中英字幕'], ['zh-TW-vi', '中文配音＋中越字幕'], ['en-US', 'English']],
-      chapters: [[0,'起源：把重講的流程寫成卡片'],[50,'原理：Skill 的組成'],[104,'原理：漸進式揭露'],[145,'比較：Skill、AGENTS.md、MCP、Plugin'],[196,'應用：在 Codex 建立 Skill'],[269,'應用：呼叫 Skill'],[341,'展望：已公布、趨勢與未解問題'],[385,'回顧']]
-    }
-  ]},
-  { title: 'Codex 實作案例', en: 'Case Studies', courses: [
-    {
-      id: 'codex-blender', repo: 'codex-blender', title: 'Codex × Blender', subtitle: '用一句話操控 3D 軟體', duration: 420,
-      goal: '看完後能說出 Codex 操控 Blender 的兩條路（背景腳本、MCP 即時連線）與 MCP 迴路，並能用 codex mcp add 接上 Blender、用一句話建出場景後先檢查再修改。',
-      player: 'codex-blender/player/index.html?project=../ep/project.json',
-      variants: [['zh-TW', '中文配音＋中英字幕'], ['zh-TW-vi', '中文配音＋中越字幕'], ['en-US', 'English']],
-      chapters: [[0,'起源：Codex 需要一座橋'],[52,'原理一：兩條路'],[98,'原理二：MCP 迴路'],[142,'步驟：四步接上 Blender'],[206,'比較：三種做法'],[264,'應用一：一句話建場景（示範）'],[315,'應用二：批次整理＋安全'],[366,'展望與回顧']]
-    },
-    {
-      id: 'blender-three-cases', repo: 'blender-three-cases-record', title: 'Blender 三案例實作紀錄', subtitle: '馬克杯、西洋棋主教、漢堡', duration: 423,
-      goal: '看完能說出三個案例各自用哪一種檢查（看圖、讀尺寸、包圍盒）發現問題、如何修正，並正確解讀回合耗時的定義。',
-      langs: '中文配音・English・中英／中越字幕',
-      chapters: [[0,'開場'],[22,'方法與時間定義'],[53,'馬克杯：截面旋轉'],[80,'馬克杯：把手與刻字'],[105,'馬克杯：反光與法線'],[138,'馬克杯：重開驗證'],[159,'主教：環境受阻'],[193,'主教：名牌逐字切割'],[223,'主教：最終腳本'],[248,'主教：時間分解'],[265,'漢堡：三片肉'],[291,'漢堡：凸字問題'],[318,'漢堡：字型與網格修正'],[347,'漢堡：交付成果'],[371,'共同的一課'],[398,'資料包與畫面標記']]
-    },
-    {
-      id: 'codex-essay-review', repo: 'codex-essay-review-replay', title: 'Codex 依 Rubric 批改十篇英文作文', subtitle: '依操作日誌重建的實作紀錄', duration: 520,
-      goal: '看完能說出這次批改作業的主要步驟、各項失敗如何被修正，並能分辨文法錯誤與風格改善、正確解讀用時與用量數字。',
-      langs: '中文配音・中英字幕',
-      chapters: [[0,'任務與輸入'],[50,'讀取技能與啟動限制'],[80,'轉換資料與取得授權'],[113,'逐篇評閱'],[158,'文法錯誤與風格改善'],[202,'Word 初次輸出'],[232,'簡報規格與前五頁'],[278,'語法失敗與 Word 分頁'],[310,'十四頁完成，Word 變二十四頁'],[345,'修復版面與檔案鎖定'],[379,'原生匯出與最終檢視'],[408,'結果與用量'],[473,'還原界線與交接']]
-    }
-  ], works: {
-    title: '作品展示', note: '以 Codex（GPT-6 Astra）實作完成的網站', model: 'GPT-6 Astra',
+  { key: 'p1', no: 1, hue: 258, title: 'AI 基礎概念', en: 'Foundations',
+    desc: '先建立共同語言：AI 能做到哪裡、誰真的看過它的實力、不同代理人怎麼選，以及 LLM 的核心名詞。',
     items: [
       {
-        id: 'jit-credit-survivor', title: '景文科大學分生存戰', subtitle: '資訊與通訊系主題網頁遊戲', type: '網頁遊戲',
-        url: 'https://jit-credit-survivor.aijust.chatgpt.site/',
-        desc: '三分鐘一局的生存射擊遊戲：撐過四學年、集滿 128 學分，通過英檢與證照，打倒延畢魔王。結合資通系修課路線，免下載，鍵盤或手機即可遊玩。'
+        id: 'ai-levels', repo: 'ai-levels', icon: 'levels', kind: '教學動畫', title: 'AI 能力等級', subtitle: 'OpenAI Levels：AI 能力五級', duration: 240,
+        goal: '能說出 OpenAI 五級（聊天機器人、推理者、代理人、創新者、組織）的關鍵差異，判斷一個 AI 工具大約屬於哪一級，並知道這是一家公司的內部框架、不是科學標準。',
+        langs: '中文配音・English・中英／中越字幕',
+        chapters: [[0,'AI 的五個等級，從哪裡來？'],[34,'第 1 級　聊天機器人'],[56,'第 2 級　推理者'],[77,'第 3 級　代理人'],[95,'第 4 級　創新者'],[109,'第 5 級　組織'],[123,'每一級都建立在前一級之上'],[138,'三把不同的尺'],[169,'用三個問題，替 AI 工具定位'],[204,'現在走到哪一級了？']]
       },
       {
-        id: 'voice-rollcall', title: '點名所', subtitle: '線上語音點名系統', type: '網頁應用',
-        url: 'https://voice-rollcall.aijust.chatgpt.site/',
-        desc: '給教師使用的語音點名工作空間。以 Google 帳號登入，每個帳號的名單與點名紀錄各自獨立。',
-        note: '需以 Google 帳號登入'
+        id: 'ai-funnel', url: 'https://claude.ai/artifact/7HKruD8RPRrA7oBku4svRX', icon: 'funnel', kind: '動畫短片', title: 'AI 認知四級漏斗', subtitle: '80 億人裡，誰真的看過 AI 的實力？', duration: 99.5,
+        goal: '能說出 Karpathy（2026-10-11）粗估的 AI 認知四層與各層人數（約 60 億／10–20 億／2,000 萬／5,000），以及造成落差的三個原因（問題規模、能力不均、使用權限），並知道這些數字是粗估而非正式統計。',
+        langs: '中文／英文配音・中英、中越、中日字幕',
+        chapters: [[0,'開場：80 億 vs 5,000'],[15,'第 1、2 層'],[32,'第 3 層'],[52,'第 4 層'],[64,'三個原因'],[84,'結語：你在第幾層？']]
       },
       {
-        id: 'just-campus-3d', title: '景文科大 3D 立體校園探索', subtitle: '從平面配置圖到 Blender 立體校園', type: '3D 互動網站',
-        url: 'https://just-campus-3d-journal.aijust.chatgpt.site/',
-        desc: '依校區配置圖以 Blender 重建九棟校園建築，可自由旋轉、點選建築的互動 3D 模型，並附 66 秒校園巡禮動畫與六階段製作紀錄。',
-        links: [['建模操作＆成果影片', 'https://youtu.be/pSWyexUzdy4']]
+        id: 'ai-agents-compare', repo: 'ai-agents-compare', icon: 'agents', kind: '教學動畫', title: '各 AI 代理人比較', subtitle: 'Claude Code、Codex、Antigravity、OpenClaw、Muse', duration: 300,
+        goal: '能用「在哪裡執行、能碰什麼、誰來按確認」三個問題說出五個代理人的差異，並為具體任務選出合適的代理人與說明風險。',
+        langs: '中文配音',
+        chapters: [[0,'它們從哪裡來？'],[72,'五個代理人，同一個迴圈'],[130,'同一組問題，五種答案'],[209,'示範：李老師的兩件事'],[254,'接下來會怎樣？']]
+      },
+      {
+        id: 'llm-core-concepts', repo: 'llm-core-concepts', icon: 'chip', kind: '系列短片', title: 'AI 核心概念介紹', subtitle: '大型語言模型 17 個核心概念', duration: 19 * 60, durationLabel: '19 集', durationNote: '19 集・每集 60 秒',
+        feature: true, topics: ['LLM','Token','Prompt','Context','Context Window','Memory','Function Calling','MCP','RAG','Workflow','Agent','Skill','Subagent','Prompt Engineering','Context Engineering','Harness Engineering','Loop Engineering'],
+        goal: 'LLM、Token、Prompt、Context、Context Window、Memory、Function Calling、MCP、RAG、Workflow、Agent、Skill、Subagent，以及 Prompt／Context／Harness／Loop Engineering。',
+        goalLabel: '涵蓋內容',
+        langs: '中文配音・可連續播放'
       }
-    ]
-  }},
-  { title: 'Claude Code 作品', en: 'Built with Claude Code', courses: [], works: {
-    model: 'Opus 5.5',
+    ] },
+  { key: 'p2', no: 2, hue: 220, title: 'OpenAI Codex 入門與操作', short: 'Codex 入門與操作', en: 'Getting Started',
+    desc: '認識 Codex 怎麼工作，再逐一掌握模式、工作位置、權限、模型、用量與每一個設定頁。',
     items: [
       {
-        id: 'jinwen-ice-intro', repo: 'jinwen-ice-intro-video', title: '景文資通系介紹', subtitle: '景文科技大學資訊與通訊系介紹影片', type: '互動介紹影片',
-        url: 'https://appjust.github.io/jinwen-ice-intro-video/output/interactive/', btnLabel: '開始觀看',
-        desc: 'Vox 紙張拼貼風格的系所介紹：從「讀大學只是為了文憑？」的痛點出發，以科技業人才供需數據說明市場需求，再帶出資通系的學習方向。中英雙語。'
+        id: 'codex-intro', repo: 'openai-codex-intro', icon: 'terminal', kind: '教學動畫', title: 'OpenAI Codex 介紹', subtitle: '從一句需求到可審核的程式變更', duration: 300, feature: true,
+        goal: '看完後能說出 Codex 代理迴圈的四個步驟，並能依任務難度與成本，選擇合適的使用入口與模型。',
+        player: 'openai-codex-intro/player/index.html',
+        variants: [['zh-en', '中文配音＋中英字幕'], ['zh-vi', '中文配音＋中越字幕']],
+        chapters: [[0,'從補全程式碼到軟體工程代理'],[43,'Codex 怎麼工作：代理迴圈'],[90,'三種入口，本機與雲端'],[113,'同一個需求，三種工具'],[153,'模型版圖：能力與成本'],[191,'示範：幫 App 登入頁補上驗證'],[228,'成本：規模化才是關鍵'],[259,'下一步：從寫程式到全公司代理']]
       },
       {
-        id: 'cycu-lc', repo: 'cycu-lc-video', title: '中原語言中心介紹', subtitle: '中原大學語言中心介紹影片', type: '互動介紹影片',
-        url: 'https://appjust.github.io/cycu-lc-video/', btnLabel: '開始觀看',
-        desc: 'Vox 風格的語言中心介紹影片，約 2 分鐘，附中英雙語字幕，可全螢幕播放。'
-      },
-      {
-        id: 'mqtt-intro', repo: 'mqtt-intro', title: 'MQTT 入門', subtitle: '訊息如何找到對的人？', type: '教學動畫・約 5 分鐘',
-        url: 'https://appjust.github.io/mqtt-intro/', btnLabel: '開始觀看',
-        desc: '看完能說明「發布者 → Broker → 訂閱者」的流程，並能為教室監測情境設計 Topic、選擇 QoS。內容涵蓋發布／訂閱、Topic 與萬用字元、QoS 0/1/2、保留訊息與遺囑、MQTT vs HTTP。中文配音，中英／中越字幕。'
-      },
-      {
-        id: 'claude-artifacts', title: 'Claude Artifact 互動作品', subtitle: '教學複習網站、Godot 遊戲與課程範例動畫', type: 'Claude Artifact',
-        group: [
+        id: 'codex-ops', repo: 'codex-ops-series', icon: 'sliders', kind: '系列課程', title: 'OpenAI Codex 操作全攻略', subtitle: '三集系列：模式與權限、模型與用量、設定頁',
+        eps: [
           {
-            tag: '複習', name: '天氣變化單元複習', url: 'https://claude.ai/artifact/5JComwMsSThWJ9hNT6zWrq',
-            desc: '六年級自然「探索天氣的變化」考前總複習：18 堂配音字幕動畫課、觀念小遊戲、測驗與錯題本，以及考前重點卡。'
+            name: '三種模式、工作位置與權限', duration: 300,
+            goal: '看完後能依任務選擇 Chat／Work／Codex，並說出三種工作位置與四種權限設定的差異。',
+            player: 'codex-ops-series/player/index.html?project=../ep1/project.json',
+            variants: [['zh-TW', '中文配音'], ['en-US', 'English']],
+            chapters: [[0,'起源：從雲端代理到桌面 App'],[26,'三種模式：Chat、Work、Codex'],[76,'工作位置：Codex 在哪裡動手'],[128,'權限：碰到邊界時誰來核准'],[180,'比較：依情境選擇'],[208,'示範：把講義整理成網站'],[259,'展望：遠端與責任']]
           },
           {
-            tag: '遊戲', name: '天氣亂鬥', url: 'https://claude.ai/artifact/JQLa7LKBG8jXy2bMKW3Ph8',
-            desc: '以 Godot 製作、在瀏覽器執行的颱風主題遊戲（STORM BRAWL）。第一次載入約 35 MB。'
+            name: '模型、思考等級、快速模式、側邊欄與剩餘用量', duration: 300,
+            goal: '看完後能依任務選模型與思考等級，知道快速模式的代價，認得側邊欄每個功能，並看懂剩餘用量與重置。',
+            player: 'codex-ops-series/player/index.html?project=../ep2/project.json',
+            variants: [['zh-TW', '中文配音'], ['en-US', 'English']],
+            chapters: [[0,'起源：模型換代很快'],[33,'模型：能力與用量的取捨'],[76,'思考等級：想得越久，越慢也越耗'],[108,'快速模式：閃電符號'],[141,'側邊欄：每個圖示做什麼'],[202,'比較：每 5 小時大約能用幾則'],[229,'應用：看懂剩餘用量'],[277,'展望：選對模型比用最強的重要']]
           },
           {
-            tag: '課程', name: 'AI Agent × Godot 課程範例', url: 'https://claude.ai/artifact/B8g5bCayK2suddfQxED6ex',
-            desc: '以實際案例說明如何和 AI agent 來回溝通、做出 Godot 遊戲的教學動畫。中文／English 配音，中英、中越字幕。'
+            name: '設定逐頁說明', duration: 300,
+            goal: '看完後，遇到需求時知道要去哪一個設定頁調整，並分得出「組態」預設值與單一對話權限的差別。',
+            player: 'codex-ops-series/player/index.html?project=../ep3/project.json',
+            variants: [['zh-TW', '中文配音'], ['en-US', 'English']],
+            chapters: [[0,'起源：一個設定視窗，兩種產品'],[24,'個人（一）：一般到封存'],[77,'個人（二）：安全、組態與用量'],[148,'整合：外掛、瀏覽器與電腦'],[192,'程式設計：從掛勾到 Worktrees'],[244,'比較：預設值 vs. 單一對話'],[260,'應用：三個常見狀況'],[281,'展望：設定會持續變動']]
           }
         ]
       }
-    ]
-  }}
+    ] },
+  { key: 'p3', no: 3, hue: 190, title: 'Codex 新增功能', en: 'New Features',
+    desc: '用規劃模式與目標管理長任務，讓 Codex 看得見螢幕，並把重複的流程寫成 Skill。',
+    items: [
+      {
+        id: 'codex-plan-goal', repo: 'codex-plan-goal', icon: 'plan', kind: '教學動畫', title: 'Codex 新增功能介紹（規劃模式＆目標）', subtitle: 'Codex 的＋選單', duration: 300,
+        goal: '看完後能說出「＋」選單每一項的用途；需求不清楚時先開規劃模式，要長時間做到完成時設定目標並寫出可驗證的完成條件，也會「先規劃、再設目標」的組合。',
+        player: 'codex-plan-goal/player/index.html?project=../ep/project.json',
+        variants: [['zh-TW', '中文配音＋中英字幕'], ['zh-TW-vi', '中文配音＋中越字幕'], ['en-US', 'English']],
+        chapters: [[0,'起源：從「猜」與「停」說起'],[47,'原理：＋ 選單一覽'],[88,'原理：規劃模式'],[128,'原理：目標'],[171,'比較：三種工作方式'],[215,'應用：先規劃，再設目標'],[265,'展望與回顧']]
+      },
+      {
+        id: 'codex-computer-use', repo: 'codex-computer-use', icon: 'cursor', kind: '教學動畫', title: 'Codex Computer use 介紹與操作', subtitle: '讓 Codex 看得見螢幕', duration: 420,
+        goal: '看完後能說出 Computer use 怎麼運作（截圖→判斷→動作→再確認），會開啟並安全地使用它，也知道什麼時候該改用指令、外掛、內建瀏覽器。',
+        player: 'codex-computer-use/player/index.html?project=../ep/project.json',
+        variants: [['zh-TW', '中文配音＋中英字幕'], ['zh-TW-vi', '中文配音＋中越字幕'], ['en-US', 'English']],
+        chapters: [[0,'起源：讓 Codex 看得見螢幕'],[60,'原理：看→想→做的循環'],[109,'原理：安全邊界'],[163,'比較：什麼時候用 Computer use？'],[222,'操作：開啟與呼叫'],[294,'應用（示範）：逐頁檢查簡報'],[356,'展望：下一步與未解問題']]
+      },
+      {
+        id: 'codex-skills', repo: 'codex-skills', icon: 'skill', kind: '教學動畫', title: 'Codex Skills', subtitle: '認識 Skill、在 Codex 建立、呼叫', duration: 420,
+        goal: '看完後能說出 Skill 由哪些檔案組成、Codex 怎麼按需載入它，並能用 $skill-creator 或手動建立 Skill，再用 $ 明確呼叫或靠描述自動觸發。',
+        player: 'codex-skills/player/index.html?project=../ep/project.json',
+        variants: [['zh-TW', '中文配音＋中英字幕'], ['zh-TW-vi', '中文配音＋中越字幕'], ['en-US', 'English']],
+        chapters: [[0,'起源：把重講的流程寫成卡片'],[50,'原理：Skill 的組成'],[104,'原理：漸進式揭露'],[145,'比較：Skill、AGENTS.md、MCP、Plugin'],[196,'應用：在 Codex 建立 Skill'],[269,'應用：呼叫 Skill'],[341,'展望：已公布、趨勢與未解問題'],[385,'回顧']]
+      }
+    ] },
+  { key: 'p4', no: 4, hue: 32, title: 'Codex 實作案例', en: 'Case Studies',
+    desc: '從 MCP 操控 Blender、三個建模案例到批改作業的完整紀錄，再看以 Codex 完成的上線作品。',
+    items: [
+      {
+        id: 'codex-blender', repo: 'codex-blender', icon: 'cube', kind: '教學動畫', title: 'Codex × Blender', subtitle: '用一句話操控 3D 軟體', duration: 420,
+        goal: '看完後能說出 Codex 操控 Blender 的兩條路（背景腳本、MCP 即時連線）與 MCP 迴路，並能用 codex mcp add 接上 Blender、用一句話建出場景後先檢查再修改。',
+        player: 'codex-blender/player/index.html?project=../ep/project.json',
+        variants: [['zh-TW', '中文配音＋中英字幕'], ['zh-TW-vi', '中文配音＋中越字幕'], ['en-US', 'English']],
+        chapters: [[0,'起源：Codex 需要一座橋'],[52,'原理一：兩條路'],[98,'原理二：MCP 迴路'],[142,'步驟：四步接上 Blender'],[206,'比較：三種做法'],[264,'應用一：一句話建場景（示範）'],[315,'應用二：批次整理＋安全'],[366,'展望與回顧']]
+      },
+      {
+        id: 'blender-three-cases', repo: 'blender-three-cases-record', icon: 'blocks', kind: '實作紀錄', title: 'Blender 三案例實作紀錄', subtitle: '馬克杯、西洋棋主教、漢堡', duration: 423,
+        goal: '看完能說出三個案例各自用哪一種檢查（看圖、讀尺寸、包圍盒）發現問題、如何修正，並正確解讀回合耗時的定義。',
+        langs: '中文配音・English・中英／中越字幕',
+        chapters: [[0,'開場'],[22,'方法與時間定義'],[53,'馬克杯：截面旋轉'],[80,'馬克杯：把手與刻字'],[105,'馬克杯：反光與法線'],[138,'馬克杯：重開驗證'],[159,'主教：環境受阻'],[193,'主教：名牌逐字切割'],[223,'主教：最終腳本'],[248,'主教：時間分解'],[265,'漢堡：三片肉'],[291,'漢堡：凸字問題'],[318,'漢堡：字型與網格修正'],[347,'漢堡：交付成果'],[371,'共同的一課'],[398,'資料包與畫面標記']]
+      },
+      {
+        id: 'codex-essay-review', repo: 'codex-essay-review-replay', icon: 'essay', kind: '實作紀錄', title: 'Codex 依 Rubric 批改十篇英文作文', subtitle: '依操作日誌重建的實作紀錄', duration: 520,
+        goal: '看完能說出這次批改作業的主要步驟、各項失敗如何被修正，並能分辨文法錯誤與風格改善、正確解讀用時與用量數字。',
+        langs: '中文配音・中英字幕',
+        chapters: [[0,'任務與輸入'],[50,'讀取技能與啟動限制'],[80,'轉換資料與取得授權'],[113,'逐篇評閱'],[158,'文法錯誤與風格改善'],[202,'Word 初次輸出'],[232,'簡報規格與前五頁'],[278,'語法失敗與 Word 分頁'],[310,'十四頁完成，Word 變二十四頁'],[345,'修復版面與檔案鎖定'],[379,'原生匯出與最終檢視'],[408,'結果與用量'],[473,'還原界線與交接']]
+      }
+    ],
+    works: {
+      title: '作品展示', note: '以 Codex（GPT-6 Astra）實作完成的網站', model: 'GPT-6 Astra',
+      items: [
+        {
+          id: 'jit-credit-survivor', icon: 'game', title: '景文科大學分生存戰', subtitle: '資訊與通訊系主題網頁遊戲', type: '網頁遊戲',
+          url: 'https://jit-credit-survivor.aijust.chatgpt.site/',
+          desc: '三分鐘一局的生存射擊遊戲：撐過四學年、集滿 128 學分，通過英檢與證照，打倒延畢魔王。結合資通系修課路線，免下載，鍵盤或手機即可遊玩。'
+        },
+        {
+          id: 'voice-rollcall', icon: 'mic', title: '點名所', subtitle: '線上語音點名系統', type: '網頁應用', note: '需以 Google 帳號登入',
+          url: 'https://voice-rollcall.aijust.chatgpt.site/',
+          desc: '給教師使用的語音點名工作空間。以 Google 帳號登入，每個帳號的名單與點名紀錄各自獨立。'
+        },
+        {
+          id: 'just-campus-3d', icon: 'campus', title: '景文科大 3D 立體校園探索', subtitle: '從平面配置圖到 Blender 立體校園', type: '3D 互動網站',
+          url: 'https://just-campus-3d-journal.aijust.chatgpt.site/',
+          desc: '依校區配置圖以 Blender 重建九棟校園建築，可自由旋轉、點選建築的互動 3D 模型，並附 66 秒校園巡禮動畫與六階段製作紀錄。',
+          links: [['建模操作＆成果影片', 'https://youtu.be/pSWyexUzdy4']]
+        }
+      ]
+    } },
+  { key: 'p5', no: 5, hue: 12, dark: true, title: 'Claude Code 作品', en: 'Built with Claude Code',
+    desc: '以 Claude Code（Opus 5.5）完成的介紹影片、教學動畫，以及小六自然科互動作品。',
+    items: [],
+    works: {
+      model: 'Opus 5.5',
+      items: [
+        {
+          id: 'jinwen-ice-intro', repo: 'jinwen-ice-intro-video', icon: 'film', title: '景文資通系介紹', subtitle: '景文科技大學資訊與通訊系介紹影片', type: '互動介紹影片',
+          url: 'https://appjust.github.io/jinwen-ice-intro-video/output/interactive/', btnLabel: '開始觀看',
+          desc: 'Vox 紙張拼貼風格的系所介紹：從「讀大學只是為了文憑？」的痛點出發，以科技業人才供需數據說明市場需求，再帶出資通系的學習方向。中英雙語。'
+        },
+        {
+          id: 'cycu-lc', repo: 'cycu-lc-video', icon: 'globe', title: '中原語言中心介紹', subtitle: '中原大學語言中心介紹影片', type: '互動介紹影片',
+          url: 'https://appjust.github.io/cycu-lc-video/', btnLabel: '開始觀看',
+          desc: 'Vox 風格的語言中心介紹影片，約 2 分鐘，附中英雙語字幕，可全螢幕播放。'
+        },
+        {
+          id: 'mqtt-intro', repo: 'mqtt-intro', icon: 'signal', title: 'MQTT 入門', subtitle: '訊息如何找到對的人？', type: '教學動畫・約 5 分鐘',
+          url: 'https://appjust.github.io/mqtt-intro/', btnLabel: '開始觀看',
+          desc: '看完能說明「發布者 → Broker → 訂閱者」的流程，並能為教室監測情境設計 Topic、選擇 QoS。內容涵蓋發布／訂閱、Topic 與萬用字元、QoS 0/1/2、保留訊息與遺囑、MQTT vs HTTP。中文配音，中英／中越字幕。'
+        },
+        {
+          id: 'claude-artifacts', icon: 'weather', title: '小六自然科互動作品製作', subtitle: '教學複習網站、Godot 遊戲與課程範例動畫', type: 'Claude Artifact',
+          group: [
+            {
+              tag: '複習', name: '天氣變化單元複習', url: 'https://claude.ai/artifact/5JComwMsSThWJ9hNT6zWrq',
+              desc: '六年級自然「探索天氣的變化」考前總複習：18 堂配音字幕動畫課、觀念小遊戲、測驗與錯題本，以及考前重點卡。'
+            },
+            {
+              tag: '遊戲', name: '天氣亂鬥', url: 'https://claude.ai/artifact/JQLa7LKBG8jXy2bMKW3Ph8',
+              desc: '以 Godot 製作、在瀏覽器執行的颱風主題遊戲（STORM BRAWL）。第一次載入約 35 MB。'
+            },
+            {
+              tag: '課程', name: 'AI Agent × Godot 課程範例', url: 'https://claude.ai/artifact/B8g5bCayK2suddfQxED6ex',
+              desc: '以實際案例說明如何和 AI agent 來回溝通、做出 Godot 遊戲的教學動畫。中文／English 配音，中英、中越字幕。'
+            }
+          ]
+        }
+      ]
+    } }
 ];
 
-const ICON_PLAY = '<svg viewBox="0 0 12 12" aria-hidden="true"><path fill="currentColor" d="M3 1.5v9l7.5-4.5z"/></svg>';
-const ICON_ARROW = '<svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M2 6h8M6.5 2.5 10 6l-3.5 3.5"/></svg>';
-const ICON_CHEV = '<svg viewBox="0 0 12 12" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M4.5 2.5 8 6l-3.5 3.5"/></svg>';
-const ICON_GH = '<svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.72 1.22 1.88.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>';
+const CHECKS = ['免安裝，直接觀看', '中文／English 配音', '中英・中越雙語字幕', '手機、平板、電腦皆可'];
 
-const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const mmss = s => Math.floor(s / 60) + ':' + String(Math.round(s % 60)).padStart(2, '0');
+const TOOLS = [['OpenAI Codex',220],['Claude Code',12],['GPT-6 Astra',32],['Opus 5.5',12],['AGENTS.md',190],['Skills',190],['MCP',32],['Computer use',190],['規劃模式',190],['Worktrees',220],['Blender',32],['Godot',12],['MQTT',12],['RAG',258],['Prompt Engineering',258],['Context Engineering',258]];
+
+const LEARN = [
+  { icon: 'levels', hue: 258, tag: 'PART 01', title: '看懂 AI 的能力光譜', desc: 'AI 能力五級、認知四級漏斗與 17 個 LLM 核心概念，建立判斷 AI 工具的共同語言。' },
+  { icon: 'agents', hue: 258, tag: 'PART 01', title: '選對 AI 代理人', desc: '用「在哪裡執行、能碰什麼、誰來按確認」三個問題，比較五個 AI 代理人。' },
+  { icon: 'terminal', hue: 220, tag: 'PART 02', title: '上手 Codex 日常操作', desc: '代理迴圈、三種模式、工作位置與權限、模型與思考等級，以及每一個設定頁。' },
+  { icon: 'plan', hue: 190, tag: 'PART 03', title: '掌握進階工作流', desc: '規劃模式與目標、Computer use，以及用 Skill 把重複流程變成可重用的能力。' },
+  { icon: 'cube', hue: 32, tag: 'PART 04', title: '讓 AI 操控專業軟體', desc: '透過 MCP 讓 Codex 操作 Blender，並從真實案例看懂檢查與修正的方法。' },
+  { icon: 'game', hue: 12, tag: 'PART 04–05', title: '從想法做到上線作品', desc: '網頁遊戲、語音點名、3D 校園與教學網站，看 AI 代理人如何完成整件作品。' }
+];
+
+const FAQ = [
+  ['需要安裝任何軟體嗎？', '不需要。所有課程與作品都是網頁，用電腦、平板或手機的瀏覽器直接開啟即可。'],
+  ['可以切換配音和字幕語言嗎？', '可以，進入播放器後切換。多數課程提供中文配音與中英字幕，部分課程另有 English 配音、中越或中日字幕；每堂課的「課程詳情」會列出可用版本。'],
+  ['建議的學習順序是什麼？', '依課程地圖從 PART 01 開始：先建立 AI 基礎概念，再學 Codex 操作與新增功能，最後看實作案例與作品。每堂課也都可以單獨觀看。'],
+  ['作品需要帳號才能使用嗎？', '大部分作品可以直接開啟。「點名所」需要以 Google 帳號登入；「天氣亂鬥」第一次載入約 35 MB，建議使用穩定的網路。'],
+  ['課程內容是什麼時候製作的？', '課程皆製作於 2026 年 10 月。AI 工具更新很快，實際介面與功能可能與影片略有不同，請以官方最新說明為準。']
+];
+
+const IC = {
+  levels: '<path d="M5 20v-4M10 20v-8M15 20V8M20 20V4"/>',
+  funnel: '<path d="M3.5 4.5h17l-6.5 7.5v6l-4 2.5V12z"/>',
+  agents: '<circle cx="12" cy="5" r="2.4"/><circle cx="5" cy="18" r="2.4"/><circle cx="19" cy="18" r="2.4"/><path d="M10.8 7.1 6.2 15.9M13.2 7.1l4.6 8.8M7.4 18h9.2"/>',
+  chip: '<rect x="6" y="6" width="12" height="12" rx="2.5"/><path d="M9.5 2.5V6M14.5 2.5V6M9.5 18v3.5M14.5 18v3.5M2.5 9.5H6M2.5 14.5H6M18 9.5h3.5M18 14.5h3.5"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/>',
+  terminal: '<rect x="3" y="4.5" width="18" height="15" rx="3"/><path d="m7.5 9.5 3 2.5-3 2.5M12.5 15h4"/>',
+  sliders: '<path d="M4 7h9M17 7h3M4 12h3M11 12h9M4 17h11M19 17h1"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="17" r="2"/>',
+  plan: '<path d="M10 6.5h10M10 12h10M10 17.5h10"/><path d="m3.8 6.5 1.4 1.4L8 5M3.8 12l1.4 1.4L8 10.5"/><circle cx="5.8" cy="17.5" r="1.6"/>',
+  cursor: '<rect x="2.5" y="3.5" width="19" height="13" rx="2.5"/><path d="M8 20.5h8M12 16.5v4"/><path d="m10 7 5.5 2.3-2.3.9-.9 2.3z"/>',
+  skill: '<rect x="4" y="3" width="12.5" height="16" rx="2.5"/><path d="M7.5 8h5.5M7.5 11.5h5.5M7.5 15h3"/><path d="M20 7v11.5a2.5 2.5 0 0 1-2.5 2.5H8.5"/>',
+  cube: '<path d="M12 2.8 20.2 7.4v9.2L12 21.2l-8.2-4.6V7.4z"/><path d="M3.8 7.4 12 12l8.2-4.6M12 12v9.2"/>',
+  blocks: '<rect x="3" y="12.5" width="8" height="8" rx="1.8"/><rect x="13" y="12.5" width="8" height="8" rx="1.8"/><rect x="8" y="3.5" width="8" height="8" rx="1.8"/>',
+  essay: '<path d="M14 3H6.5A2.5 2.5 0 0 0 4 5.5v13A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/>',
+  game: '<rect x="2.5" y="7" width="19" height="11" rx="5.5"/><path d="M7.5 10.5v4M5.5 12.5h4"/><circle cx="15.5" cy="11.2" r=".9"/><circle cx="18" cy="13.8" r=".9"/>',
+  mic: '<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/>',
+  campus: '<path d="M3 21h18M5 21V8.5L12 4l7 4.5V21"/><path d="M9.5 21v-5h5v5M9 11h.01M15 11h.01"/>',
+  film: '<rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10.2 9.4 4.6 2.6-4.6 2.6z"/>',
+  globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9M12 3C9.4 5.6 8.2 8.6 8.2 12s1.2 6.4 3.8 9"/>',
+  signal: '<circle cx="12" cy="12" r="2"/><path d="M8.5 8.5a5 5 0 0 0 0 7M15.5 8.5a5 5 0 0 1 0 7M5.6 5.6a9 9 0 0 0 0 12.8M18.4 5.6a9 9 0 0 1 0 12.8"/>',
+  weather: '<circle cx="8.5" cy="8.5" r="3.2"/><path d="M8.5 2.5v1M2.5 8.5h1M4.3 4.3l.7.7M12.7 4.3l-.7.7"/><path d="M8 20.5h9a3.5 3.5 0 0 0 .2-7 5 5 0 0 0-9.4 1.4A2.8 2.8 0 0 0 8 20.5z"/>',
+  play: '<path d="M7 4.5v15l12.5-7.5z" fill="currentColor" stroke="none"/>',
+  ext: '<path d="M7 17 17 7M9 7h8v8"/>',
+  check: '<path d="m5 12.5 4.5 4.5L19 7.5"/>',
+  list: '<path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/>',
+  sparkle: '<path d="M12 3.5 13.8 10.2 20.5 12l-6.7 1.8L12 20.5l-1.8-6.7L3.5 12l6.7-1.8z"/>',
+  close: '<path d="M6 6l12 12M18 6 6 18"/>',
+  plus: '<path d="M12 5v14M5 12h14"/>',
+  clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2"/>',
+  info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>'
+};
+const GH = '<svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.72 1.22 1.88.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>';
+
+const icon = k => `<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[k]}</svg>`;
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const mmss = s => { const t = Math.round(s); return Math.floor(t / 60) + ':' + String(t % 60).padStart(2, '0'); };
 const pad = n => String(n).padStart(2, '0');
+const $ = id => document.getElementById(id);
 const withVariant = (path, v) => BASE + path + (path.includes('?') ? '&' : '?') + 'variant=' + encodeURIComponent(v);
-const btn = (href, label, primary, icon) =>
-  `<a class="btn${primary ? ' primary' : ''}" href="${esc(href)}" target="_blank" rel="noopener">${icon || ICON_PLAY}${esc(label)}</a>`;
-const repoLink = repo =>
-  `<a class="repo" href="https://github.com/APPJust/${esc(repo)}" target="_blank" rel="noopener" aria-label="GitHub repo：${esc(repo)}">${ICON_GH}GitHub</a>`;
+const primaryUrl = c => c.variants ? withVariant(c.player, c.variants[0][0]) : (c.url || BASE + c.repo + '/');
+const ext = (href, cls, inner, label) => `<a class="${cls}" href="${esc(href)}" target="_blank" rel="noopener"${label ? ` aria-label="${esc(label)}"` : ''}>${inner}</a>`;
+const hasEn = c => (c.variants || []).some(([v]) => v.startsWith('en')) || /English|英文/.test(c.langs || '');
+const langShort = c => hasEn(c) ? '中文／English' : '中文';
+const dur = c => c.eps ? c.eps.reduce((a, e) => a + e.duration, 0) : c.duration;
+const worksIn = p => p.works ? p.works.items.reduce((a, it) => a + (it.group ? it.group.length : 1), 0) : 0;
 
-function actions(item, repo) {
-  if (item.variants) return `<div class="actions">${item.variants.map(([v, label], i) => btn(withVariant(item.player, v), label, i === 0)).join('')}</div>`;
-  return `<div class="actions">${btn(item.url || BASE + repo + '/', '開始觀看', true)}<span class="langs">${esc(item.langs)}，進入後切換</span></div>`;
+const COURSES = PARTS.flatMap(p => p.items);
+const TOTAL = {
+  courses: COURSES.length,
+  units: COURSES.reduce((a, c) => a + (c.eps ? c.eps.length : 1), 0),
+  minutes: Math.round(COURSES.reduce((a, c) => a + dur(c), 0) / 60),
+  works: PARTS.reduce((a, p) => a + worksIn(p), 0)
+};
+function pathMeta(p) {
+  const c = p.items.length, w = worksIn(p);
+  if (c && w) return `${c} 門課＋${w} 件作品`;
+  if (c) return `${c} 門課・約 ${Math.round(p.items.reduce((a, x) => a + dur(x), 0) / 60)} 分鐘`;
+  return `${w} 件作品`;
 }
-function goal(item) {
-  return item.goal ? `<p class="goal"><small>${esc(item.goalLabel || '學習目標')}</small>${esc(item.goal)}</p>` : '';
-}
-function chapters(item) {
-  if (!item.chapters) return '';
-  return `<details class="chapters"><summary>${ICON_CHEV}章節 ${item.chapters.length}</summary><ol class="timeline">${
-    item.chapters.map(([t, n]) => `<li><time>${mmss(t)}</time><span>${esc(n)}</span></li>`).join('')}</ol></details>`;
+function partChips(p) {
+  const out = [];
+  if (p.items.length) out.push(`${p.items.length} 門課`, `約 ${Math.round(p.items.reduce((a, c) => a + dur(c), 0) / 60)} 分鐘`);
+  const w = worksIn(p);
+  if (w) out.push(`${w} 件作品`);
+  return out;
 }
 
-function render() {
-  const list = document.getElementById('list'), toc = document.getElementById('toc');
-  let n = 0, units = 0, secs = 0, works = 0;
-  PARTS.forEach((part, pi) => {
-    const sec = document.createElement('section');
-    sec.className = 'part';
-    sec.innerHTML = `<div class="part-head"><span class="part-no">PART ${pad(pi + 1)}</span><h2>${esc(part.title)}</h2><p>${esc(part.en)}</p></div>`;
-    let tocHtml = `<div class="toc-part"><p>${pad(pi + 1)}　${esc(part.title)}</p>`;
-    for (const c of part.courses) {
-      n++;
-      const total = c.eps ? c.eps.reduce((a, e) => a + e.duration, 0) : c.duration;
-      units += c.eps ? c.eps.length : 1; secs += total;
-      const dur = c.durationNote || (c.eps ? `${c.eps.length} 集・` : '') + `約 ${Math.round(total / 60)} 分鐘`;
-      const el = document.createElement('article');
-      el.className = 'course'; el.id = c.id;
-      el.innerHTML = `
-        <div class="idx">${pad(n)}</div>
-        <div>
-          <div class="kicker"><span>${esc(dur)}</span>${c.repo ? repoLink(c.repo) : '<span class="host">Claude Artifact</span>'}</div>
-          <h3>${esc(c.title)}</h3>
-          <p class="subtitle">${esc(c.subtitle)}</p>
-          ${c.eps ? `
-            <div class="actions">${btn(BASE + c.repo + '/', '系列首頁', false, ICON_ARROW)}</div>
-            <div class="episodes">${c.eps.map((e, i) => `
-              <div class="ep">
-                <div class="ep-head"><span class="ep-tag">EP${i + 1}</span><h4>${esc(e.name)}</h4><span class="ep-dur">${mmss(e.duration)}</span></div>
-                ${goal(e)}${actions(e, c.repo)}${chapters(e)}
-              </div>`).join('')}
-            </div>` : `${goal(c)}${actions(c, c.repo)}${chapters(c)}`}
-        </div>`;
-      sec.append(el);
-      tocHtml += `<a href="#${c.id}"><span>${pad(n)}</span>${esc(c.title)}</a>`;
-    }
-    if (part.works) {
-      const w = part.works;
-      if (w.title) {
-        sec.insertAdjacentHTML('beforeend', `<div class="subhead"><h3>${esc(w.title)}</h3><span>${esc(w.note)}</span></div>`);
-        tocHtml += `<p class="toc-sub">${esc(w.title)}</p>`;
-      }
-      for (const it of w.items) {
-        n++; works += it.group ? it.group.length : 1;
-        const el = document.createElement('article');
-        el.className = 'course work'; el.id = it.id;
-        el.innerHTML = `
-          <div class="idx">${pad(n)}</div>
-          <div>
-            <div class="kicker"><span class="model">${esc(w.model)}</span><span>${esc(it.type)}</span>${it.note ? `<span class="dot"></span><span>${esc(it.note)}</span>` : ''}${it.repo ? repoLink(it.repo) : ''}</div>
-            <h3>${esc(it.title)}</h3>
-            <p class="subtitle">${esc(it.subtitle)}</p>
-            ${it.group ? `<div class="episodes">${it.group.map(g => `
-              <div class="ep">
-                <div class="ep-head"><span class="ep-tag">${esc(g.tag)}</span><h4>${esc(g.name)}</h4></div>
-                <p class="goal">${esc(g.desc)}</p>
-                <div class="actions">${btn(g.url, '開啟作品', true, ICON_ARROW)}</div>
-              </div>`).join('')}
-            </div>` : `
-            <p class="goal"><small>作品內容</small>${esc(it.desc)}</p>
-            <div class="actions">${btn(it.url, it.btnLabel || '開啟網站', true, it.btnLabel ? ICON_PLAY : ICON_ARROW)}${(it.links || []).map(([l, u]) => btn(u, l, false)).join('')}</div>`}
-          </div>`;
-        sec.append(el);
-        tocHtml += `<a href="#${it.id}"><span>${pad(n)}</span>${esc(it.title)}</a>`;
-      }
-    }
-    list.append(sec);
-    toc.insertAdjacentHTML('beforeend', tocHtml + '</div>');
-  });
-  document.getElementById('stats').innerHTML =
-    `<li><b>${PARTS.reduce((a, p) => a + p.courses.length, 0)}</b><span>門課程</span></li><li><b>${works}</b><span>個實作作品</span></li><li><b>${units}</b><span>個互動教學單元</span></li><li><b>${Math.round(secs / 60)}</b><span>分鐘教學內容</span></li>`;
-
-  // 目錄隨捲動標示目前課程
-  const links = new Map([...toc.querySelectorAll('a')].map(a => [a.getAttribute('href').slice(1), a]));
-  const io = new IntersectionObserver(entries => {
-    for (const e of entries) if (e.isIntersecting) {
-      links.forEach(a => a.classList.remove('active'));
-      links.get(e.target.id)?.classList.add('active');
-    }
-  }, { rootMargin: '-30% 0px -60% 0px' });
-  document.querySelectorAll('.course').forEach(el => io.observe(el));
+// 封面：依階段色相產生，每張的光暈位置不同
+const GLOW = [['86%','6%'],['14%','10%'],['84%','94%'],['50%','-6%'],['10%','76%'],['72%','46%']];
+function cover(part, n, ic, o = {}) {
+  const [gx, gy] = GLOW[n % GLOW.length];
+  const h = part.hue + ((n % 3) - 1) * 9;
+  const tag = o.href ? 'a' : 'div';
+  const attrs = o.href ? ` href="${esc(o.href)}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"` : ' aria-hidden="true"';
+  const badge = o.badge ? `<span class="cover-badge">${icon('sparkle')}${esc(o.badge)}</span>`
+    : o.dur ? `<span class="cover-badge">${icon('clock')}${esc(o.dur)}</span>` : '';
+  const pi = o.pi || 'play';
+  return `<${tag} class="cover${o.work ? ' cover--work' : ''}" style="--h:${h};--gx:${gx};--gy:${gy}"${attrs}>
+    <span class="cover-ring"></span>
+    <span class="cover-part">PART ${pad(part.no)}${o.work ? '・作品' : ''}</span>${badge}
+    <span class="cover-ic">${icon(ic)}</span>
+    <span class="cover-no">${pad(n)}</span>
+    ${o.href ? `<span class="cover-play${pi === 'play' ? ' is-play' : ''}">${icon(pi)}</span>` : ''}
+  </${tag}>`;
 }
-render();
+
+const registry = new Map();
+const meta = arr => `<div class="card-meta">${arr.filter(Boolean).map(m => `<span>${esc(m)}</span>`).join('<span class="dot"></span>')}</div>`;
+const repoBtn = repo => ext(`https://github.com/APPJust/${repo}`, 'btn btn-ghost btn-sm btn-icon', GH, `GitHub repo：${repo}`);
+
+function courseCard(part, c, n) {
+  registry.set(c.id, { part, item: c, n });
+  return `<article class="card" id="${c.id}">
+    ${cover(part, n, c.icon, { href: primaryUrl(c), dur: c.durationLabel || mmss(c.duration) })}
+    <div class="card-body">
+      ${meta([c.kind, c.chapters ? `${c.chapters.length} 個章節` : c.durationNote, langShort(c)])}
+      <h3>${esc(c.title)}</h3>
+      <p class="sub">${esc(c.subtitle)}</p>
+      <div class="card-actions">
+        ${ext(primaryUrl(c), 'btn btn-primary btn-sm', `${icon('play')}開始觀看`)}
+        <button class="btn btn-ghost btn-sm" type="button" data-detail="${c.id}">課程詳情</button>
+      </div>
+    </div>
+  </article>`;
+}
+
+// 精選寬卡：補滿一整列，直接列出涵蓋主題或章節
+function featureCard(part, c, n) {
+  registry.set(c.id, { part, item: c, n });
+  const versions = c.variants
+    ? c.variants.map(([v, l], i) => ext(withVariant(c.player, v), `btn ${i ? 'btn-ghost' : 'btn-primary'} btn-sm`, `${icon('play')}${esc(l)}`)).join('')
+    : ext(primaryUrl(c), 'btn btn-primary btn-sm', `${icon('play')}開始觀看`);
+  const detail = c.topics
+    ? `<p class="topics-label">${esc(c.goalLabel || '涵蓋內容')}・${c.topics.length} 個概念</p><div class="topics">${c.topics.map(t => `<span>${esc(t)}</span>`).join('')}</div>`
+    : `<p class="desc">${esc(c.goal)}</p><ol class="mini-ch">${c.chapters.map(([t, name]) => `<li><time>${mmss(t)}</time><span>${esc(name)}</span></li>`).join('')}</ol>`;
+  return `<article class="card wide feature" id="${c.id}">
+    ${cover(part, n, c.icon, { href: primaryUrl(c), dur: c.durationLabel || mmss(c.duration) })}
+    <div class="card-body">
+      ${meta([c.kind, c.chapters ? `${c.chapters.length} 個章節` : c.durationNote, langShort(c)])}
+      <h3>${esc(c.title)}</h3>
+      <p class="sub">${esc(c.subtitle)}</p>
+      ${detail}
+      <div class="card-actions">${versions}<button class="btn btn-ghost btn-sm" type="button" data-detail="${c.id}">課程詳情</button></div>
+    </div>
+  </article>`;
+}
+
+function seriesCard(part, c, n) {
+  const rows = c.eps.map((e, i) => {
+    const key = `${c.id}-ep${i + 1}`;
+    registry.set(key, { part, item: e, n, series: c, epNo: i + 1 });
+    return `<div class="row">
+      <span class="row-tag">EP${i + 1}</span>
+      <div><h4>${esc(e.name)}</h4><p>${mmss(e.duration)}・${e.chapters.length} 個章節</p></div>
+      <div class="row-actions">
+        ${e.variants.map(([v, l], j) => ext(withVariant(e.player, v), `btn ${j ? 'btn-ghost' : 'btn-primary'} btn-sm`, `${j ? '' : icon('play')}${esc(l)}`)).join('')}
+        <button class="btn btn-text btn-sm" type="button" data-detail="${key}" aria-label="EP${i + 1} 詳情">詳情</button>
+      </div>
+    </div>`;
+  }).join('');
+  return `<article class="card wide" id="${c.id}">
+    ${cover(part, n, c.icon, { href: BASE + c.repo + '/', dur: `${c.eps.length} 集・${mmss(dur(c))}` })}
+    <div class="card-body">
+      ${meta([c.kind, `${c.eps.length} 集`, langShort(c.eps[0])])}
+      <h3>${esc(c.title)}</h3>
+      <p class="sub">${esc(c.subtitle)}</p>
+      <div class="rows">${rows}</div>
+      <div class="card-actions">${ext(BASE + c.repo + '/', 'btn btn-ghost btn-sm', `系列首頁${icon('ext')}`)}${repoBtn(c.repo)}</div>
+    </div>
+  </article>`;
+}
+
+function workCard(part, w, it, n) {
+  const main = it.btnLabel ? `${icon('play')}${esc(it.btnLabel)}` : `開啟網站${icon('ext')}`;
+  return `<article class="card" id="${it.id}">
+    ${cover(part, n, it.icon, { href: it.url, work: true, badge: w.model, pi: it.btnLabel ? 'play' : 'ext' })}
+    <div class="card-body">
+      ${meta([it.type, it.note])}
+      <h3>${esc(it.title)}</h3>
+      <p class="sub">${esc(it.subtitle)}</p>
+      <p class="desc">${esc(it.desc)}</p>
+      <div class="card-actions">
+        ${ext(it.url, 'btn btn-primary btn-sm', main)}
+        ${(it.links || []).map(([l, u]) => ext(u, 'btn btn-ghost btn-sm', `${icon('play')}${esc(l)}`)).join('')}
+        ${it.repo ? repoBtn(it.repo) : ''}
+      </div>
+    </div>
+  </article>`;
+}
+
+function groupCard(part, w, it, n) {
+  const rows = it.group.map(g => `<div class="row">
+      <span class="row-tag">${esc(g.tag)}</span>
+      <div><h4>${esc(g.name)}</h4><p>${esc(g.desc)}</p></div>
+      <div class="row-actions">${ext(g.url, 'btn btn-primary btn-sm', `開啟作品${icon('ext')}`)}</div>
+    </div>`).join('');
+  return `<article class="card wide" id="${it.id}">
+    ${cover(part, n, it.icon, { work: true, badge: w.model })}
+    <div class="card-body">
+      ${meta([it.type, `${it.group.length} 件作品`])}
+      <h3>${esc(it.title)}</h3>
+      <p class="sub">${esc(it.subtitle)}</p>
+      <div class="rows">${rows}</div>
+    </div>
+  </article>`;
+}
+
+function renderParts() {
+  let n = 0;
+  return PARTS.map((p, i) => {
+    const cards = p.items.map(c => { n++; return c.eps ? seriesCard(p, c, n) : c.feature ? featureCard(p, c, n) : courseCard(p, c, n); }).join('');
+    let works = '';
+    if (p.works) {
+      const w = p.works;
+      const wc = w.items.map(it => { n++; return it.group ? groupCard(p, w, it, n) : workCard(p, w, it, n); }).join('');
+      works = (w.title ? `<div class="sub-head"><h3>${esc(w.title)}</h3><span>${esc(w.note)}</span></div>` : '') + `<div class="grid">${wc}</div>`;
+    }
+    const cls = p.dark ? ' band-dark' : (i % 2 ? ' tint' : '');
+    return `<section class="part${cls}" id="${p.key}" style="--h:${p.hue}" aria-labelledby="${p.key}-t">
+      <div class="container">
+        <div class="part-head">
+          <div><span class="part-label">PART ${pad(p.no)}・${esc(p.en)}</span><h2 id="${p.key}-t">${esc(p.title)}</h2><p>${esc(p.desc)}</p></div>
+          <div class="part-meta">${partChips(p).map(t => `<span>${esc(t)}</span>`).join('')}</div>
+        </div>
+        ${cards ? `<div class="grid">${cards}</div>` : ''}
+        ${works}
+      </div>
+    </section>`;
+  }).join('');
+}
+
+function renderMock(c) {
+  $('mock').innerHTML = `
+    <a class="mock" href="${esc(primaryUrl(c))}" target="_blank" rel="noopener" aria-label="開始觀看：${esc(c.title)}">
+      <div class="mock-bar"><i></i><i></i><i></i><span>${esc(c.title)}</span><b>PART 02</b></div>
+      <div class="mock-screen" style="--h:225">
+        <svg class="mock-loop" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="100" cy="100" r="66" fill="none" stroke="rgba(255,255,255,.24)" stroke-width="1.5" stroke-dasharray="3 7"/>
+          <g class="orbit"><circle cx="100" cy="34" r="7" fill="#fff"/><circle cx="166" cy="100" r="5" fill="rgba(255,255,255,.55)"/><circle cx="100" cy="166" r="5" fill="rgba(255,255,255,.55)"/><circle cx="34" cy="100" r="5" fill="rgba(255,255,255,.55)"/></g>
+        </svg>
+        <span class="mock-play">${icon('play')}</span>
+        <div class="mock-cap"><small>第 2 章</small>${esc(c.chapters[1][1])}</div>
+      </div>
+      <div class="mock-prog"><i></i></div>
+      <div class="mock-meta"><span>1:05 / ${mmss(c.duration)}</span><span>${esc(c.variants[0][1])}</span></div>
+      <ol class="mock-ch">${c.chapters.slice(0, 4).map(([t, name], i) => `<li${i === 1 ? ' class="on"' : ''}><time>${mmss(t)}</time><span>${esc(name)}</span></li>`).join('')}</ol>
+    </a>
+    <div class="float f1" aria-hidden="true"><span class="fic">${icon('list')}</span><div><b>${c.chapters.length} 個章節</b><small>點選章節直接跳轉</small></div></div>
+    <div class="float f2" aria-hidden="true"><span class="fic">${icon('globe')}</span><div><b>中英・中越字幕</b><small>播放器內切換</small></div></div>`;
+}
+
+// 課程詳情視窗
+const dlg = $('dlg');
+function openDetail(key) {
+  const r = registry.get(key);
+  if (!r) return;
+  const { part, item: c, n, series, epNo } = r;
+  const title = series ? `EP${epNo}｜${c.name}` : c.title;
+  const sub = series ? series.title : c.subtitle;
+  const repo = series ? series.repo : c.repo;
+  const chips = [
+    `${icon('clock')}${esc(c.durationNote || mmss(c.duration))}`,
+    c.chapters ? `${icon('list')}${c.chapters.length} 個章節` : '',
+    `${icon('globe')}${langShort(c)}`
+  ].filter(Boolean);
+  const versions = c.variants
+    ? c.variants.map(([v, l], i) => ext(withVariant(c.player, v), `btn ${i ? 'btn-ghost' : 'btn-primary'}`, `${icon('play')}${esc(l)}`)).join('')
+    : ext(c.url || BASE + c.repo + '/', 'btn btn-primary', `${icon('play')}開始觀看`);
+  $('dlgBody').innerHTML = `
+    ${cover(part, n, (series || c).icon, { dur: c.durationLabel || mmss(c.duration) })}
+    <button class="dlg-close" type="button" aria-label="關閉">${icon('close')}</button>
+    <div class="dlg-body" style="--h:${part.hue}">
+      <span class="part-label">PART ${pad(part.no)}・${esc(part.title)}</span>
+      <h3 id="dlgTitle">${esc(title)}</h3>
+      <p class="dlg-sub">${esc(sub)}</p>
+      <div class="dlg-chips">${chips.map(x => `<span>${x}</span>`).join('')}</div>
+      ${c.goal ? `<h4>${esc(c.goalLabel || '學習目標')}</h4><p class="dlg-goal">${esc(c.goal)}</p>` : ''}
+      <h4>選擇版本觀看</h4>
+      <div class="versions">${versions}</div>
+      ${c.variants ? '' : `<p class="dlg-note">${icon('info')}可用語言：${esc(c.langs)}，進入播放器後切換。</p>`}
+      ${c.chapters ? `<h4>章節</h4><ol class="timeline">${c.chapters.map(([t, name]) => `<li><time>${mmss(t)}</time><span>${esc(name)}</span></li>`).join('')}</ol>` : ''}
+      <div class="dlg-foot">
+        ${repo ? ext(`https://github.com/APPJust/${repo}`, '', `${GH}GitHub 原始碼`) : '<span></span>'}
+        <span>${c.url && c.url.includes('claude.ai') ? 'Claude Artifact' : 'GitHub Pages'}</span>
+      </div>
+    </div>`;
+  document.documentElement.classList.add('lock');
+  dlg.showModal();
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-detail]');
+  if (b) openDetail(b.dataset.detail);
+});
+const unlock = () => document.documentElement.classList.remove('lock');
+dlg.addEventListener('click', e => { if (e.target === dlg || e.target.closest('.dlg-close')) { dlg.close(); unlock(); } });
+dlg.addEventListener('close', unlock);
+dlg.addEventListener('cancel', unlock);
+
+// 組裝頁面
+const first = PARTS[0].items[0];
+$('heroStart').href = primaryUrl(first);
+$('ctaStart').href = primaryUrl(first);
+$('checks').innerHTML = CHECKS.map(t => `<li>${icon('check')}${esc(t)}</li>`).join('');
+renderMock(PARTS[1].items[0]);
+$('stats').innerHTML = [[TOTAL.courses, '門課程'], [TOTAL.units, '個互動教學單元'], [TOTAL.minutes, '分鐘教學內容'], [TOTAL.works, '件實作作品']]
+  .map(([v, l]) => `<div class="stat"><b>${v}</b><span>${l}</span></div>`).join('');
+const chipRow = TOOLS.map(([t, h]) => `<span class="chip" style="--h:${h}"><i></i>${esc(t)}</span>`).join('');
+$('track').innerHTML = `<span>${chipRow}</span><span aria-hidden="true">${chipRow}</span>`;
+$('learnGrid').innerHTML = LEARN.map(l => `<article class="learn-card" style="--h:${l.hue}">
+  <span class="learn-ic">${icon(l.icon)}</span><span class="tag">${esc(l.tag)}</span>
+  <h3>${esc(l.title)}</h3><p>${esc(l.desc)}</p></article>`).join('');
+$('pathList').innerHTML = PARTS.map(p => `<li><a class="step" href="#${p.key}" style="--h:${p.hue}">
+  <span class="step-no">${pad(p.no)}</span><h3>${esc(p.short || p.title)}</h3><span class="en">${esc(p.en)}</span>
+  <span class="meta">${esc(pathMeta(p))}</span></a></li>`).join('');
+$('curLead').textContent = `${TOTAL.courses} 門課程與 ${TOTAL.works} 件實作作品。點「課程詳情」可查看學習目標、章節與所有語言版本。`;
+$('tabs').innerHTML = PARTS.map(p => `<a class="tab" href="#${p.key}" style="--h:${p.hue}"><i>${pad(p.no)}</i>${esc(p.title)}</a>`).join('');
+$('parts').innerHTML = renderParts();
+$('faqList').innerHTML = FAQ.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}<span class="pm">${icon('plus')}</span></summary><p>${esc(a)}</p></details>`).join('');
+$('ctaText').textContent = `${TOTAL.courses} 門課程、約 ${TOTAL.minutes} 分鐘，循序帶你從 AI 概念走到實作作品。`;
+$('footParts').innerHTML = PARTS.map(p => `<li><a href="#${p.key}">${esc(p.title)}</a></li>`).join('');
+
+// 課程階段分頁：隨捲動標示目前階段
+const tabsBox = $('tabs');
+const tabLinks = [...tabsBox.querySelectorAll('.tab')];
+const spy = new IntersectionObserver(entries => {
+  for (const e of entries) {
+    if (!e.isIntersecting) continue;
+    tabLinks.forEach(t => t.classList.toggle('active', t.hash === '#' + e.target.id));
+    const a = tabLinks.find(t => t.classList.contains('active'));
+    if (a) tabsBox.scrollTo({ left: a.offsetLeft - (tabsBox.clientWidth - a.offsetWidth) / 2, behavior: 'smooth' });
+  }
+}, { rootMargin: '-45% 0px -50% 0px' });
+document.querySelectorAll('.part').forEach(s => spy.observe(s));
 </script>
 </body>
 </html>
