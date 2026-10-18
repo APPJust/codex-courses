@@ -750,6 +750,19 @@ const PARTS = [
               desc: '以實際案例說明如何和 AI agent 來回溝通、做出 Godot 遊戲的教學動畫。中文／English 配音，中英、中越字幕。'
             }
           ]
+        },
+        {
+          id: 'ai-mv', icon: 'music', title: 'AI 音樂 MV 製作', subtitle: '中原應外主題 MV 與旅遊 MV 剪輯紀錄', type: 'MV・製作紀錄',
+          group: [
+            {
+              tag: 'MV', name: '中原應外 AI 世代 π 型覺醒', url: 'https://youtu.be/n_qgyZzouQE', btn: '在 YouTube 觀看',
+              desc: '以「AI 世代 π 型覺醒」為主題的中原應外 MV。'
+            },
+            {
+              tag: '紀錄', name: 'AI 幫我剪旅遊 MV', url: 'https://claude.ai/artifact/RAxzwUCyBmsdThoWngpS6y',
+              desc: '一首歌、43 段 4K 影片，Claude Code 用六個步驟（盤點素材、聽懂歌、排剪輯表、運鏡調色、動態字幕、合成檢查）剪成三分鐘的東勢林場 MV。3 分鐘中文配音動畫，中英、中越、中日字幕。'
+            }
+          ]
         }
       ]
     } }
@@ -787,6 +800,7 @@ const IC = {
   mic: '<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/>',
   campus: '<path d="M3 21h18M5 21V8.5L12 4l7 4.5V21"/><path d="M9.5 21v-5h5v5M9 11h.01M15 11h.01"/>',
   film: '<rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10.2 9.4 4.6 2.6-4.6 2.6z"/>',
+  music: '<path d="M9 18V5.5l11-2V16"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/>',
   globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9M12 3C9.4 5.6 8.2 8.6 8.2 12s1.2 6.4 3.8 9"/>',
   signal: '<circle cx="12" cy="12" r="2"/><path d="M8.5 8.5a5 5 0 0 0 0 7M15.5 8.5a5 5 0 0 1 0 7M5.6 5.6a9 9 0 0 0 0 12.8M18.4 5.6a9 9 0 0 1 0 12.8"/>',
   weather: '<circle cx="8.5" cy="8.5" r="3.2"/><path d="M8.5 2.5v1M2.5 8.5h1M4.3 4.3l.7.7M12.7 4.3l-.7.7"/><path d="M8 20.5h9a3.5 3.5 0 0 0 .2-7 5 5 0 0 0-9.4 1.4A2.8 2.8 0 0 0 8 20.5z"/>',
@@ -999,7 +1013,7 @@ function groupCard(part, w, it, n) {
   const rows = it.group.map(g => `<div class="row">
       <span class="row-tag">${esc(g.tag)}</span>
       <div><h4>${esc(g.name)}</h4><p>${esc(g.desc)}</p></div>
-      <div class="row-actions">${ext(g.url, 'btn btn-primary btn-sm', `開啟作品${icon('ext')}`)}</div>
+      <div class="row-actions">${ext(g.url, 'btn btn-primary btn-sm', `${esc(g.btn || '開啟作品')}${icon('ext')}`)}</div>
     </div>`).join('');
   return `<article class="card wide" id="${it.id}">
     ${cover(part, n, it.icon, { work: true, badge: w.model })}
