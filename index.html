@@ -712,6 +712,16 @@ const PARTS = [
           links: [['建模操作＆成果影片', 'https://youtu.be/pSWyexUzdy4']]
         }
       ]
+    },
+    tasks: {
+      title: '課程作業', note: '給學生的作業說明頁', task: true,
+      items: [
+        {
+          id: 'codex-blender-hw', icon: 'task', title: '(作業)Codex × Blender', subtitle: '用自然語言指揮 AI 建模並雷雕姓名', type: '作業說明頁', note: 'Claude Artifact',
+          url: 'https://claude.ai/artifact/N3b7cAJNiQoLjzptdYpK8X', btnText: '查看作業',
+          desc: '全程使用 Codex 搭配 blender-mcp 下達指令，建出依名單分配的指定物體（50 個題目），並在物體上雷雕自己的中文姓名；渲染圖（.png）與 Blender 原始檔（.blend）上傳 Moodle。'
+        }
+      ]
     } },
   { key: 'p5', no: 5, hue: 12, dark: true, title: 'Claude Code 作品', en: 'Built with Claude Code',
     desc: '以 Claude Code（Opus 5.5）完成的介紹影片、教學動畫，以及小六自然科互動作品。',
@@ -795,6 +805,7 @@ const IC = {
   skill: '<rect x="4" y="3" width="12.5" height="16" rx="2.5"/><path d="M7.5 8h5.5M7.5 11.5h5.5M7.5 15h3"/><path d="M20 7v11.5a2.5 2.5 0 0 1-2.5 2.5H8.5"/>',
   cube: '<path d="M12 2.8 20.2 7.4v9.2L12 21.2l-8.2-4.6V7.4z"/><path d="M3.8 7.4 12 12l8.2-4.6M12 12v9.2"/>',
   blocks: '<rect x="3" y="12.5" width="8" height="8" rx="1.8"/><rect x="13" y="12.5" width="8" height="8" rx="1.8"/><rect x="8" y="3.5" width="8" height="8" rx="1.8"/>',
+  task: '<rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 4V2.8h6V4M8.5 10.5l1.6 1.6 3-3M8.5 16h7"/>',
   essay: '<path d="M14 3H6.5A2.5 2.5 0 0 0 4 5.5v13A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/>',
   game: '<rect x="2.5" y="7" width="19" height="11" rx="5.5"/><path d="M7.5 10.5v4M5.5 12.5h4"/><circle cx="15.5" cy="11.2" r=".9"/><circle cx="18" cy="13.8" r=".9"/>',
   mic: '<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/>',
@@ -838,7 +849,7 @@ const SITE = 'https://appjust.github.io/codex-courses/';
 const TEACHER_HASH = '68f20ef3a7e6ee13349f2c38d8954f42ae8dc1f5d46cf749a09119f76eeb9281';
 const Q = new URLSearchParams(location.search);
 const LOCAL = location.protocol === 'file:' || ['localhost', '127.0.0.1'].includes(location.hostname);
-const allIds = PARTS.flatMap(p => [...p.items, ...(p.works ? p.works.items : [])].map(x => x.id));
+const allIds = PARTS.flatMap(p => [...p.items, ...(p.works ? p.works.items : []), ...(p.tasks ? p.tasks.items : [])].map(x => x.id));
 
 // 課程代碼：把「單元、標題、副標題」打散成一串代碼，附檢查碼，改動任何字元就失效
 const TK = [...'jw-codex-catalog'].map(ch => ch.charCodeAt(0));
@@ -878,9 +889,10 @@ const keep = id => !SHOW || SHOW.has(id);
 const VIEW = PARTS.map(p => {
   const items = p.items.filter(c => keep(c.id));
   const wItems = p.works ? p.works.items.filter(it => keep(it.id)) : [];
-  return { ...p, items, works: wItems.length ? { ...p.works, items: wItems } : null };
-}).filter(p => p.items.length || p.works).map((p, i) => ({ ...p, no: i + 1 }));
-const viewEntries = VIEW.flatMap(p => [...p.items, ...(p.works ? p.works.items : [])].map(x => [x.id, p]));
+  const tItems = p.tasks ? p.tasks.items.filter(it => keep(it.id)) : [];
+  return { ...p, items, works: wItems.length ? { ...p.works, items: wItems } : null, tasks: tItems.length ? { ...p.tasks, items: tItems } : null };
+}).filter(p => p.items.length || p.works || p.tasks).map((p, i) => ({ ...p, no: i + 1 }));
+const viewEntries = VIEW.flatMap(p => [...p.items, ...(p.works ? p.works.items : []), ...(p.tasks ? p.tasks.items : [])].map(x => [x.id, p]));
 const inView = new Map(viewEntries);
 
 const COURSES = VIEW.flatMap(p => p.items);
@@ -902,6 +914,7 @@ function partChips(p) {
   if (p.items.length) out.push(`${p.items.length} 門課`, `約 ${Math.round(p.items.reduce((a, c) => a + dur(c), 0) / 60)} 分鐘`);
   const w = worksIn(p);
   if (w) out.push(`${w} 件作品`);
+  if (p.tasks) out.push(`${p.tasks.items.length} 份作業`);
   return out;
 }
 
@@ -917,7 +930,7 @@ function cover(part, n, ic, o = {}) {
   const pi = o.pi || 'play';
   return `<${tag} class="cover${o.work ? ' cover--work' : ''}" style="--h:${h};--gx:${gx};--gy:${gy}"${attrs}>
     <span class="cover-ring"></span>
-    <span class="cover-part">PART ${pad(part.no)}${o.work ? '・作品' : ''}</span>${badge}
+    <span class="cover-part">PART ${pad(part.no)}${o.task ? '・作業' : o.work ? '・作品' : ''}</span>${badge}
     <span class="cover-ic">${icon(ic)}</span>
     <span class="cover-no">${pad(n)}</span>
     ${o.href ? `<span class="cover-play${pi === 'play' ? ' is-play' : ''}">${icon(pi)}</span>` : ''}
@@ -992,9 +1005,9 @@ function seriesCard(part, c, n) {
 }
 
 function workCard(part, w, it, n) {
-  const main = it.btnLabel ? `${icon('play')}${esc(it.btnLabel)}` : `開啟網站${icon('ext')}`;
+  const main = it.btnLabel ? `${icon('play')}${esc(it.btnLabel)}` : `${esc(it.btnText || '開啟網站')}${icon('ext')}`;
   return `<article class="card" id="${it.id}">
-    ${cover(part, n, it.icon, { href: it.url, work: true, badge: w.model, pi: it.btnLabel ? 'play' : 'ext' })}
+    ${cover(part, n, it.icon, { href: it.url, work: true, task: w.task, badge: w.model, pi: it.btnLabel ? 'play' : 'ext' })}
     <div class="card-body">
       ${meta([it.type, it.note])}
       <h3>${esc(it.title)}</h3>
@@ -1035,6 +1048,11 @@ function renderParts() {
       const w = p.works;
       const wc = w.items.map(it => { n++; return it.group ? groupCard(p, w, it, n) : workCard(p, w, it, n); }).join('');
       works = (w.title ? `<div class="sub-head"><h3>${esc(w.title)}</h3><span>${esc(w.note)}</span></div>` : '') + `<div class="grid">${wc}</div>`;
+    }
+    if (p.tasks) {
+      const t = p.tasks;
+      const tc = t.items.map(it => { n++; return workCard(p, t, it, n); }).join('');
+      works += `<div class="sub-head"><h3>${esc(t.title)}</h3><span>${esc(t.note)}</span></div><div class="grid">${tc}</div>`;
     }
     const cls = p.dark ? ' band-dark' : (i % 2 ? ' tint' : '');
     return `<section class="part${cls}" id="${p.key}" style="--h:${p.hue}" aria-labelledby="${p.key}-t">
@@ -1232,7 +1250,7 @@ function searchWithout(key) {
 function renderEditor() {
   const ed = $('editor');
   const groups = PARTS.map(p => {
-    const list = [...p.items.map(c => [c.id, c.title, c.kind]), ...(p.works ? p.works.items.map(it => [it.id, it.title, `作品・${it.type}`]) : [])];
+    const list = [...p.items.map(c => [c.id, c.title, c.kind]), ...(p.works ? p.works.items.map(it => [it.id, it.title, `作品・${it.type}`]) : []), ...(p.tasks ? p.tasks.items.map(it => [it.id, it.title, `作業・${it.type}`]) : [])];
     return `<div class="ed-group" style="--h:${p.hue}">
       <label class="ed-part"><input type="checkbox" data-part>PART ${pad(p.no)}　${esc(p.title)}</label>
       ${list.map(([id, t, k]) => `<label class="ed-item"><input type="checkbox" value="${id}"${CURATED && !SHOW.has(id) ? '' : ' checked'}><span><b>${esc(t)}</b><small>${esc(k)}</small></span></label>`).join('')}
