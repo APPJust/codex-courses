@@ -738,6 +738,12 @@ const PARTS = [
           id: 'open-data-dashboard-hw', icon: 'data', title: '(作業)即時開放資料儀表板', subtitle: '用 Codex 串接政府即時開放資料、定時自動更新', type: '作業說明頁', note: 'Claude Artifact',
           url: 'https://claude.ai/artifact/HtgiVSYC85BhZkCXR4hJ5g', btnText: '查看作業',
           desc: '用 Codex 做手機也能看的網頁儀表板，串接每 1–10 分鐘更新的政府開放資料（YouBike、公車到站、路段車速、空品、氣象等 13 份），依名單分配 28 個看板題目；部署到 GitHub Pages，繳交署名的公開網址。'
+        },
+        {
+          id: 'order-system-hw', icon: 'cart', title: '(作業)線上訂餐系統', subtitle: '用 Codex 做有購物車、SVG 餐點與店家後台的訂餐網頁', type: '作業說明頁', note: 'Claude Artifact',
+          url: 'https://claude.ai/artifact/K7GupCwgWJFtD9Pj7ic7kY', btnText: '查看作業',
+          desc: '每人分到一家店與不同的餐點類別（28 題），做出菜單、客製選項、購物車、到店付款的訂單與 just／just 後台；部署到 GitHub Pages，繳交署名的公開網址。附兩個範例（GPT-6 Luna／GPT-6.1 Sol）與 3 分鐘說明動畫。',
+          links: [['說明動畫', 'https://claude.ai/artifact/EoGTrUTZsC3u23YkEScq9E'], ['範例：麵屋小晴', 'https://appjust.github.io/menya-haru-order/'], ['範例：搖搖手作飲', 'https://shake-handcrafted-drinks.aijust.chatgpt.site/']]
         }
       ]
     } },
@@ -834,6 +840,7 @@ const IC = {
   cube: '<path d="M12 2.8 20.2 7.4v9.2L12 21.2l-8.2-4.6V7.4z"/><path d="M3.8 7.4 12 12l8.2-4.6M12 12v9.2"/>',
   blocks: '<rect x="3" y="12.5" width="8" height="8" rx="1.8"/><rect x="13" y="12.5" width="8" height="8" rx="1.8"/><rect x="8" y="3.5" width="8" height="8" rx="1.8"/>',
   task: '<rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 4V2.8h6V4M8.5 10.5l1.6 1.6 3-3M8.5 16h7"/>',
+  cart: '<path d="M2.5 4h2.6l2.2 10.2a1.4 1.4 0 0 0 1.4 1.1h8.6a1.4 1.4 0 0 0 1.4-1.1L20.5 7.5H6"/><circle cx="9.5" cy="19.5" r="1.4"/><circle cx="17" cy="19.5" r="1.4"/>',
   essay: '<path d="M14 3H6.5A2.5 2.5 0 0 0 4 5.5v13A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/>',
   game: '<rect x="2.5" y="7" width="19" height="11" rx="5.5"/><path d="M7.5 10.5v4M5.5 12.5h4"/><circle cx="15.5" cy="11.2" r=".9"/><circle cx="18" cy="13.8" r=".9"/>',
   mic: '<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/>',
