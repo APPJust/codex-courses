@@ -794,6 +794,27 @@ const PARTS = [
           ]
         },
         {
+          id: 'social-artifacts', icon: 'campus', title: '小六社會科互動作品製作', subtitle: '兩個單元的考前總複習網站與 Godot 冒險遊戲', type: 'Claude Artifact',
+          group: [
+            {
+              tag: '複習', name: '民主歷程總複習', url: 'https://claude.ai/artifact/N4FHb481k8pJ1Y9tQ5BxNg',
+              desc: '六年級社會第一單元「中華民國走向民主的歷程為何？」考前總複習：14 堂配音字幕動畫課、每課關卡小考、7 個觀念小遊戲、47 題測驗與錯題本，以及 20 張考前重點卡。'
+            },
+            {
+              tag: '遊戲', name: '時光列車', url: 'https://claude.ai/artifact/751edThxcXqWT5rvubhezH',
+              desc: '以 Godot 製作、在瀏覽器執行的站點式冒險解謎：搭時光列車從 1895 年開到民國 105 年，在 10 個車站和人物對話、蒐集 35 張線索卡，挑戰站長關卡拿印章。第一次載入約 23 MB。'
+            },
+            {
+              tag: '複習', name: '社會第二單元總複習', url: 'https://claude.ai/artifact/13jLM2RBp3VsWUt825bMhc',
+              desc: '六年級社會第二單元「社會變遷下的個人發展與族群文化」考前總複習：照順序闖關複習，再做 20 題模擬考，錯的題目收進錯題本。'
+            },
+            {
+              tag: '遊戲', name: '時光小旅人', url: 'https://claude.ai/artifact/XkaYLqgoLimKKnATk5irXQ',
+              desc: '以 Godot 製作、在瀏覽器執行的俯視角探索冒險：穿越原住民族、大航海、清帝國、日治、中華民國在臺灣到現在 6 個時代，蒐集線索卡、完成動作任務，再通過時光守門關。第一次載入約 14 MB。'
+            }
+          ]
+        },
+        {
           id: 'ai-mv', icon: 'music', title: 'AI 音樂 MV 製作', subtitle: '中原應外主題 MV 與旅遊 MV 剪輯紀錄', type: 'MV・製作紀錄',
           group: [
             {
@@ -1256,6 +1277,7 @@ $('parts').innerHTML = renderParts();
 const notes = [];
 if (inView.has('voice-rollcall')) notes.push('「點名所」需要以 Google 帳號登入');
 if (inView.has('claude-artifacts')) notes.push('「天氣亂鬥」「酸鹼防線」第一次載入約 24～35 MB，建議使用穩定的網路');
+if (inView.has('social-artifacts')) notes.push('「時光列車」「時光小旅人」第一次載入約 14～23 MB，請把手機或平板橫著玩');
 const FAQ = [
   ['需要安裝任何軟體嗎？', '不需要。所有課程與作品都是網頁，用電腦、平板或手機的瀏覽器直接開啟即可。'],
   TOTAL.courses && ['可以切換配音和字幕語言嗎？', '可以，進入播放器後切換。多數課程提供中文配音與中英字幕，部分課程另有 English 配音、中越或中日字幕；每堂課的「課程詳情」會列出可用版本。'],
