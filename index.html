@@ -683,7 +683,7 @@ const PARTS = [
       }
     ] },
   { key: 'p4', no: 4, hue: 32, title: 'Codex 實作案例', en: 'Case Studies',
-    desc: '從 MCP 操控 Blender、用 Godot 做遊戲、三個建模案例到批改作業的完整紀錄，再看以 Codex 完成的上線作品。',
+    desc: '從 MCP 操控 Blender、用 Godot 做遊戲、拆解訂餐系統的 Cloudflare 架構、三個建模案例到批改作業的完整紀錄，再看以 Codex 完成的上線作品。',
     items: [
       {
         id: 'codex-blender', repo: 'codex-blender', icon: 'cube', kind: '教學動畫', title: 'Codex × Blender', subtitle: '用一句話操控 3D 軟體', duration: 420,
@@ -698,6 +698,12 @@ const PARTS = [
         goal: '能說出 Godot 的節點與場景概念、Codex 與 Godot 串接的三層方式（同一個資料夾、headless 命令列、MCP），並能依需求在 Godot、JavaScript、Unity、Unreal Engine 5、Roblox、GDevelop、Rosebud AI 中選出合適的做法。',
         langs: '中文／英文配音（女聲）・中英、中越、中日字幕・附選引擎互動',
         chapters: [[0,'開場'],[42,'Godot 起源'],[83,'節點與場景'],[124,'全是文字檔'],[157,'三層串接'],[200,'工作迴圈'],[238,'設定要點'],[272,'第一個提示詞'],[317,'比較條件'],[349,'語言與 Codex 結合度'],[403,'畫面與網頁效能'],[455,'費用與適合場景'],[522,'為什麼選 Godot'],[554,'實際案例'],[598,'人人做遊戲'],[644,'把野心放大'],[692,'展望'],[725,'給同學']]
+      },
+      {
+        id: 'cloudflare-order-arch', url: 'https://claude.ai/artifact/MVnmZdEKgVFoY2yJUPLyW5', icon: 'cloud', kind: '教學動畫', title: '一杯珍奶的雲端旅程', subtitle: '訂餐系統的 Cloudflare 實作架構', duration: 769,
+        goal: '能說出 Cloudflare 免費與付費方案的額度、訂餐系統用到的每項技術（Workers、D1、React、Vite、Vinext、Drizzle、Wrangler）、Codex 串接 Cloudflare 的兩條路，以及一張訂單從瀏覽器經 Workers 驗證計價、存進 D1 的三層架構。',
+        langs: '中文／英文配音（男聲）・中英、中越、中日字幕',
+        chapters: [[0,'開場'],[24,'Cloudflare 是誰'],[73,'免費方案'],[120,'付費方案'],[167,'技術全景'],[203,'React 與畫面'],[248,'Vite 與 Vinext'],[295,'Workers'],[334,'D1 與 Drizzle'],[377,'Wrangler'],[419,'Codex 串接'],[490,'三層架構'],[535,'訂單旅程'],[603,'API 與資料表'],[647,'登入與後台'],[693,'從原始碼到上線'],[736,'回顧']]
       },
       {
         id: 'blender-three-cases', repo: 'blender-three-cases-record', icon: 'blocks', kind: '實作紀錄', title: 'Blender 三案例實作紀錄', subtitle: '馬克杯、西洋棋主教、漢堡', duration: 423,
@@ -750,7 +756,7 @@ const PARTS = [
           id: 'order-system-hw', icon: 'cart', title: '(作業)線上訂餐系統', subtitle: '用 Codex 做有購物車、SVG 餐點與店家後台的訂餐網頁', type: '作業說明頁', note: 'Claude Artifact',
           url: 'https://claude.ai/artifact/K7GupCwgWJFtD9Pj7ic7kY', btnText: '查看作業',
           desc: '每人分到一家店與不同的餐點類別（28 題），做出菜單、客製選項、購物車、到店付款的訂單與 just／just 後台；部署到 GitHub Pages，繳交署名的公開網址。附兩個範例（GPT-6 Luna／GPT-6.1 Sol，搖搖手作飲另有 Cloudflare 免費方案版）與 3 分鐘說明動畫。',
-          links: [['說明動畫', 'https://claude.ai/artifact/EoGTrUTZsC3u23YkEScq9E'], ['範例：麵屋小晴', 'https://appjust.github.io/menya-haru-order/'], ['範例：搖搖手作飲', 'https://shake-handcrafted-drinks.aijust.chatgpt.site/'], ['搖搖手作飲・Cloudflare 免費方案', 'https://shake-handcrafted-drinks.appjusttw.workers.dev/'], ['Cloudflare 版系統介紹與架構', 'https://shake-handcrafted-drinks.appjusttw.workers.dev/about']]
+          links: [['說明動畫', 'https://claude.ai/artifact/EoGTrUTZsC3u23YkEScq9E'], ['範例：麵屋小晴', 'https://appjust.github.io/menya-haru-order/'], ['範例：搖搖手作飲', 'https://shake-handcrafted-drinks.aijust.chatgpt.site/'], ['搖搖手作飲・Cloudflare 免費方案', 'https://shake-handcrafted-drinks.appjusttw.workers.dev/'], ['Cloudflare 版系統介紹與架構', 'https://shake-handcrafted-drinks.appjusttw.workers.dev/about'], ['Cloudflare 架構動畫', 'https://claude.ai/artifact/MVnmZdEKgVFoY2yJUPLyW5']]
         },
         {
           id: 'godot-campus-game-hw', icon: 'game', title: '(作業)Codex × Godot 大學生活遊戲', subtitle: '用 Codex 和 Godot 做大學生活主題的網頁小遊戲', type: '作業說明頁', note: 'Claude Artifact',
@@ -845,7 +851,7 @@ const PARTS = [
 
 const CHECKS = ['免安裝，直接觀看', '中文／English 配音', '中英・中越雙語字幕', '手機、平板、電腦皆可'];
 
-const TOOLS = [['OpenAI Codex',220],['Claude Code',12],['GPT-6 Astra',32],['Opus 5.5',12],['AGENTS.md',190],['Skills',190],['MCP',32],['Computer use',190],['規劃模式',190],['Worktrees',220],['Blender',32],['Godot',12],['MQTT',12],['REA 逆向工程',258],['開放資料',258],['RAG',258],['Prompt Engineering',258],['Context Engineering',258]];
+const TOOLS = [['OpenAI Codex',220],['Claude Code',12],['GPT-6 Astra',32],['Opus 5.5',12],['AGENTS.md',190],['Skills',190],['MCP',32],['Computer use',190],['規劃模式',190],['Worktrees',220],['Blender',32],['Godot',12],['Cloudflare',32],['MQTT',12],['REA 逆向工程',258],['開放資料',258],['RAG',258],['Prompt Engineering',258],['Context Engineering',258]];
 
 // ids：這張能力卡提到的單元；自訂目錄只在這些單元都有收錄時才顯示該卡
 const LEARN = [
@@ -874,6 +880,7 @@ const IC = {
   blocks: '<rect x="3" y="12.5" width="8" height="8" rx="1.8"/><rect x="13" y="12.5" width="8" height="8" rx="1.8"/><rect x="8" y="3.5" width="8" height="8" rx="1.8"/>',
   task: '<rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 4V2.8h6V4M8.5 10.5l1.6 1.6 3-3M8.5 16h7"/>',
   cart: '<path d="M2.5 4h2.6l2.2 10.2a1.4 1.4 0 0 0 1.4 1.1h8.6a1.4 1.4 0 0 0 1.4-1.1L20.5 7.5H6"/><circle cx="9.5" cy="19.5" r="1.4"/><circle cx="17" cy="19.5" r="1.4"/>',
+  cloud: '<path d="M7 18.5h10.2a4.3 4.3 0 0 0 .6-8.6 6 6 0 0 0-11.5 1.6A3.6 3.6 0 0 0 7 18.5Z"/>',
   essay: '<path d="M14 3H6.5A2.5 2.5 0 0 0 4 5.5v13A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/>',
   game: '<rect x="2.5" y="7" width="19" height="11" rx="5.5"/><path d="M7.5 10.5v4M5.5 12.5h4"/><circle cx="15.5" cy="11.2" r=".9"/><circle cx="18" cy="13.8" r=".9"/>',
   mic: '<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/>',
