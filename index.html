@@ -683,7 +683,7 @@ const PARTS = [
       }
     ] },
   { key: 'p4', no: 4, hue: 32, title: 'Codex 實作案例', en: 'Case Studies',
-    desc: '從 MCP 操控 Blender、用 Godot 做遊戲、拆解訂餐系統的 Cloudflare 架構、三個建模案例到批改作業的完整紀錄，再看以 Codex 完成的上線作品。',
+    desc: '從 MCP 操控 Blender、用 Godot 做遊戲、拆解訂餐系統的 Cloudflare 架構、串接 ElevenLabs 讓程式配音、三個建模案例到批改作業的完整紀錄，再看以 Codex 完成的上線作品。',
     items: [
       {
         id: 'codex-blender', repo: 'codex-blender', icon: 'cube', kind: '教學動畫', title: 'Codex × Blender', subtitle: '用一句話操控 3D 軟體', duration: 420,
@@ -704,6 +704,13 @@ const PARTS = [
         goal: '能說出 Cloudflare 免費與付費方案的額度、訂餐系統用到的每項技術（Workers、D1、React、Vite、Vinext、Drizzle、Wrangler）、Codex 串接 Cloudflare 的兩條路，以及一張訂單從瀏覽器經 Workers 驗證計價、存進 D1 的三層架構。',
         langs: '中文／英文配音（男聲）・中英、中越、中日字幕',
         chapters: [[0,'開場'],[24,'Cloudflare 是誰'],[73,'免費方案'],[120,'付費方案'],[167,'技術全景'],[203,'React 與畫面'],[248,'Vite 與 Vinext'],[295,'Workers'],[334,'D1 與 Drizzle'],[377,'Wrangler'],[419,'Codex 串接'],[490,'三層架構'],[535,'訂單旅程'],[603,'API 與資料表'],[647,'登入與後台'],[693,'從原始碼到上線'],[736,'回顧']]
+      },
+      {
+        id: 'codex-elevenlabs', url: 'https://claude.ai/artifact/S2YwqprXscE7ohW7JxmLg5', icon: 'voice', kind: '教學動畫', title: 'Codex × ElevenLabs', subtitle: '讓程式替你配音', duration: 616,
+        feature: true, topics: ['ElevenLabs 起源','五大功能','voice_id 與模型','方案比較','Codex 串接流程','API／MCP／Skills','AI 短劇配音','聲音克隆','實務應用'],
+        goal: '能說出 ElevenLabs 的起源與五大功能、依需求選擇方案，並描述 Codex 串接 ElevenLabs 的流程（金鑰→依名稱找 voice_id→送出請求→存成 mp3→看錯誤修正），分辨 API、MCP、Skills 三條路線，舉出實務應用與聲音克隆的授權限制。',
+        langs: '中文／英文配音（男聲）・中英、中越、中日字幕・附三個互動',
+        chapters: [[0,'開場'],[32,'ElevenLabs 起源'],[67,'爆紅、成長與爭議'],[118,'功能地圖'],[158,'一段聲音的三要素'],[199,'方案比較'],[250,'Codex 串接流程'],[296,'三條串接路線'],[343,'作業：三人對話'],[371,'AI 短劇配音流水線'],[414,'聲音克隆'],[461,'熱門實務應用'],[511,'自動化也要把關'],[549,'展望'],[590,'總結']]
       },
       {
         id: 'blender-three-cases', repo: 'blender-three-cases-record', icon: 'blocks', kind: '實作紀錄', title: 'Blender 三案例實作紀錄', subtitle: '馬克杯、西洋棋主教、漢堡', duration: 423,
@@ -762,6 +769,12 @@ const PARTS = [
           id: 'godot-campus-game-hw', icon: 'game', title: '(作業)Codex × Godot 大學生活遊戲', subtitle: '用 Codex 和 Godot 做大學生活主題的網頁小遊戲', type: '作業說明頁', note: 'Claude Artifact',
           url: 'https://claude.ai/artifact/CvyvtKDxVPLd9YveJqaAWf', btnText: '查看作業',
           desc: '每人分到不同的大學生活情境與遊戲類型（28 題，例如早八衝教室 × 無盡跑酷），主角、關卡和遊戲規則自己設計；用 Godot 4 匯出網頁版、部署到 GitHub Pages，在遊戲首頁署名後繳交網址。'
+        },
+        {
+          id: 'elevenlabs-dialogue-hw', icon: 'voice', title: '(作業)Codex × ElevenLabs 三人對話配音', subtitle: '用 Codex 串接 ElevenLabs API，把三人對話做成 mp3', type: '作業說明頁', note: 'Claude Artifact',
+          url: 'https://claude.ai/artifact/CDbWNN9MHaGpEnz7ck1g7H', btnText: '查看作業',
+          desc: '每人分到一份大學生活話題的三人對話腳本（27 題，每個角色三句）。用免費方案申請 API Key，在 ElevenLabs 網站用音色設計做出三個角色的聲音，再讓 Codex 依名稱找到 voice_id、用 Text to Dialogue 一次產生九句；繳交署名的 mp3 與 Codex 對話截圖。頁面可切換中文、English、Tiếng Việt、日本語。',
+          links: [['說明動畫', 'https://claude.ai/artifact/S2YwqprXscE7ohW7JxmLg5']]
         }
       ]
     } },
@@ -861,7 +874,7 @@ const PARTS = [
 
 const CHECKS = ['免安裝，直接觀看', '中文／English 配音', '中英・中越雙語字幕', '手機、平板、電腦皆可'];
 
-const TOOLS = [['OpenAI Codex',220],['Claude Code',12],['GPT-6 Astra',32],['Opus 5.5',12],['AGENTS.md',190],['Skills',190],['MCP',32],['Computer use',190],['規劃模式',190],['Worktrees',220],['Blender',32],['Godot',12],['Cloudflare',32],['MQTT',12],['REA 逆向工程',258],['開放資料',258],['RAG',258],['Prompt Engineering',258],['Context Engineering',258]];
+const TOOLS = [['OpenAI Codex',220],['Claude Code',12],['GPT-6 Astra',32],['Opus 5.5',12],['AGENTS.md',190],['Skills',190],['MCP',32],['Computer use',190],['規劃模式',190],['Worktrees',220],['Blender',32],['Godot',12],['Cloudflare',32],['ElevenLabs',220],['MQTT',12],['REA 逆向工程',258],['開放資料',258],['RAG',258],['Prompt Engineering',258],['Context Engineering',258]];
 
 // ids：這張能力卡提到的單元；自訂目錄只在這些單元都有收錄時才顯示該卡
 const LEARN = [
@@ -875,6 +888,7 @@ const LEARN = [
 
 const IC = {
   levels: '<path d="M5 20v-4M10 20v-8M15 20V8M20 20V4"/>',
+  voice: '<path d="M3.5 10.5v3M7.5 7.5v9M11.5 4v16M15.5 8.5v7M19.5 10.5v3"/>',
   funnel: '<path d="M3.5 4.5h17l-6.5 7.5v6l-4 2.5V12z"/>',
   target: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/>',
   layers: '<path d="M12 3 21 8l-9 5-9-5z"/><path d="m3 12.5 9 5 9-5"/><path d="m3 16.5 9 5 9-5"/>',
