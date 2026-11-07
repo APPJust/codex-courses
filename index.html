@@ -658,7 +658,7 @@ const PARTS = [
       }
     ] },
   { key: 'p3', no: 3, hue: 190, title: 'Codex 新增功能', en: 'New Features',
-    desc: '用規劃模式與目標管理長任務，讓 Codex 看得見螢幕，並把重複的流程寫成 Skill。',
+    desc: '用規劃模式與目標管理長任務，讓 Codex 看得見螢幕，把重複的流程寫成 Skill，再拆開一個真實的 Skill 看它怎麼運作。',
     items: [
       {
         id: 'codex-plan-goal', repo: 'codex-plan-goal', icon: 'plan', kind: '教學動畫', title: 'Codex 新增功能介紹（規劃模式＆目標）', subtitle: 'Codex 的＋選單', duration: 300,
@@ -680,6 +680,13 @@ const PARTS = [
         player: 'codex-skills/player/index.html?project=../ep/project.json',
         variants: [['zh-TW', '中文配音＋中英字幕'], ['zh-TW-vi', '中文配音＋中越字幕'], ['en-US', 'English']],
         chapters: [[0,'起源：把重講的流程寫成卡片'],[50,'原理：Skill 的組成'],[104,'原理：漸進式揭露'],[145,'比較：Skill、AGENTS.md、MCP、Plugin'],[196,'應用：在 Codex 建立 Skill'],[269,'應用：呼叫 Skill'],[341,'展望：已公布、趨勢與未解問題'],[385,'回顧']]
+      },
+      {
+        id: 'codex-algorithmic-art', url: 'https://claude.ai/artifact/WFr7XaRwHMeS8CfaQ8EVjp', icon: 'art', kind: '教學動畫', title: 'Codex × algorithmic-art', subtitle: '拆開一個真實的 Skill', duration: 611,
+        feature: true, topics: ['四個檔案','SKILL.md frontmatter','先理念、後程式','概念種子','STEP 0 先讀範本','種子可重現','有無 skill 比較','各平台支援','skills.sh 使用數據'],
+        goal: '能說出 algorithmic-art 的出處、授權與四個檔案的角色，讀懂 SKILL.md「先寫理念、再寫程式」的規定與 STEP 0、種子可重現等技術要求，比較有無 skill 的成果與代價，並說出 skill 格式在各平台的支援現況與使用數據。',
+        langs: '中文／英文配音・中英、中越、中日字幕・附三個互動',
+        chapters: [[0,'同一句話，兩種結果'],[40,'起源：algorithmic-art 從哪裡來'],[83,'打開資料夾：四個檔案'],[123,'SKILL.md 拆解（上）：理念先行'],[179,'SKILL.md 拆解（中）：三條規定與概念種子'],[227,'SKILL.md 拆解（下）：STEP 0 與技術規格'],[285,'兩個範本與授權'],[336,'在 Codex 實際操作'],[395,'比較：有沒有裝 algorithmic-art'],[445,'skill 在各平台的支援現況'],[497,'數據：大家用得多嗎'],[547,'展望'],[585,'回顧']]
       }
     ] },
   { key: 'p4', no: 4, hue: 32, title: 'Codex 實作案例', en: 'Case Studies',
@@ -775,6 +782,12 @@ const PARTS = [
           url: 'https://claude.ai/artifact/CDbWNN9MHaGpEnz7ck1g7H', btnText: '查看作業',
           desc: '每人分到一份大學生活話題的三人對話腳本（27 題，每個角色三句）。用免費方案申請 API Key，在 ElevenLabs 網站用音色設計做出三個角色的聲音，再讓 Codex 依名稱找到 voice_id、用 Text to Dialogue 一次產生九句；繳交署名的 mp3 與 Codex 對話截圖。頁面可切換中文、English、Tiếng Việt、日本語。',
           links: [['說明動畫', 'https://claude.ai/artifact/S2YwqprXscE7ohW7JxmLg5']]
+        },
+        {
+          id: 'skill-generative-art-hw', icon: 'art', title: '(作業)Codex × Skill 生成藝術', subtitle: '從 GitHub 網址替 Codex 安裝 algorithmic-art skill，做出可換種子的生成藝術', type: '作業說明頁', note: 'Claude Artifact',
+          url: 'https://claude.ai/artifact/GWncSxurLJeYV23BaAmrAs', btnText: '查看作業',
+          desc: '每人分到不同的主題、畫面意象與色調（27 題）。先不裝 skill 做一次對照組，再用 $skill-installer 從 GitHub 網址安裝 Anthropic 的 algorithmic-art，以 $algorithmic-art 做出藝術理念與可換種子、調參數的 p5.js 作品網頁（預設種子是學號）；繳交 before.html、philosophy.md、art.html 三個檔案。免費方案、GPT-6 Luna 即可。頁面可切換中文、English、Tiếng Việt、日本語。',
+          links: [['說明動畫', 'https://claude.ai/artifact/WFr7XaRwHMeS8CfaQ8EVjp']]
         }
       ]
     } },
@@ -900,6 +913,7 @@ const IC = {
   plan: '<path d="M10 6.5h10M10 12h10M10 17.5h10"/><path d="m3.8 6.5 1.4 1.4L8 5M3.8 12l1.4 1.4L8 10.5"/><circle cx="5.8" cy="17.5" r="1.6"/>',
   cursor: '<rect x="2.5" y="3.5" width="19" height="13" rx="2.5"/><path d="M8 20.5h8M12 16.5v4"/><path d="m10 7 5.5 2.3-2.3.9-.9 2.3z"/>',
   skill: '<rect x="4" y="3" width="12.5" height="16" rx="2.5"/><path d="M7.5 8h5.5M7.5 11.5h5.5M7.5 15h3"/><path d="M20 7v11.5a2.5 2.5 0 0 1-2.5 2.5H8.5"/>',
+  art: '<path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.8-.8 1.8-1.7 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-.9.8-1.7 1.7-1.7h2.1A4.4 4.4 0 0 0 21 10.8C21 6.5 17 3 12 3z"/><circle cx="7.5" cy="11" r="1.1"/><circle cx="10.5" cy="7" r="1.1"/><circle cx="15" cy="7.3" r="1.1"/>',
   cube: '<path d="M12 2.8 20.2 7.4v9.2L12 21.2l-8.2-4.6V7.4z"/><path d="M3.8 7.4 12 12l8.2-4.6M12 12v9.2"/>',
   blocks: '<rect x="3" y="12.5" width="8" height="8" rx="1.8"/><rect x="13" y="12.5" width="8" height="8" rx="1.8"/><rect x="8" y="3.5" width="8" height="8" rx="1.8"/>',
   task: '<rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 4V2.8h6V4M8.5 10.5l1.6 1.6 3-3M8.5 16h7"/>',
