@@ -874,7 +874,7 @@ const PARTS = [
         {
           id: 'just-planet', icon: 'planet', title: '景文科大小行星', subtitle: '把景文科技大學縮成一顆 3D 小星球', type: 'Claude Artifact・3D 網頁遊戲',
           url: 'https://claude.ai/artifact/BdoGyET2QxV84XUzva21oX', btnText: '進入星球',
-          desc: '依 OpenStreetMap 建築輪廓、真實地形高程與校區配置圖，把新店安坑的景文科大包成半徑 150 公尺的小行星（three.js）。可以自己走、讓角色自動巡航各景點，或到太空俯瞰整顆星球；附中、英、越、日四語語音導覽（Gemini TTS）與日夜背景音樂。校園裡有聊天、坐長椅的同學、綠 10 公車和三隻校貓，晚上有星空與路燈。可以蓋滿 17 個章的校園護照、拍一張蓋上紀念章的景文明信片，修滿 128 學分還能領到寫著自己名字的畢業證書。'
+          desc: '依 OpenStreetMap 建築輪廓、真實地形高程與校區配置圖，把新店安坑的景文科大包成半徑 150 公尺的小行星（three.js）。可以自己走、讓角色自動巡航各景點，或到太空俯瞰整顆星球；介面與語音導覽都有中、英、越、日四種語言（Gemini TTS），並有日夜背景音樂。校園裡有聊天、坐長椅的同學、綠 10 公車和三隻校貓，晚上有星空與路燈。還可以到籃球場玩 30 秒投籃挑戰、在操場跑一圈計時賽、挑戰 14 題校園小考，成績都記在可以蓋滿 17 個章的校園護照裡；也能拍一張蓋上紀念章的景文明信片，修滿 128 學分領到寫著自己名字的畢業證書。'
         },
         {
           id: 'endgame-battle', icon: 'music', title: '碼農的終局之戰', subtitle: 'AI 鍵盤俠 vs 資通系老師的饒舌對決', type: 'AI 饒舌 MV・YouTube',
@@ -1336,7 +1336,7 @@ const notes = [];
 if (inView.has('voice-rollcall')) notes.push('「點名所」需要以 Google 帳號登入');
 if (inView.has('claude-artifacts')) notes.push('「天氣亂鬥」「酸鹼防線」第一次載入約 24～35 MB，建議使用穩定的網路');
 if (inView.has('social-artifacts')) notes.push('「時光列車」「時光小旅人」第一次載入約 14～23 MB，請把手機或平板橫著玩');
-if (inView.has('just-planet')) notes.push('「景文科大小行星」是即時算圖的 3D 遊戲，用電腦開啟最流暢；打開聲音可以聽四語語音導覽，護照與遊戲進度只存在自己的瀏覽器');
+if (inView.has('just-planet')) notes.push('「景文科大小行星」是即時算圖的 3D 遊戲，用電腦開啟最流暢；打開聲音可以聽四語語音導覽，護照、挑戰紀錄與遊戲進度只存在自己的瀏覽器');
 const FAQ = [
   ['需要安裝任何軟體嗎？', '不需要。所有課程與作品都是網頁，用電腦、平板或手機的瀏覽器直接開啟即可。'],
   TOTAL.courses && ['可以切換配音和字幕語言嗎？', '可以，進入播放器後切換。多數課程提供中文配音與中英字幕，部分課程另有 English 配音、中越或中日字幕；每堂課的「課程詳情」會列出可用版本。'],
