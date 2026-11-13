@@ -658,7 +658,7 @@ const PARTS = [
       }
     ] },
   { key: 'p3', no: 3, hue: 190, title: 'Codex 新增功能', en: 'New Features',
-    desc: '用規劃模式與目標管理長任務，讓 Codex 看得見螢幕，把重複的流程寫成 Skill，拆開一個真實的 Skill 看它怎麼運作，再一步一步示範自建 Skill 的作業。',
+    desc: '用規劃模式與目標管理長任務，讓 Codex 看得見螢幕，把重複的流程寫成 Skill，拆開一個真實的 Skill 看它怎麼運作，再一步一步示範自建 Skill 與規劃模式＋目標的作業。',
     items: [
       {
         id: 'codex-plan-goal', repo: 'codex-plan-goal', icon: 'plan', kind: '教學動畫', title: 'Codex 新增功能介紹（規劃模式＆目標）', subtitle: 'Codex 的＋選單', duration: 300,
@@ -694,6 +694,13 @@ const PARTS = [
         goal: '能照作業頁的五段提示詞，從建資料夾、用 $skill-creator 建立 skill、檢查 SKILL.md 的署名與規格、兩次 $ 測試與自動觸發測試、寫 README，一路做到放上公開 GitHub 儲存庫並繳交網址；輸出不符合規格時，知道要改 SKILL.md 而不是改成品。',
         langs: '中文／英文配音（男聲）・中英、中越、中日字幕・附「哪一條違反規格？」互動',
         chapters: [[0,'這份作業要做什麼'],[38,'找到你的題目'],[79,'先看懂輸出規格'],[126,'準備作業資料夾'],[177,'開啟 Codex'],[212,'貼上「① 建立 skill」'],[244,'Codex 建好 skill 資料夾'],[291,'檢查 SKILL.md 開頭的三個欄位'],[335,'檢查步驟和規格'],[372,'第一次測試'],[411,'對照規格，找出問題'],[448,'錯了改 skill，不改成品'],[487,'第二次測試，截第一張圖'],[537,'自動觸發測試，截第二張圖'],[587,'寫 README'],[624,'放上 GitHub'],[675,'自己驗收'],[705,'繳交與老師怎麼檢查'],[752,'整理']]
+      },
+      {
+        id: 'plan-goal-hw-demo', url: 'https://claude.ai/artifact/Gp2dEzNMUk2L6ePaJTg4gw', icon: 'plan', kind: '教學動畫', title: '規劃模式＋目標作業操作示範', subtitle: '以「活動報名與候補」一步一步做完', duration: 950,
+        feature: true, topics: ['看懂正取與候補','官方測試不能改','請 Codex 安裝環境','/plan 回答提問','存成 PLAN.md','好目標的四個部分','/goal 一輪一輪做','自己驗收截圖','部署 GitHub Pages'],
+        goal: '能照作業頁的五段提示詞，從建資料夾、請 Codex 安裝 Node.js 和 Git、用規劃模式回答提問並存成 PLAN.md、用目標讓 Codex 一輪一輪做到測試全部通過、自己驗收截圖，一路做到部署 GitHub Pages、寫 README 並繳交網址；知道什麼時候要暫停目標、為什麼官方測試不能改。',
+        langs: '中文／英文配音（男聲）・中英、中越、中日字幕・附「你來當 calc.js」互動',
+        chapters: [[0,'這份作業要做什麼'],[41,'找到你的題目'],[81,'看懂題目：正取和候補'],[131,'看懂官方測試'],[179,'建資料夾、開啟 Codex'],[223,'請 Codex 安裝 Node.js 和 Git'],[273,'開啟規劃模式，貼上「① 規劃」'],[323,'Codex 讀資料夾，然後問你問題'],[365,'檢查 Codex 寫的計畫'],[409,'存成 PLAN.md，截第一張圖'],[448,'好的目標有四個部分'],[498,'設定目標'],[528,'第一輪：先寫測試，跑出紅燈'],[577,'第二輪：全部轉綠，三個里程碑完成'],[620,'看著它做：什麼時候要按暫停'],[663,'自己驗收，截第二張圖'],[722,'部署到 GitHub Pages'],[772,'寫 README'],[812,'驗收與繳交'],[852,'老師會怎麼檢查'],[903,'整理']]
       }
     ] },
   { key: 'p4', no: 4, hue: 32, title: 'Codex 實作案例', en: 'Case Studies',
@@ -801,6 +808,12 @@ const PARTS = [
           url: 'https://claude.ai/artifact/SXzRYEF1zwwqTdtUuMCeot', btnText: '查看作業',
           desc: '每人分到一件「每次都要重講一遍」的工作（28 題，例如社團會議紀錄、履歷經歷條列）。用 $skill-creator 建立 skill，SKILL.md 寫好輸出規格並在 metadata.author 署名，附一個範本；用 $ 測試兩份範例、再測不打 $ 的自動觸發，最後放上公開 GitHub 儲存庫繳交網址。免費方案、GPT-6 Luna 即可。頁面可切換中文、English、Tiếng Việt、日本語。',
           links: [['操作示範動畫', 'https://claude.ai/artifact/ELvDA87PAyEk42mWEfyCQ9']]
+        },
+        {
+          id: 'plan-goal-hw', icon: 'plan', title: '(作業)Codex × 規劃模式＋目標', subtitle: '先用規劃模式寫計畫，再設目標讓測試全部通過', type: '作業說明頁', note: 'Claude Artifact',
+          url: 'https://claude.ai/artifact/6f2ujbxmjBU1jmqdHeUicy', btnText: '查看作業',
+          desc: '每人分到一個不同的計算小工具（28 題，例如活動報名與候補、畢業學分檢查），題目附計算規則和官方測試。先用規劃模式回答 Codex 的提問、寫成 3 個里程碑的 PLAN.md，再設定目標，以「node --test 全部通過」為完成條件，讓 Codex 一輪一輪寫程式、跑測試、修正；最後部署到 GitHub Pages、網頁底部署名、繳交網址。免費方案、GPT-6 Luna 即可。頁面可切換中文、English、Tiếng Việt、日本語。',
+          links: [['操作示範動畫', 'https://claude.ai/artifact/Gp2dEzNMUk2L6ePaJTg4gw']]
         }
       ]
     } },
