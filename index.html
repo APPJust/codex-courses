@@ -704,7 +704,7 @@ const PARTS = [
       }
     ] },
   { key: 'p4', no: 4, hue: 32, title: 'Codex 實作案例', en: 'Case Studies',
-    desc: '從 MCP 操控 Blender、用 Godot 做遊戲、拆解訂餐系統的 Cloudflare 架構、串接 ElevenLabs 讓程式配音、三個建模案例到批改作業的完整紀錄，再看以 Codex 完成的上線作品。',
+    desc: '從 MCP 操控 Blender、用 Godot 做遊戲、拆解訂餐系統的 Cloudflare 架構、串接 ElevenLabs 讓程式配音、用 Firebase 做即時計分系統、三個建模案例到批改作業的完整紀錄，再看以 Codex 完成的上線作品。',
     items: [
       {
         id: 'codex-blender', repo: 'codex-blender', icon: 'cube', kind: '教學動畫', title: 'Codex × Blender', subtitle: '用一句話操控 3D 軟體', duration: 420,
@@ -732,6 +732,13 @@ const PARTS = [
         goal: '能說出 ElevenLabs 的起源與五大功能、依需求選擇方案，並描述 Codex 串接 ElevenLabs 的流程（金鑰→依名稱找 voice_id→送出請求→存成 mp3→看錯誤修正），分辨 API、MCP、Skills 三條路線，舉出實務應用與聲音克隆的授權限制。',
         langs: '中文／英文配音（男聲）・中英、中越、中日字幕・附三個互動',
         chapters: [[0,'開場'],[32,'ElevenLabs 起源'],[67,'爆紅、成長與爭議'],[118,'功能地圖'],[158,'一段聲音的三要素'],[199,'方案比較'],[250,'Codex 串接流程'],[296,'三條串接路線'],[343,'作業：三人對話'],[371,'AI 短劇配音流水線'],[414,'聲音克隆'],[461,'熱門實務應用'],[511,'自動化也要把關'],[549,'展望'],[590,'總結']]
+      },
+      {
+        id: 'livescore-hw-demo', url: 'https://claude.ai/artifact/BKjsBByQbep5p1KRDKPoj2', icon: 'score', kind: '教學動畫', title: 'Firebase 即時計分作業操作示範', subtitle: '以「桌球單打賽」一步一步做完', duration: 1007,
+        feature: true, topics: ['系統架構：一分的旅程','Realtime Database 監聽','Authentication 登入','安全性規則','Spark 免費額度','主控台實際操作','先測計分規則','兩個視窗同步','手機離線恢復'],
+        goal: '能說出計分台、Realtime Database、Authentication、觀眾頁四者的關係與 Spark 免費額度，照作業頁 A–D 四段從建立 Firebase 專案、做計分規則與測試、接上 Firebase 並發布安全性規則，一路做到部署 GitHub Pages、用手機驗收並繳交兩個網址；遇到 PERMISSION_DENIED 知道檢查哪三件事。',
+        langs: '中文／英文配音（男聲）・中英、中越、中日字幕・附「你來當安全性規則」互動',
+        chapters: [[0,'按一下，全場同步'],[22,'這份作業要做什麼'],[71,'系統架構：一分的旅程'],[150,'Realtime Database：一棵會通知的樹'],[192,'Authentication：登入'],[222,'安全性規則：誰能讀、誰能寫'],[265,'免費額度'],[302,'A-1 建資料夾、開 Codex'],[337,'A-2 建立 Firebase 專案'],[386,'A-3 建立 Realtime Database'],[434,'A-4 開啟登入、建立計分員'],[475,'A-5 取得 firebaseConfig'],[526,'B-1 提示詞 ①'],[556,'B-2 看測試頁'],[594,'B-3 自己出一題'],[632,'C-1 提示詞 ②'],[664,'C-2 貼上 firebaseConfig'],[689,'C-3 發布安全性規則'],[738,'C-4 兩個視窗一起測'],[791,'C-5 打完比賽'],[822,'D-1 連結 GitHub'],[842,'D-2 提示詞 ③ 部署'],[880,'D-3 用手機當觀眾'],[925,'出錯時：PERMISSION_DENIED'],[961,'繳交與檢查']]
       },
       {
         id: 'blender-three-cases', repo: 'blender-three-cases-record', icon: 'blocks', kind: '實作紀錄', title: 'Blender 三案例實作紀錄', subtitle: '馬克杯、西洋棋主教、漢堡', duration: 423,
@@ -814,6 +821,12 @@ const PARTS = [
           url: 'https://claude.ai/artifact/6f2ujbxmjBU1jmqdHeUicy', btnText: '查看作業',
           desc: '每人分到一個不同的計算小工具（28 題，例如活動報名與候補、畢業學分檢查），題目附計算規則和官方測試。先用規劃模式回答 Codex 的提問、寫成 3 個里程碑的 PLAN.md，再設定目標，以「node --test 全部通過」為完成條件，讓 Codex 一輪一輪寫程式、跑測試、修正；最後部署到 GitHub Pages、網頁底部署名、繳交網址。免費方案、GPT-6 Luna 即可。頁面可切換中文、English、Tiếng Việt、日本語。',
           links: [['操作示範動畫', 'https://claude.ai/artifact/Gp2dEzNMUk2L6ePaJTg4gw']]
+        },
+        {
+          id: 'livescore-hw', icon: 'score', title: '(作業)Codex × Firebase 即時計分系統', subtitle: '計分台按一下，觀眾手機跟著變', type: '作業說明頁', note: 'Claude Artifact',
+          url: 'https://claude.ai/artifact/HwKXGMByfkxvK9JQNZg2PS', btnText: '查看作業',
+          desc: '每人分到一種計分方式不同的比賽（28 題，例如桌球單打、3×3 籃球、跆拳道、保齡球）。先用 Codex 做出計分規則與測試頁，再接上 Firebase Realtime Database 與 Authentication：計分員登入才能寫入，觀眾不用登入、不用重新整理就看到即時比分；4 隊單循環加決賽、2 個場地、七個觀眾分頁。部署到 GitHub Pages，繳交觀眾頁與計分台兩個網址。免費方案、GPT-6 Luna、Firebase Spark 免費方案即可。頁面可切換中文、English、Tiếng Việt、日本語。',
+          links: [['操作示範動畫', 'https://claude.ai/artifact/BKjsBByQbep5p1KRDKPoj2'], ['範例：桌球單打賽', 'https://appjust.github.io/table-tennis-livescore/'], ['範例：電競三戰兩勝賽', 'https://appjust.github.io/esports-bo3/']]
         }
       ]
     } },
@@ -918,7 +931,7 @@ const PARTS = [
 
 const CHECKS = ['免安裝，直接觀看', '中文／English 配音', '中英・中越雙語字幕', '手機、平板、電腦皆可'];
 
-const TOOLS = [['OpenAI Codex',220],['Claude Code',12],['GPT-6 Astra',32],['Opus 5.5',12],['AGENTS.md',190],['Skills',190],['MCP',32],['Computer use',190],['規劃模式',190],['Worktrees',220],['Blender',32],['Godot',12],['Cloudflare',32],['ElevenLabs',220],['MQTT',12],['REA 逆向工程',258],['開放資料',258],['RAG',258],['Prompt Engineering',258],['Context Engineering',258]];
+const TOOLS = [['OpenAI Codex',220],['Claude Code',12],['GPT-6 Astra',32],['Opus 5.5',12],['AGENTS.md',190],['Skills',190],['MCP',32],['Computer use',190],['規劃模式',190],['Worktrees',220],['Blender',32],['Godot',12],['Cloudflare',32],['Firebase',32],['ElevenLabs',220],['MQTT',12],['REA 逆向工程',258],['開放資料',258],['RAG',258],['Prompt Engineering',258],['Context Engineering',258]];
 
 // ids：這張能力卡提到的單元；自訂目錄只在這些單元都有收錄時才顯示該卡
 const LEARN = [
@@ -950,6 +963,7 @@ const IC = {
   task: '<rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 4V2.8h6V4M8.5 10.5l1.6 1.6 3-3M8.5 16h7"/>',
   cart: '<path d="M2.5 4h2.6l2.2 10.2a1.4 1.4 0 0 0 1.4 1.1h8.6a1.4 1.4 0 0 0 1.4-1.1L20.5 7.5H6"/><circle cx="9.5" cy="19.5" r="1.4"/><circle cx="17" cy="19.5" r="1.4"/>',
   cloud: '<path d="M7 18.5h10.2a4.3 4.3 0 0 0 .6-8.6 6 6 0 0 0-11.5 1.6A3.6 3.6 0 0 0 7 18.5Z"/>',
+  score: '<rect x="2.5" y="6.5" width="19" height="12" rx="2.5"/><path d="M6.5 10.5h2.5v4H6.5zM15 10.5h2.5v4H15z"/><circle cx="12" cy="11" r=".7"/><circle cx="12" cy="14" r=".7"/><path d="M8.5 6.5 7 3.5M15.5 6.5 17 3.5"/>',
   essay: '<path d="M14 3H6.5A2.5 2.5 0 0 0 4 5.5v13A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/>',
   game: '<rect x="2.5" y="7" width="19" height="11" rx="5.5"/><path d="M7.5 10.5v4M5.5 12.5h4"/><circle cx="15.5" cy="11.2" r=".9"/><circle cx="18" cy="13.8" r=".9"/>',
   mic: '<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/>',
